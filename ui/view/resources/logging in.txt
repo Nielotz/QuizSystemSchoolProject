@@ -1,0 +1,33 @@
+After program start - logging view:
+----------------------------------
+Quiz system
+
+Logging in
+username:
+----------------------------------
+
+----------------------------------
+Quiz system
+
+Logging in
+username: Test username
+password:
+----------------------------------
+
+----------------------------------
+Quiz system
+
+Logging in
+username: Test username
+password: ************
+----------------------------------
+
+Invalid username or password
+----------------------------------
+Quiz system
+
+Invalid auth data.
+
+Logging in
+username: 
+----------------------------------

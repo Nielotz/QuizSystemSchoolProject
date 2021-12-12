@@ -1,0 +1,54 @@
+Student is taking / reviewing results of a test - taking test menu:
+----------------------------------
+Quiz system
+
+Test: <test_name>
+
+Question [<question number> / <amount of questions>]: <question>
+Answers:
+[ ] <answer1>
+[ ] <answer2>
+[ ] <answer3>
+[ ] <answer4>
+
+
+x - select / deselect option, q - quit
+----------------------------------
+
+Student selected answers:
+----------------------------------
+Quiz system
+
+Test: <test_name>
+
+Question [<question number> / <amount of questions>]: <question>
+Answers:
+[ ] <answer1>
+[X] <answer2>
+[ ] <answer3>
+[X] <answer4>
+
+
+x - select / deselect option, q - quit
+----------------------------------
+
+
+Student already have taken test and is looking at the answers:
+----------------------------------
+Quiz system
+
+Test: <test_name>
+
+Question [<question number> / <amount of questions>]: <question>
+Answers:
+correct    marked    answer
+[X]   	   [ ]  	 <answer1>
+[ ]   	   [X]  	 <answer2>
+[ ]   	   [ ]  	 <answer3>
+[X]   	   [X]  	 <answer4>
+
+Points: <gained> / <total>
+
+
+n - next, p - prevois, r - report, q - quit
+----------------------------------

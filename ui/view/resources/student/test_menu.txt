@@ -1,0 +1,25 @@
+Student opens the test - test menu:
+----------------------------------
+Quiz system
+
+<test name>:
+	Number of questions: <amount>  
+	Time: <amount> 
+
+
+t - take, q - quit
+----------------------------------
+
+
+When already taken.
+----------------------------------
+Quiz system
+
+<test name>:
+	Number of questions: <amount>  
+	Time: <amount> 
+	Result: <gained> / <total>
+
+
+r - show test, q - quit
+----------------------------------

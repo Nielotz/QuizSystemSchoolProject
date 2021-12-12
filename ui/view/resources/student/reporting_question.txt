@@ -1,0 +1,22 @@
+Student is reporting question during reviewing - reporting menu:
+----------------------------------
+Quiz system
+
+Test: <test name>
+
+Reporting question:
+
+Question [<question number> / <amount of questions>]:
+<question>
+Answers:
+correct    marked    answer
+[X]   	   [ ]  	 <answer1>
+[ ]   	   [X]  	 <answer2>
+[ ]   	   [ ]  	 <answer3>
+[X]   	   [X]  	 <answer4>
+
+Points: <gained> / <total>
+
+Reason: <reason>
+----------------------------------
+

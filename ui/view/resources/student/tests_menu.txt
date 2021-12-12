@@ -1,0 +1,12 @@
+When logged in - tests menu:
+----------------------------------
+Quiz system
+
+Avaiable tests:
+- <test1>
+- <test2>
+- <test3>
+- <test4>
+
+o - open, q - quit
+----------------------------------

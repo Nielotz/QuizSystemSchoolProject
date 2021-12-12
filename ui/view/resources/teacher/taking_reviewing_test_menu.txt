@@ -1,0 +1,33 @@
+Teacher is reviewing results of a test - teacher reviewing test menu:
+---------------------------------
+Quiz system
+
+Test: <test_name>
+Completed tests:
+	username <points> / <max_points>
+	username1 <points> / <max_points>
+	username2 <points> / <max_points>
+Reports: 
+	<username> <question>
+s - show, q - quit
+----------------------------------
+
+Teacher entered student's test:
+----------------------------------
+Quiz system
+
+Student: username
+Test: Test1
+
+Question [<question number> / <amount of questions>]: <question>
+Answers:
+correct    marked    answer
+[X]   	   [ ]  	 <answer1>
+[ ]   	   [X]  	 <answer1>
+[ ]   	   [ ]  	 <answer1>
+[X]   	   [X]  	 <answer1>
+
+Points: <gained> / <total>
+
+x - select / deselect option, q - quit
+----------------------------------
