@@ -1,0 +1,7 @@
+Quit confirmation when user have clicked "q"
+-----------------------------
+Do you want to quit <what to quit (eg. test)>
+
+y - yes
+n - no
+---------------------------
