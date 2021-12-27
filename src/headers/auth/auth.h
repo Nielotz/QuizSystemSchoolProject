@@ -23,8 +23,8 @@ namespace Auth
 
     class Auth
     {
-        UI ui;
-        Control control;
+        UI ui_;
+        Control control_;
 
     };
 }
