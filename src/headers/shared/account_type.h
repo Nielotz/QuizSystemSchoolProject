@@ -6,9 +6,11 @@
 #define SRC_ACCOUNT_TYPE_H
 
 
-class AccountType
+enum class AccountType
 {
-
+	Teacher,
+	Student,
+	NotDefined
 };
 
 

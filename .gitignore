@@ -1,5 +1,6 @@
 # Prerequisites
 *.d
+.vs
 
 # Compiled Object files
 *.slo
@@ -35,3 +36,11 @@
 *.lck
 .idea
 cmake-build-debug
+src\out\build
+*.sqlite
+UML/.vs/ProjectSettings.json
+UML/.vs/VSWorkspaceState.json
+UML/.vs/UML/v16/Browse.VC.db
+UML/.vs/UML/v16/.suo
+.vs/slnx.sqlite-journal
+src/out/build/*
