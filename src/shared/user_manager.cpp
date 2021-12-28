@@ -8,6 +8,8 @@
 
 #include user_manager.h
 
+using namespace std;
+
 UserManager::UserManager(UserData user_data)
 {
 	this->user_data = user_data;

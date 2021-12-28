@@ -9,14 +9,19 @@
 #include <vector>
 #include answer_data.h
 
-class TestData
+using namespace std;
+
+namespace TestManagement
 {
-public:
-	string name;
-	string question;
-	std::vector<AnswerData> answers;
-	TestData(string name, string question, std::vector<AnswerData> answers);
-};
+	class TestData
+	{
+	public:
+		string name_;
+		string question_;
+		vector<AnswerData> answers_;
+		TestData(string name_, string question_, vector<AnswerData> answers_);
+	};
+}
 
 #endif //SRC_TEST_DATA_H
 

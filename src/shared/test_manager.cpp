@@ -8,6 +8,8 @@
 
 #import test_manager.h;
 
+using namespace std;
+
 void TestManager::open_test()
 {
 	

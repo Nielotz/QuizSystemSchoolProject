@@ -8,11 +8,16 @@
 
 #include test_data.h
 
-TestData::TestData(string name, string question, std::vector<AnswerData> answers)
+using namespace std;
+
+namespace TestManagement
 {
-	this->name = name;
-	this->question = question;
-	this->answers = answers;
+	TestData::TestData(string name, string question, vector<AnswerData> answers)
+	{
+		this->name_ = name;
+		this->question_ = question;
+		this->answers_ = answers;
+	}
 }
 
 #endif //SRC_TEST_DATA_CPP

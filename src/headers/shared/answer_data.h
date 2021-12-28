@@ -6,13 +6,19 @@
 #ifndef SRC_ANSWER_DATA_H
 #define SRC_ANSWER_DATA_H
 
-class AnswerData
-{
-public:
-	string text;
-	bool is_correct;
-	AnswerData(string text, bool is_correct);
-};
+using namespace std;
 
+namespace TestManagement
+{
+	class AnswerData
+	{
+	private:
+		string text_;
+		bool is_correct_;
+
+	public:
+		AnswerData(string text_, bool is_correct_);
+	};
+}
 #endif //SRC_ANSWER_DATA_H
 

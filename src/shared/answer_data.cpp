@@ -8,10 +8,14 @@
 
 #include answer_data.h
 
-AnswerData::AnswerData(string text, bool is_correct)
-{
-	this->text = text;
-	this->is_correct = is_correct;
-}
+using namespace std;
 
+namespace TestManagement
+{
+	AnswerData::AnswerData(string text, bool is_correct)
+	{
+		this->text_ = text;
+		this->is_correct_ = is_correct;
+	}
+}
 #endif //SRC_ANSWER_DATA_CPP

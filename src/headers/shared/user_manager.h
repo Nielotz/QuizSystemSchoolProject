@@ -8,12 +8,14 @@
 
 #import user_data.h;
 
+using namespace std;
+
 class UserManager
 {
 private:
-	UserData user_data;
+	UserData user_data_;
 public:
-	UserManager(UserData user_data);
+	UserManager(UserData user_data_);
 	bool attempt_user_login();
 };
 

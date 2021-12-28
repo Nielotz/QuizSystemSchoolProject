@@ -8,9 +8,8 @@
 
 enum class AccountType
 {
-	Teacher,
-	Student,
-	NotDefined
+	Teacher_,
+	Student_,
 };
 
 

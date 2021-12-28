@@ -8,6 +8,8 @@
 
 #include user_data.h
 
+using namespace std;
+
 UserData::UserData(string username, string password, AccountType account_type)
 {
 	this->username = username;

@@ -8,6 +8,8 @@
 
 #import test_data.h
 
+using namespace std;
+
 class TestManager
 {
 private:

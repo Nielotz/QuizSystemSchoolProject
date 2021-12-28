@@ -7,9 +7,10 @@
 
 #import account_type.h
 
-class UserData
+using namespace std;
+
+struct UserData
 {
-public:
 	string username;
 	string password;
 	AccountType account_type;
