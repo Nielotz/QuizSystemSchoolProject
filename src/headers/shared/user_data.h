@@ -5,17 +5,16 @@
 #ifndef SRC_USER_DATA_H
 #define SRC_USER_DATA_H
 
-#import account_type.h
+#include <string>
 
-using namespace std;
+#include "../headers/shared/account_type.h"
 
 struct UserData
 {
-	string username;
-	string password;
+	std::string username;
+	std::string password;
 	AccountType account_type;
-	UserData(string username, string password, AccountType account_type);
+	UserData(std::string username, std::string password, AccountType account_type);
 };
-
 
 #endif //SRC_USER_DATA_H

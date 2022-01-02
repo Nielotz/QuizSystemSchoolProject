@@ -7,23 +7,25 @@
 
 #include <unordered_map>
 #include <vector>
-#import test_data.h
 
-#import test/test_data.h
+#include "../headers/test_management/test_data.h"
 
 using namespace std;
 
-class Test
+namespace Database
 {
+	class Test
+	{
 	private:
-		unordered_map<string, TestData> tests_;
+		unordered_map<string, TestManagement::TestData> tests_;
 
 	public:
-		TestDatabase();
-		get_test_data(string name_);
+		void TestDatabase();
+		TestManagement::TestData get_test_data(string name_);
 		vector<string> get_test_names();
-		set_test(string name_, TestData test_);
-		Test(unordered_map<string, TestData> tests_);
-};
+		void set_test(TestManagement::TestData test_);
+		Test(unordered_map<string, TestManagement::TestData> tests_);
+	};
+}
 
 #endif //SRC_TEST_H
