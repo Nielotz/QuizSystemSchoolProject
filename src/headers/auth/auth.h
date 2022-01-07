@@ -18,8 +18,8 @@ namespace Auth
     class Auth
     {
     private:
-        UI auth_ui_;
-        Control auth_control_;
+        UI ui_;
+        Control control_;
         pair <string, string> ask_data();
         UserData check_data();
 

@@ -10,8 +10,8 @@ namespace TestManagement
 	class TestMenu
 	{
 	private:
-		TestMenuUI test_menu_ui_;
-		TestMenuControl test_menu_control_;
+		TestMenuUI ui_;
+		TestMenuControl control_;
 
 	public:
 		TestMenu();
