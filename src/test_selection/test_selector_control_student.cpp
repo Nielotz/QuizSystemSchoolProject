@@ -6,6 +6,6 @@ namespace TestSelection
 {
     string TestSelectorControlStudent::control_test_selection()
     {
-        return NULL;
+        return nullptr;
     }
 }

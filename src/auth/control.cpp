@@ -14,11 +14,11 @@ namespace Auth
 
         string Control::get_username()
         {
-            return NULL;
+            return nullptr;
         }
 
         string Control::get_password()
         {
-            return NULL;
+            return nullptr;
         }
 }
