@@ -12,11 +12,11 @@ namespace TestManagement
     class Test
     {
     private:
-        TestData test_data_;
-        TestMenu test_menu_;
+        TestData data_;
+        TestMenu menu_;
 
     public:
-        Test(TestData test_data);
+        Test(TestData data_);
         void handle_test_menu();
     };
 }

@@ -13,8 +13,8 @@ namespace TestSelection
 	class TestSelector
 	{
 	private:
-		TestSelectorUI test_selector_ui_;
-		TestSelectorControl test_selector_control_;
+		TestSelectorUI ui_;
+		TestSelectorControl control_;
 	
 	public:
 		TestSelector(AccountType account_type_);
