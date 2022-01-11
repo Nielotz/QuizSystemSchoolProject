@@ -1,6 +1,3 @@
-//
-// Created by Ula on 2021-12-27.
-//
 #include "../headers/shared/user_data.h"
 
 using namespace std;

@@ -1,16 +1,12 @@
 //
 // Created by Nielotz on 2021-12-17.
 //
+
 #include "../headers/database/test.h"
 
 namespace Database
 {
-	void Test::TestDatabase()
-	{
-
-	}
-
-	/* TestManagement::TestData Test::get_test_data(string name_)
+	/* TestData Test::get_test_data(string name_)
 	{
 		return;
 	} */
@@ -21,12 +17,12 @@ namespace Database
 		return v;
 	}
 
-	void Test::set_test(TestManagement::TestData test_)
+	void Test::set_test(TestData test_)
 	{
 
 	}
 
-	Test::Test(unordered_map<string, TestManagement::TestData> tests_)
+	Test::Test(unordered_map<string, TestData> tests_)
 	{
 		this->tests_ = tests_;
 	}

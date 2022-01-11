@@ -19,7 +19,6 @@ namespace Database
 		unordered_map<string, UserData> users_;
 
 	public:
-		void UserDatabase();
 		UserData set_user(string username_, string password_);
 		User(unordered_map<string, UserData> users_);
 	};
