@@ -50,5 +50,5 @@ correct    marked    answer
 Points: <gained> / <total>
 
 
-n - next, p - prevois, r - report, q - quit
+n - next, p - previous, r - report, q - quit
 ----------------------------------
