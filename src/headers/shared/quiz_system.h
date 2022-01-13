@@ -7,7 +7,6 @@
 class QuizSystem
 {
 private:
-	UI:: UI ui_;
 	Control::Control control_;
 
 public:
