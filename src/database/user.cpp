@@ -3,3 +3,14 @@
 //
 
 #include "../headers/database/user.h"
+
+using namespace std;
+
+namespace Database
+{
+	UserData User::set_user(string username, string password)
+	{
+		UserData ud("", "", AccountType::kTeacher);
+		return ud;
+	}
+}
