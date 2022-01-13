@@ -4,6 +4,6 @@ namespace UI
 {
     UI(AccountType account_type)
     {
-        account_type = account_type;
+        this.account_type_ = account_type;
     }
 }
