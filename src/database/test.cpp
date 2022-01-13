@@ -21,9 +21,4 @@ namespace Database
 	{
 
 	}
-
-	Test::Test(unordered_map<string, TestData::TestData> tests)
-	{
-		this->tests = tests;
-	}
 }
