@@ -10,7 +10,7 @@
 
 }*/
 
-void load_test_menu(TestData::TestData test_data_)
+void TestMenu::load_test_menu(TestData::TestData test_data_)
 {
 
 }
