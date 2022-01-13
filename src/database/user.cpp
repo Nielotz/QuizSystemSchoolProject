@@ -13,9 +13,4 @@ namespace Database
 		UserData ud("", "", AccountType::kTeacher);
 		return ud;
 	}
-
-	User::User(unordered_map<string, UserData> users)
-	{
-		this->users = users;
-	}
 }
