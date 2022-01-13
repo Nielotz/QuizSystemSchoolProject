@@ -2,7 +2,7 @@
 
 using namespace std;
 
-	TestSelector::TestSelector(UI::UI ui, Control::Control control)
+	TestSelector::TestSelector(Control::Control control)
 	{
 	
 	}
