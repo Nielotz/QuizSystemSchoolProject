@@ -1,12 +1,12 @@
 #include "../headers/shared/auth.h"
 
-        Auth::Auth()
-        {
+Auth::Auth()
+{
 
-        }
+}
       
-        UserData attemp_login(UI::UI ui, Control::Control control)
-        {
-            UserData ud("", "", AccountType::kStudent);
-            return ud;
-        }
+UserData attemp_login(Control::Control control)
+{
+   UserData ud("", "", AccountType::kStudent);
+   return ud;
+}
