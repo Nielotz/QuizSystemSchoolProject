@@ -10,7 +10,7 @@ private:
 	bool is_correct_;
 
 public:
-	AnswerData(std::string text_, bool is_correct_);
+	AnswerData(std::string text, bool is_correct);
 };
 
 #endif //SRC_ANSWER_DATA_H

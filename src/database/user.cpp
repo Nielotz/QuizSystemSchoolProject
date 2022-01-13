@@ -8,14 +8,14 @@ using namespace std;
 
 namespace Database
 {
-	UserData User::set_user(string username_, string password_)
+	UserData User::set_user(string username, string password)
 	{
 		UserData ud("", "", AccountType::kTeacher);
 		return ud;
 	}
 
-	User::User(unordered_map<string, UserData> users_)
+	User::User(unordered_map<string, UserData> users)
 	{
-		this->users_ = users_;
+		this->users = users;
 	}
 }

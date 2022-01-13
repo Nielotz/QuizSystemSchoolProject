@@ -19,8 +19,8 @@ namespace Database
 		unordered_map<string, UserData> users_;
 
 	public:
-		UserData set_user(string username_, string password_);
-		User(unordered_map<string, UserData> users_);
+		UserData set_user(string username, string password);
+		User(unordered_map<string, UserData> users);
 	};
 }
 

@@ -2,8 +2,8 @@
 
 namespace UI
 {
-    UI(AccountType account_type_)
+    UI(AccountType account_type)
     {
-        account_type_ = account_type_;
+        account_type = account_type;
     }
 }

@@ -20,10 +20,10 @@ namespace Database
 		unordered_map<string, TestData::TestData> tests_;
 
 	public:
-		TestData::TestData get_test_data(string name_);
+		TestData::TestData get_test_data(string name);
 		vector<string> get_test_names();
-		void set_test(TestData::TestData test_);
-		Test(unordered_map<string, TestData::TestData> tests_);
+		void set_test(TestData::TestData test);
+		Test(unordered_map<string, TestData::TestData> tests);
 	};
 }
 

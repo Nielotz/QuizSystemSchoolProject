@@ -14,7 +14,7 @@ namespace UI
         TestSelector::TestSelector test_selector_;
         TestMenu::TestMenu test_menu_;
         Test::Test test_;
-        UI(AccountType account_type_);
+        UI(AccountType account_type);
     };
 }
 #endif //SRC_UI_UI_H

@@ -5,7 +5,7 @@
 
         }
       
-        UserData attemp_login(UI::UI ui_, Control::Control control_)
+        UserData attemp_login(UI::UI ui, Control::Control control)
         {
             UserData ud("", "", AccountType::kStudent);
             return ud;

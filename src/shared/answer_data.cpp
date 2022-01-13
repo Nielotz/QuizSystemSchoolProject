@@ -2,8 +2,8 @@
 
 using namespace std;
 
-AnswerData::AnswerData(string text_, bool is_correct_)
+AnswerData::AnswerData(string text, bool is_correct)
 {
-	this->text_ = text_;
-	this->is_correct_ = is_correct_;
+	this->text = text;
+	this->is_correct = is_correct;
 }

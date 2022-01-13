@@ -6,7 +6,7 @@
 
 namespace Database
 {
-	/* TestData Test::get_test_data(string name_)
+	/* TestData Test::get_test_data(string name)
 	{
 		return;
 	} */
@@ -17,13 +17,13 @@ namespace Database
 		return v;
 	}
 
-	void Test::set_test(TestData::TestData test_)
+	void Test::set_test(TestData::TestData test)
 	{
 
 	}
 
-	Test::Test(unordered_map<string, TestData::TestData> tests_)
+	Test::Test(unordered_map<string, TestData::TestData> tests)
 	{
-		this->tests_ = tests_;
+		this->tests = tests;
 	}
 }

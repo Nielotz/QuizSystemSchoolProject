@@ -15,7 +15,7 @@ using namespace std;
    {
     public:
         Auth();
-        UserData attemp_login(UI::UI ui_, Control::Control control_);
+        UserData attemp_login(UI::UI ui, Control::Control control);
     };
 
 #endif //SRC_AUTH_H

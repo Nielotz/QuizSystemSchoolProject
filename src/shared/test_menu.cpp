@@ -1,6 +1,6 @@
 #include "../headers/shared/test_menu.h"
 
-/*TestMenu::TestMenu(UI::UI ui_, Control control_)
+/*TestMenu::TestMenu(UI::UI ui, Control control)
 {
 
 }*/
@@ -10,7 +10,7 @@
 
 }*/
 
-void TestMenu::load_test_menu(TestData::TestData test_data_)
+void TestMenu::load_test_menu(TestData::TestData test_data)
 {
 
 }
