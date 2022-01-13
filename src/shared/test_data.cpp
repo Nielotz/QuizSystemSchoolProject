@@ -1,19 +1,11 @@
-#pragma once
-//
-// Created by Ula on 2021-12-27.
-//
+#include "../headers/test_data/test_data.h"
 
-#ifndef SRC_TEST_DATA_CPP
-#define SRC_TEST_DATA_CPP
+using namespace std;
 
-#include test_data.h
-
-TestData::TestData(string name, string question, std::vector<AnswerData> answers)
-{
-	this->name = name;
-	this->question = question;
-	this->answers = answers;
-}
-
-#endif //SRC_TEST_DATA_CPP
+	TestData::TestData(std::string name, string question, vector<AnswerData> answers)
+	{
+		this->name_ = name;
+		this->question_ = question;
+		this->answers_ = answers;
+	}
 

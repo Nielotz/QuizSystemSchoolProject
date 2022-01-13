@@ -2,14 +2,26 @@
 // Created by Nielotz on 2021-12-17.
 //
 
-#ifndef SRC_USER_H
-#define SRC_USER_H
+#ifndef SRC_DATABASE_USER_H
+#define SRC_DATABASE_USER_H
 
+#include <unordered_map>
 
-class User
+#include "../headers/shared/user_data.h"
+
+using namespace std;
+
+namespace Database
 {
+	class User
+	{
+	private:
+		unordered_map<string, UserData> users_;
 
-};
+	public:
+		UserData set_user(string username, string password);
+		User(unordered_map<string, UserData> users);
+	};
+}
 
-
-#endif //SRC_USER_H
+#endif //SRC_DATABASE_USER_H
