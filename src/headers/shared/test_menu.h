@@ -8,7 +8,7 @@
 class TestMenu
 {
 public:
-	TestMenu(Control::Control control_);
+	TestMenu(Control::Control control);
 	Control::TestMenu::OptionType handle();
 	void load_test_menu(TestData::TestData test_data);
 };
