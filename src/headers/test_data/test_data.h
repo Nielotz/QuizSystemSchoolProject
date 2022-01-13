@@ -17,7 +17,7 @@ namespace TestData
 	{
 	public:
 		std::string name;
-		vector<Questions> questions;
+		vector<Question> questions;
 		vector<pair<string, Answer>> students_answers;
 		vector<pair<string, string>> reported_issues;
 	};
