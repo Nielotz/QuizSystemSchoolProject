@@ -10,7 +10,7 @@ using namespace std;
 	class TestSelector
 	{	
 	public:
-		TestSelector(UI::UI ui_, Control::Control control_);
+		TestSelector(Control::Control control);
 		TestData::TestData select_test();
 	};
 
