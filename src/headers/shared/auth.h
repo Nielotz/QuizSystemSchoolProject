@@ -12,10 +12,10 @@
 using namespace std;
 
    class Auth
-    {
+   {
     public:
         Auth();
-        UserData attemp_login(UI ui_, Control control_);
+        UserData attemp_login(UI::UI ui_, Control::Control control_);
     };
 
 #endif //SRC_AUTH_H

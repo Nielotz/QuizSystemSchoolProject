@@ -3,7 +3,7 @@
 
 #include "../headers/ui/ui.h"
 #include "../headers/control/control.h"
-#include "../shared/test_data.h"
+#include "../test_data/test_data.h"
 
 using namespace std;
 
@@ -11,7 +11,7 @@ using namespace std;
 	{	
 	public:
 		TestSelector(UI::UI ui_, Control::Control control_);
-		TestData select_test();
+		TestData::TestData select_test();
 	};
 
 #endif //SRC_TEST_SELECTOR_H

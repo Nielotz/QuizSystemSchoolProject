@@ -8,7 +8,7 @@
 #include <unordered_map>
 #include <vector>
 
-#include "../headers/shared/test_data.h"
+#include "../test_data/test_data.h"
 
 using namespace std;
 
@@ -17,13 +17,13 @@ namespace Database
 	class Test
 	{
 	private:
-		unordered_map<string, TestData> tests_;
+		unordered_map<string, TestData::TestData> tests_;
 
 	public:
-		TestData get_test_data(string name_);
+		TestData::TestData get_test_data(string name_);
 		vector<string> get_test_names();
-		void set_test(TestData test_);
-		Test(unordered_map<string, TestData> tests_);
+		void set_test(TestData::TestData test_);
+		Test(unordered_map<string, TestData::TestData> tests_);
 	};
 }
 

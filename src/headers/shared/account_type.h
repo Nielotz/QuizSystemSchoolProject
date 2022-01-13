@@ -3,8 +3,8 @@
 
 enum class AccountType
 {
-	kTeacher,
-	kStudent,
+	kTeacher_,
+	kStudent_,
 };
 
 #endif //SRC_ACCOUNT_TYPE_H

@@ -17,12 +17,12 @@ namespace Database
 		return v;
 	}
 
-	void Test::set_test(TestData test_)
+	void Test::set_test(TestData::TestData test_)
 	{
 
 	}
 
-	Test::Test(unordered_map<string, TestData> tests_)
+	Test::Test(unordered_map<string, TestData::TestData> tests_)
 	{
 		this->tests_ = tests_;
 	}

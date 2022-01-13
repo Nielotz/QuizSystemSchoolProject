@@ -10,7 +10,7 @@ void QuizSystem::create_new_test()
 
 }
 
-void exit()
+void QuizSystem::exit()
 {
 
 }
