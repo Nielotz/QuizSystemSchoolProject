@@ -1,5 +1,5 @@
-#ifndef SRC_ANSWERS_H
-#define SRC_ANSWERS_H
+#ifndef SRC_TEST_DATA_ANSWERS_H
+#define SRC_TEST_DATA_ANSWERS_H
 
 #include <vector>
 #include <string>
@@ -14,5 +14,5 @@ namespace TestData
 		vector<string> answers_;
 	};
 }
-#endif //SRC_ANSWERS_H
+#endif //SRC_TEST_DATA_ANSWERS_H
 

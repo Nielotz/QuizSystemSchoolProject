@@ -1,5 +1,5 @@
-#ifndef SRC_STUDENT_H
-#define SRC_STUDENT_H
+#ifndef SRC_UI_TEST_SELECTOR_STUDENT_H
+#define SRC_UI_TEST_SELECTOR_STUDENT_H
 
 #include "../test_selector/test_selector.h"
 
@@ -14,5 +14,5 @@ namespace UI
         };
     }
 }
-#endif //SRC_STUDENT_H
+#endif //SRC_UI_TEST_SELECTOR_STUDENT_H
 

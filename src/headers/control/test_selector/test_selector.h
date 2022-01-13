@@ -1,5 +1,5 @@
-#ifndef SRC_TEST_SELECTOR_H
-#define SRC_TEST_SELECTOR_H
+#ifndef SRC_CONTROL_TEST_SELECTOR_TEST_SELECTOR_H
+#define SRC_CONTROL_TEST_SELECTOR_TEST_SELECTOR_H
 
 #include <string>
 #include <vector>
@@ -18,5 +18,5 @@ namespace Control
     }
 }
 
-#endif //SRC_TEST_SELECTOR_H
+#endif //SRC_CONTROL_TEST_SELECTOR_TEST_SELECTOR_H
 

@@ -1,5 +1,5 @@
-#ifndef SRC_AUTH_H
-#define SRC_AUTH_H
+#ifndef SRC_CONTROL_AUTH_H
+#define SRC_CONTROL_AUTH_H
 
 #include <string>
 
@@ -15,5 +15,5 @@ namespace Control
     };
 }
 
-#endif //SRC_AUTH_H
+#endif //SRC_CONTROL_AUTH_H
 

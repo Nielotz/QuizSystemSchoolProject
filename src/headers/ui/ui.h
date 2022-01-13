@@ -1,5 +1,5 @@
-#ifndef SRC_UI_H
-#define SRC_UI_H
+#ifndef SRC_UI_UI_H
+#define SRC_UI_UI_H
 
 #include "../shared/account_type.h"
 #include "../ui/test_menu/test_menu.h"
@@ -17,5 +17,5 @@ namespace UI
         UI(AccountType account_type_);
     };
 }
-#endif //SRC_UI_H
+#endif //SRC_UI_UI_H
 

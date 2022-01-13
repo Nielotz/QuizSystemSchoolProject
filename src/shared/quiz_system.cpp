@@ -1,9 +1,9 @@
 #include "../headers/shared/quiz_system.h"
 
-QuizSystem::QuizSystem()
+/*QuizSystem::QuizSystem()
 {
 
-}
+}*/
 
 void QuizSystem::create_new_test()
 {

@@ -2,8 +2,8 @@
 // Created by Nielotz on 2021-12-17.
 //
 
-#ifndef SRC_TEST_H
-#define SRC_TEST_H
+#ifndef SRC_DATABASE_TEST_H
+#define SRC_DATABASE_TEST_H
 
 #include <unordered_map>
 #include <vector>
@@ -27,4 +27,4 @@ namespace Database
 	};
 }
 
-#endif //SRC_TEST_H
+#endif //SRC_DATABASE_TEST_H

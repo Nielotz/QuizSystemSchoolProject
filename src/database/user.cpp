@@ -10,7 +10,7 @@ namespace Database
 {
 	UserData User::set_user(string username_, string password_)
 	{
-		UserData ud("", "", AccountType::kTeacher_);
+		UserData ud("", "", AccountType::kTeacher);
 		return ud;
 	}
 

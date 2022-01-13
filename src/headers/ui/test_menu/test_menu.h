@@ -1,7 +1,7 @@
-#ifndef SRC_TEST_MENU_H
-#define SRC_TEST_MENU_H
+#ifndef SRC_UI_TEST_MENU_H
+#define SRC_UI_TEST_MENU_H
 
-#include "..\headers\test_data\test_data.h"
+#include "../../test_data/test_data.h"
 
 namespace UI
 {
@@ -14,5 +14,5 @@ namespace UI
         };
     }
 }
-#endif //SRC_TEST_MENU_H
+#endif //SRC_UI_TEST_MENU_H
 

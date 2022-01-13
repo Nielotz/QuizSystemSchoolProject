@@ -1,5 +1,5 @@
-#ifndef SRC_TEST_SELECTOR_H
-#define SRC_TEST_SELECTOR_H
+#ifndef SRC_UI_TEST_SELECTOR_TEST_SELECTOR_H
+#define SRC_UI_TEST_SELECTOR_TEST_SELECTOR_H
 
 #include <vector>
 #include <string>
@@ -17,5 +17,5 @@ namespace UI
         };
     }
 }
-#endif //SRC_TEST_SELECTOR_H
+#endif //SRC_UI_TEST_SELECTOR_TEST_SELECTOR_H
 

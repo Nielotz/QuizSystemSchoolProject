@@ -1,7 +1,8 @@
-#ifndef SRC_TEST_H
-#define SRC_TEST_H
+#ifndef SRC_TEST_TEST_H
+#define SRC_TEST_TEST_H
 
 #include "../test_data/test_data.h"
+#include "../control/control.h"
 
 class Test
 {
@@ -20,4 +21,4 @@ public:
 
 };
 
-#endif //SRC_TEST_H
+#endif //SRC_TEST_TEST_H

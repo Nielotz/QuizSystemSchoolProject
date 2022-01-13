@@ -1,5 +1,5 @@
-#ifndef SRC_TEST_H
-#define SRC_TEST_H
+#ifndef SRC_UI_TEST_TEST_H
+#define SRC_UI_TEST_TEST_H
 
 #include <string>
 #include <vector>
@@ -19,4 +19,4 @@ namespace UI
         };
     }
 }
-#endif //SRC_TEST_H
+#endif //SRC_UI_TEST_TEST_H

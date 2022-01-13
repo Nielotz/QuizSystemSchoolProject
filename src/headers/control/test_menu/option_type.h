@@ -1,20 +1,19 @@
-#ifndef SRC_CONTROL_H
-#define SRC_CONTROL_H
-
-#include "../headers/control/test_selector/test_selector.h"
-#include "../headers/control/test_selector/test_menu.h"
-#include "../headers/shared/account_type.h"
+#ifndef SRC_CONTROL_TEST_MENU_OPTION_TYPE_H
+#define SRC_CONTROL_TEST_MENU_OPTION_TYPE_H
 
 namespace Control
 {
-    class Control
-    {
-    public:
-        Control::TestSelector::TestSelector test_selector_;
-        Control::TestMenu::TestMenu tets_menu_;
-        Control(AccountType account_type_);
-    };
+	namespace TestMenu
+	{
+		enum class OptionType
+		{
+			kEdit,
+			kTake,
+			kQuit,
+			kReview,
+			kDelete,
+		};
+	}
 }
 
-#endif //SRC_CONTROL_H
-
+#endif //SRC_CONTROL_TEST_MENU_OPTION_TYPE_H

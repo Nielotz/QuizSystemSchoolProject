@@ -1,5 +1,5 @@
-#ifndef SRC_STUDENT_H
-#define SRC_STUDENT_H
+#ifndef SRC_UI_TEST_MENU_STUDENT_H
+#define SRC_UI_TEST_MENU_STUDENT_H
 
 #include "../test_menu/test_menu.h"
 
@@ -14,4 +14,4 @@ namespace UI
         };
     }
 }
-#endif //SRC_STUDENT_H
+#endif //SRC_UI_TEST_MENU_STUDENT_H

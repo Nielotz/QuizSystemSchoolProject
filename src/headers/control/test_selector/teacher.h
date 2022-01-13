@@ -1,5 +1,5 @@
-#ifndef SRC_TEACHER_H
-#define SRC_TEACHER_H
+#ifndef SRC_CONTROL_TEST_SELECTOR_TEACHER_H
+#define SRC_CONTROL_TEST_SELECTOR_TEACHER_H
 
 #include "../test_selector/test_selector.h"
 
@@ -17,4 +17,4 @@ namespace Control
     }
 }
 
-#endif //SRC_TEACHER_H
+#endif //SRC_CONTROL_TEST_SELECTOR_TEACHER_H

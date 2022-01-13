@@ -1,5 +1,5 @@
-#ifndef SRC_TEST_DATA_H
-#define SRC_TEST_DATA_H
+#ifndef SRC_TEST_DATA_TEST_DATA_H
+#define SRC_TEST_DATA_TEST_DATA_H
 
 #include <vector>
 #include <utility>
@@ -23,5 +23,5 @@ namespace TestData
 	};
 }
 
-#endif //SRC_TEST_DATA_H
+#endif //SRC_TEST_DATA_TEST_DATA_H
 

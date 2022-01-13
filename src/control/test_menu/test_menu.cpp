@@ -4,9 +4,6 @@ namespace Control
 {
     namespace TestMenu
     {
-        Control::TestMenu::OptionType control_test_menu_selection(TestData::TestData test_data)
-        {
-
-        }
+        Control::TestMenu::OptionType control_test_menu_selection(TestData::TestData test_data);
     }
 }

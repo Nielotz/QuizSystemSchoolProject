@@ -1,20 +1,18 @@
-#ifndef SRC_CONTROL_H
-#define SRC_CONTROL_H
+#ifndef SRC_CONTROL_TEST_MENU_STUDENT_H
+#define SRC_CONTROL_TEST_MENU_STUDENT_H
 
-#include "../headers/control/test_selector/test_selector.h"
-#include "../headers/control/test_selector/test_menu.h"
-#include "../headers/shared/account_type.h"
+#include "../test_menu/test_menu.h"
 
 namespace Control
 {
-    class Control
+    namespace TestMenu
     {
-    public:
-        Control::TestSelector::TestSelector test_selector_;
-        Control::TestMenu::TestMenu tets_menu_;
-        Control(AccountType account_type_);
-    };
+        class Student : public TestMenu
+        {
+        public:
+            Control::TestMenu::OptionType control_test_menu_selection(TestData::TestData test_data);
+        };
+    }
 }
 
-#endif //SRC_CONTROL_H
-
+#endif //SRC_CONTROL_TEST_MENU_TEACHER_H

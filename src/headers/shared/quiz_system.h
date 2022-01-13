@@ -1,5 +1,5 @@
-#ifndef SRC_QUIZ_SYSTEM_H
-#define SRC_QUIZ_SYSTEM_H
+#ifndef SRC_QUIZ_SYSTEM_QUIZ_SYSTEM_H
+#define SRC_QUIZ_SYSTEM_QUIZ_SYSTEM_H
 
 #include "../headers/control/control.h"
 #include "../headers/ui/ui.h"
@@ -17,4 +17,4 @@ public:
 };
 
 
-#endif //SRC_QUIZ_SYSTEM_H
+#endif //SRC_QUIZ_SYSTEM_QUIZ_SYSTEM_H
