@@ -4,13 +4,16 @@ namespace Control
 {
     string Auth::get_username()
     {
-        string s;
-        return s;
+        return "TestUsername";
     }
 
     string Auth::get_password()
     {
-        string s;
-        return s;
+        return "TestPassword";
+    }
+
+    pair<string, string> Auth::get_auth_data()
+    {
+        return {Auth::get_username(), Auth::get_password()};
     }
 }
