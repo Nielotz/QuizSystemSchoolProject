@@ -46,4 +46,9 @@ namespace Database
             users_.emplace(r_username, UserData{r_username, r_password, AccountType(stoi(userdata_element))});
         }
     }
+
+    UserData User::get_user(const string& username, const string& password)
+    {
+        return {"TestUsername", "TestPassword", AccountType::kStudent};
+    }
 }
