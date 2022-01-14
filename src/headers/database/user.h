@@ -7,21 +7,23 @@
 
 #include <unordered_map>
 
-#include "../headers/shared/user_data.h"
+#include "../shared/user_data.h"
 
 using namespace std;
 
 namespace Database
 {
-	class User
-	{
-	private:
-		unordered_map<string, UserData> users_;
+    class User
+    {
+    private:
+        unordered_map<string, UserData> users_;
 
-	public:
-		UserData set_user(string username, string password);
-		User(unordered_map<string, UserData> users);
-	};
+    public:
+        UserData set_user(string username, string password);
+        User(unordered_map<string, UserData> users);
+        User();
+        void loadUsers();
+    };
 }
 
 #endif //SRC_DATABASE_USER_H
