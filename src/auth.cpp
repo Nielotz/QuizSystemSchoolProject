@@ -1,8 +1,8 @@
 #include <optional>
 
-#include "../headers/shared/auth.h"
-#include "../headers/control/auth.h"
-#include "../headers/database/user.h"
+#include "headers/auth.h"
+#include "headers/control/auth.h"
+#include "headers/database/user.h"
 
 UserData Auth::login()
 {

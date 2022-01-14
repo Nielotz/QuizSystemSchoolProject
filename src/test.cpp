@@ -1,4 +1,4 @@
-#include "../headers/shared/test.h"
+#include "headers/test.h"
 
 void Test::take()
 {

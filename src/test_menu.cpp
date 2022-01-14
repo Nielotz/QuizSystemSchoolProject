@@ -1,4 +1,4 @@
-#include "../headers/shared/test_menu.h"
+#include "headers/test_menu.h"
 
 /*TestMenu::TestMenu(UI::UI ui, Control control)
 {
