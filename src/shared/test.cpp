@@ -10,7 +10,7 @@ void Test::review()
 
 }
 
-void Test::delet()
+void Test::delete_()
 {
 
 }
