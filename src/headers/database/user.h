@@ -20,7 +20,7 @@ namespace Database
 
     public:
         User();
-        UserData get_user(string username, string password);
+        UserData get_user(const string& username, const string& password);
     };
 }
 
