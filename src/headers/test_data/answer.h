@@ -8,7 +8,7 @@ using namespace std;
  
 namespace TestData
 {
-	class Answers
+	class Answer
 	{
 	public:
 		vector<string> answers_;
