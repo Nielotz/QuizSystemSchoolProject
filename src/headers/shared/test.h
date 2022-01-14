@@ -10,7 +10,7 @@ private:
 	TestData::TestData test_data_;
 	void take();
 	void review();
-	void delete();
+	void delete_();
 	void edit();
 
 public:
