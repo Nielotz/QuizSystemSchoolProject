@@ -44,3 +44,10 @@ UML/.vs/UML/v16/Browse.VC.db
 UML/.vs/UML/v16/.suo
 .vs/slnx.sqlite-journal
 src/out/build/*
+Debug
+QuizSystemSchoolProject.vcxproj
+QuizSystemSchoolProject.vcxproj.user
+QuizSystemSchoolProject.vcxproj.filters
+QuizSystemSchoolProject.sln
+src/CMakeLists.txt
+CMakeLists.txt
