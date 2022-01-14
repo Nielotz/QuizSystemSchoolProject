@@ -2,7 +2,7 @@
 
 using namespace std;
 
-	TestSelector::TestSelector(Control::Control control)
+	TestSelector::TestSelector(const Control::Control& control)
 	{
 	
 	}
