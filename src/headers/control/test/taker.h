@@ -14,7 +14,7 @@ namespace Control
 	{
 		class Taker
 		{
-			pair<vector<string> answers, vector<string> reports> take(TestData::TestData test_data);
+			pair<vector<string> , vector<string> > take(TestData::TestData test_data);
 			void handle_user_action();
 		};
 	}
