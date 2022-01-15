@@ -10,14 +10,15 @@ using namespace std;
 
 namespace Control
 {
-	namespace Test
-	{
-		class Taker
-		{
-			pair<vector<string> , vector<string> > take(TestData::TestData test_data);
-			void handle_user_action();
-		};
-	}
+    namespace Test
+    {
+        class Taker
+        {
+            pair<vector<string>, vector<string>> take(TestData::TestData test_data);
+
+            void handle_user_action();
+        };
+    }
 }
 
 #endif //SRC_CONTROL_TEST_TAKER_H
