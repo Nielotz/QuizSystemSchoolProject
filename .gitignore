@@ -51,3 +51,4 @@ QuizSystemSchoolProject.vcxproj.filters
 QuizSystemSchoolProject.sln
 src/CMakeLists.txt
 CMakeLists.txt
+src/CMakeSettings.json
