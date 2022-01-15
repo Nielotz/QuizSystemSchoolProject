@@ -6,16 +6,13 @@
 
 using namespace std;
 
-namespace Control
+namespace Control::TestSelector
 {
-    namespace TestSelector
+    class TestSelector
     {
-        class TestSelector
-        {
-        public:
-            string control_test_selection(vector<string> tests_data);
-        };
-    }
+    public:
+        string control_test_selection(vector<string> tests_data);
+    };
 }
 
 #endif //SRC_CONTROL_TEST_SELECTOR_TEST_SELECTOR_H

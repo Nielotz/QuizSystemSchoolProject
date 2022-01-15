@@ -1,4 +1,4 @@
-#include "../headers/shared/test.h"
+#include "headers/test.h"
 
 void Test::take()
 {
@@ -10,7 +10,7 @@ void Test::review()
 
 }
 
-void Test::delet()
+void Test::delete_()
 {
 
 }

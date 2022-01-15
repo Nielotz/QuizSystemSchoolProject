@@ -9,9 +9,10 @@ namespace Control
 {
     class Auth
     {
+        static string get_username();
+        static string get_password();
     public:
-        string get_username();
-        string get_password();
+        static pair<string, string> get_auth_data();
     };
 }
 

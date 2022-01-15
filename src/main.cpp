@@ -1,7 +1,8 @@
 #include <iostream>
+#include "headers/quiz_system.h"
 
 int main()
 {
-    std::cout << "Hello, World!" << std::endl;
+    QuizSystem();
     return 0;
 }

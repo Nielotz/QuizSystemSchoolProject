@@ -1,8 +1,8 @@
 #ifndef SRC_TEST_TEST_H
 #define SRC_TEST_TEST_H
 
-#include "../test_data/test_data.h"
-#include "../control/control.h"
+#include "test_data/test_data.h"
+#include "control/control.h"
 
 class Test
 {
@@ -10,7 +10,7 @@ private:
 	TestData::TestData test_data_;
 	void take();
 	void review();
-	void delete();
+	void delete_();
 	void edit();
 
 public:

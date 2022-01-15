@@ -14,42 +14,41 @@ using namespace std;
 
 namespace Database
 {
-    UserData User::set_user(string username, string password)
+    User::User()
     {
-        UserData ud("", "", AccountType::kTeacher);
-        return ud;
+        string path = "database/database_user.txt";
+        if (path.empty())
+            throw runtime_error("Path to the user database need to be set!");
+
+        //If file exist?
+        ifstream file_save(path.c_str());
+        if (file_save.good() == 0)
+        {
+            cout << "AAAAA File doesn't exist!!! What I should to do?\n";
+        }
+        file_save.close();
+
+        ifstream input(path, ios::out);
+        string userdata_line;
+
+        while (getline(input, userdata_line))
+        {
+            istringstream userdata_stream(userdata_line);
+            string userdata_element;
+            //cout << "\nlinia: " << csvLine << endl;
+
+            string r_username;
+            string r_password;
+            getline(userdata_stream, r_username, '|');
+            getline(userdata_stream, r_password, '|');
+            getline(userdata_stream, userdata_element, '|');
+
+            users_.emplace(r_username, UserData{r_username, r_password, AccountType(stoi(userdata_element))});
+        }
     }
-}
 
-void Database::User::loadUsers()
-{
-    string path = "database/database_user.txt";
-    if (path.empty())
-        throw runtime_error("Path to the user database need to be set!");
-
-    //If file exist?
-    ifstream file_save(path.c_str());
-    if (file_save.good() == 0)
+    UserData User::get_user(const string& username, const string& password)
     {
-        cout << "AAAAA File doesn't exist!!! What I should to do?\n";
-    }
-    file_save.close();
-
-    ifstream input(path, ios::out);
-    string userdata_line;
-
-    while (getline(input, userdata_line))
-    {
-        istringstream userdata_stream(userdata_line);
-        string userdata_element;
-        //cout << "\nlinia: " << csvLine << endl;
-
-        string r_username;
-        string r_password;
-        getline(userdata_stream, r_username, '|');
-        getline(userdata_stream, r_password, '|');
-        getline(userdata_stream, userdata_element, '|');
-
-        users_.emplace(r_username, UserData{ r_username, r_password, AccountType(stoi(userdata_element)) });
+        return {"TestUsername", "TestPassword", AccountType::kStudent};
     }
 }

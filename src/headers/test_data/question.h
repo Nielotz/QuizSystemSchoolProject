@@ -3,17 +3,17 @@
 
 #include <vector>
 #include <string>
-#include "../test_data/answers.h"
+#include "../test_data/answer.h"
 
 using namespace std;
 
 namespace TestData
 {
-	class Questions
+	class Question
 	{
 	public:
 		string question_;
-		vector<Answers> answers_;
+		vector<Answer> answers_;
 		vector<string> correct_answers_;
 	};
 }

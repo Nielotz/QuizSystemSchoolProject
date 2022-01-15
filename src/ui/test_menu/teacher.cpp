@@ -1,4 +1,4 @@
-#include "../headers/ui/test_menu/teacher.h"
+#include "../../headers/ui/test_menu/teacher.h"
 
 namespace UI
 {
