@@ -2,8 +2,10 @@
 #include <string>
 #include <stdlib.h>
 #include <conio.h>
+#include <iomanip>
 
 #include "../headers/ui/auth.h"
+#include "../headers/ui/ui.h"
 
 namespace UI
 {
@@ -11,30 +13,25 @@ namespace UI
     {
        system("CLS");
 
+       UI::UI::print_logo();
 
        cout << "==============" << endl;
        cout << "+ Logging in +" << endl;
        cout << "==============" << endl << endl;
-       cout << "username: ";
+
+       if (is_retry)
+       {
+           cout << "Invalid auth data. Try again." << endl;
+       }
+
+       cout << "username: " << entered_username;
     }
 
     void Auth::ask_password(string username, bool is_retry, int ammount_of_entered_chars)
     {
         system("CLS");
-        cout << "Quiz system" << endl;
-        cout << "Logging in" << endl;
-        cout << "username: " << username << endl;
-        cout << "password: ";
-
-        system("CLS");
-
-        cout << "Quiz system" << endl;
-        cout << "Logging in" << endl << endl;
-        cout << "Invalid auth data." << endl << endl;
-        cout << "press any key to try again" << endl;
-
-        system("CLS");
-
+        ask_username(is_retry, "");
+        cout << "password: " << std::setw(ammount_of_entered_chars) << std::setfill('*') << "";
     }
 }
 

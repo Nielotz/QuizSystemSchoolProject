@@ -12,7 +12,7 @@ namespace Control
         static string get_username();
         static string get_password();
     public:
-        static pair<string, string> get_auth_data();
+        static pair<string, string> get_auth_data(bool is_retry);
     };
 }
 
