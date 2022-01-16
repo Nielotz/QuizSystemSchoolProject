@@ -8,9 +8,10 @@
 using namespace std;
 
 	class TestSelector
-	{	
+	{
+		Control::Control control_;
 	public:
-		TestSelector(const Control::Control& control);
+		explicit TestSelector(Control::Control control);
 		TestData::TestData select_test();
 	};
 
