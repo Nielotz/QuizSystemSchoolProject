@@ -14,8 +14,12 @@ using namespace std;
 
 namespace Database
 {
-    User::User()
+
+    UserData User::get_user(const string& username, const string& password)
     {
+        return {"TestUsername", "TestPassword", AccountType::kStudent};
+
+        /*
         string path = "database/database_user.txt";
         if (path.empty())
             throw runtime_error("Path to the user database need to be set!");
@@ -44,11 +48,6 @@ namespace Database
             getline(userdata_stream, userdata_element, '|');
 
             users_.emplace(r_username, UserData{r_username, r_password, AccountType(stoi(userdata_element))});
-        }
-    }
-
-    UserData User::get_user(const string& username, const string& password)
-    {
-        return {"TestUsername", "TestPassword", AccountType::kStudent};
+        }*/
     }
 }

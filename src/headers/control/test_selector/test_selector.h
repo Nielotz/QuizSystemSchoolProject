@@ -11,7 +11,19 @@ namespace Control::TestSelector
     class TestSelector
     {
     public:
-        string control_test_selection(vector<string> tests_data);
+        virtual string control_test_selection(vector<string> tests_data) = 0;
+    };
+
+    class Teacher : public TestSelector
+    {
+    public:
+        string control_test_selection(vector<string> tests_data) override;
+    };
+
+    class Student : public TestSelector
+    {
+    public:
+        string control_test_selection(vector<string> tests_data) override;
     };
 }
 

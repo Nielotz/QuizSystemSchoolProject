@@ -5,13 +5,14 @@
 #include "../../headers/control/test_menu/test_menu.h"
 #include "../../headers/shared/account_type.h"
 
+#include "memory"
+
 namespace Control
 {
     class Control
     {
     public:
-        TestSelector::TestSelector test_selector_;
-        TestMenu::TestMenu test_menu_;
+        shared_ptr<TestSelector::TestSelector> test_selector_;
         explicit Control(AccountType account_type);
     };
 }
