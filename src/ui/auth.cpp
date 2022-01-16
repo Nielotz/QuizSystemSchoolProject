@@ -15,23 +15,23 @@ namespace UI
 
        UI::UI::print_logo();
 
-       cout << "==============" << endl;
-       cout << "+ Logging in +" << endl;
-       cout << "==============" << endl << endl;
+       cout <<"  ==============" << endl;
+       cout <<"  + Logging in +" << endl;
+       cout <<"  ==============" << endl << endl;
 
        if (is_retry)
        {
            cout << "Invalid auth data. Try again." << endl;
        }
 
-       cout << "username: " << entered_username;
+       cout << "    USERNAME: " << entered_username;
     }
 
     void Auth::ask_password(string username, bool is_retry, int ammount_of_entered_chars)
     {
         system("CLS");
         ask_username(is_retry, "");
-        cout << "password: " << std::setw(ammount_of_entered_chars) << std::setfill('*') << "";
+        cout << "   PASSWORD: " << std::setw(ammount_of_entered_chars) << std::setfill('*') << "";
     }
 }
 
