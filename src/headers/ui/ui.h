@@ -15,6 +15,7 @@ namespace UI
         TestMenu::TestMenu test_menu_;
         Test::Test test_;
         UI(AccountType account_type);
+        static void print_logo();
     };
 }
 #endif //SRC_UI_UI_H
