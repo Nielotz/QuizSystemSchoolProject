@@ -17,13 +17,12 @@ namespace Database
 	class Test
 	{
 	private:
-		unordered_map<string, TestData::TestData> tests_;
+		static unordered_map<string, TestData::TestData> tests_;
 
 	public:
-		TestData::TestData get_test_data(string name);
-		vector<string> get_test_names();
-		void set_test(TestData::TestData test);
-		Test(unordered_map<string, TestData::TestData> tests);
+		static TestData::TestData get_test_data(const string& name);
+		static vector<string> get_test_names();
+		static void set_test(TestData::TestData test);
 	};
 }
 
