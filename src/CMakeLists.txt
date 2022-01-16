@@ -16,6 +16,7 @@ add_executable(src main.cpp
 
         headers/control/control.h control/control.cpp
         headers/control/auth.h control/auth.cpp
+        headers/ui/auth.h ui/auth.cpp
 
         headers/database/user.h database/user.cpp
         headers/database/test.h database/test.cpp

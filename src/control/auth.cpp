@@ -1,4 +1,5 @@
 #include "../headers/control/auth.h"
+#include "../headers/ui/auth.h"
 
 namespace Control
 {
@@ -12,8 +13,11 @@ namespace Control
         return "TestPassword";
     }
 
-    pair<string, string> Auth::get_auth_data()
+    pair<string, string> Auth::get_auth_data(bool is_retry)
     {
-        return {Auth::get_username(), Auth::get_password()};
+        UI::Auth::ask_username(is_retry, "");
+        string username = Auth::get_username();
+        UI::Auth::ask_password(username, is_retry, 0);
+        return {username, Auth::get_password()};
     }
 }
