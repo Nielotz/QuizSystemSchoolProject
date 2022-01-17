@@ -9,9 +9,9 @@ using namespace std;
 
 	class TestSelector
 	{
-		shared_ptr<Control::Control> control_;
+		Control::Control control_;
 	public:
-		explicit TestSelector(shared_ptr<Control::Control> control);
+		explicit TestSelector(Control::Control control);
 		TestData::TestData select_test();
 	};
 
