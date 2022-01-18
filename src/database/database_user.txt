@@ -1,3 +1,0 @@
-Student|Haslo|0
-Prow|Haslo|1
-TestUsername|TestPassword|0

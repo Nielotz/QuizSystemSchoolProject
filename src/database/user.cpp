@@ -18,7 +18,7 @@ namespace Database
 
     UserData User::get_user(const string& username, const string& password)
     {
-        const string path = "../../../database/database_user.txt";
+        const string path = "database_user.txt";
         if (path.empty())
         {
             cout << "Path to the user database need to be set!";
