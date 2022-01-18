@@ -21,6 +21,7 @@ namespace Database
     public:
         //static unordered_map<string, UserData> users_;
         static UserData get_user(const string &username, const string &password);
+        //static UserData insert_user(const string &username, const string &password, const AccountType type);
         User(User const &) = delete;
         void operator=(User const &) = delete;
     };

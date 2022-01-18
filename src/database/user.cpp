@@ -21,7 +21,7 @@ namespace Database
         const string path = "../../../database/database_user.txt";
         if (path.empty())
         {
-            cout << "Path to the user database need to be set!";
+            cout << "<user database>Path to the user database need to be set!";
             return{};
         }
 
@@ -29,7 +29,7 @@ namespace Database
         //If file exist?
         if (input.good() == 0)
         {
-            cout << "File at the specified location does not exist!";
+            cout << "<user database>File at the specified location does not exist!";
             return{};
         }
         
@@ -57,4 +57,9 @@ namespace Database
         return{};
 
     }
+
+    /*UserData User::insert_user(const string& username, const string& password, const AccountType type)
+    {
+
+    }*/
 }
