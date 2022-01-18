@@ -8,28 +8,25 @@
 
 using namespace std;
 
-namespace UI
+namespace UI::TestSelector
 {
-    namespace TestSelector
+    void TestSelector::ask_select_test(vector<string> tests, string selected_answer)
     {
-        void TestSelector::ask_select_test(vector<string> tests, string selected_answer)
+        system("CLS");
+
+        UI::UI::print_logo();
+
+        cout << "  =====================" << endl;
+        cout << "  + Selection of test +" << endl;
+        cout << "  =====================" << endl << endl;
+
+        cout << "  Avilable tests:" << endl;
+
+        for (auto &test: tests)
         {
-            system("CLS");
-
-            UI::UI::print_logo();
-
-            cout << "  =====================" << endl;
-            cout << "  + Selection of test +" << endl;
-            cout << "  =====================" << endl << endl;
-
-            cout << "  Avilable tests:" << endl;
-            
-            for (auto& test : tests)
-            {
-                cout <<"    " << test << endl;
-            }
-
-            cout << "o-open, q-quit";
+            cout << "    " << test << endl;
         }
+
+        cout << "o-open, q-quit";
     }
 }
