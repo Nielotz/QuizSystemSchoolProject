@@ -4,7 +4,6 @@ Quiz system
 
 Test: <test_name>
 	Number of questions: <amount> 
-	Time: <amount>
 Completed tests:
 	username <points> / <max_points>
 	username1 <points> / <max_points>
