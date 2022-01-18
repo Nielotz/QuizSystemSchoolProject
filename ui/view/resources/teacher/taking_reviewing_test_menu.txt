@@ -3,13 +3,14 @@ Teacher is reviewing results of a test - teacher reviewing test menu:
 Quiz system
 
 Test: <test_name>
+	Number of questions: <amount> 
 Completed tests:
 	username <points> / <max_points>
 	username1 <points> / <max_points>
 	username2 <points> / <max_points>
 Reports: 
 	<username> <question>
-s - show, q - quit
+s - show, q - quit, e - edit, r - show students results, q - quit
 ----------------------------------
 
 Teacher entered student's test:
