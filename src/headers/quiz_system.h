@@ -6,9 +6,6 @@
 
 class QuizSystem
 {
-private:
-	Control::Control control_;
-
 public:
 	QuizSystem();
 	void create_new_test();

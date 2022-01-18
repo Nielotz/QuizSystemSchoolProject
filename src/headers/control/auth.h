@@ -5,9 +5,9 @@
 
 using namespace std;
 
-namespace Control
+namespace control
 {
-    class Auth
+    class auth
     {
         static string get_username();
         static string get_password();

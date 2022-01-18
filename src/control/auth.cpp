@@ -1,23 +1,29 @@
 #include "../headers/control/auth.h"
 #include "../headers/ui/auth.h"
 
-namespace Control
+namespace control
 {
-    string Auth::get_username()
+    string auth::get_username()
     {
+        // TODO: control getting username.
         return "TestUsername";
     }
 
-    string Auth::get_password()
+    string auth::get_password()
     {
+        // TODO: control getting password.
         return "TestPassword";
     }
 
-    pair<string, string> Auth::get_auth_data(bool is_retry)
+    pair<string, string> auth::get_auth_data(bool is_retry)
     {
-        UI::Auth::ask_username(is_retry, "");
-        string username = Auth::get_username();
-        UI::Auth::ask_password(username, is_retry, 0);
-        return {username, Auth::get_password()};
+        ui::Auth::ask_username(is_retry, "");
+
+        string username = auth::get_username();
+
+        constexpr int amount_of_entered_chars = 0;
+        ui::Auth::ask_password(username, is_retry, amount_of_entered_chars);
+
+        return pair<string, string>{username, auth::get_password()};
     }
 }

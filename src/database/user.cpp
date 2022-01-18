@@ -12,7 +12,7 @@
 
 using namespace std;
 
-namespace Database
+namespace database
 {
 
     UserData User::get_user(const string& username, const string& password)

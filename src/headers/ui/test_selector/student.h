@@ -3,16 +3,13 @@
 
 #include "../test_selector/test_selector.h"
 
-namespace UI
+namespace ui::test_selector
 {
-    namespace TestSelector
+    class Student : public TestSelector
     {
-        class TestSelectorStudent : public TestSelector
-        {
-        public:
-            void ask_select_test(vector<string> tests);
-        };
-    }
+    public:
+        void ask_select_test(vector<string> tests, string selected_answer) override;
+    };
 }
 #endif //SRC_UI_TEST_SELECTOR_STUDENT_H
 

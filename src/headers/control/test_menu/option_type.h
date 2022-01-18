@@ -1,7 +1,7 @@
 #ifndef SRC_CONTROL_TEST_MENU_OPTION_TYPE_H
 #define SRC_CONTROL_TEST_MENU_OPTION_TYPE_H
 
-namespace Control::TestMenu
+namespace control::test_menu
 {
     enum class OptionType
     {

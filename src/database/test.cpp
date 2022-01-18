@@ -4,30 +4,34 @@
 
 #include "../headers/database/test.h"
 
-namespace Database
+namespace database
 {
-    /* TestData Test::get_test_data(string name)
+    /* test_data test::get_test_data(string name)
     {
         return;
     } */
 
-    vector<string> Test::get_test_names()
+    vector<string> test::get_test_names()
     {
+        // TODO: Return tests names from the database.
+
         return {"TestTestStudent", "TestTestTeacher"};
     }
 
-    void Test::set_test(TestData::TestData test)
+    void test::set_test(test_data::TestData test)
     {
 
     }
 
-    TestData::TestData Test::get_test_data(const string &name)
+    test_data::TestData test::get_test_data(const string &name)
     {
-        TestData::Answers answers({"TestAnswer1", "TestAnswer2"});
+        // TODO: Return test data from the database.
 
-        vector<TestData::Question> questions({{"TestQuestion",
-                                               answers,
-                                               {"TestAnswer1",}}});
+        test_data::Answers answers({"TestAnswer1", "TestAnswer2"});
+
+        vector<test_data::Question> questions({{"TestQuestion",
+                                                answers,
+                                                {"TestAnswer1",}}});
 
         if (name == "TestTestStudent")
             return {"TestTestStudent", questions};

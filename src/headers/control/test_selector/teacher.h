@@ -5,16 +5,13 @@
 
 using namespace std;
 
-namespace Control
+namespace control::test_selector
 {
-    namespace TestSelector
+    class Teacher : public TestSelector
     {
-        class Teacher : public TestSelector
-        {
-        public:
-            string control_test_selection(vector<string> tests_data);
-        };
-    }
+    public:
+        string control_test_selection(vector<string> tests_names) override;
+    };
 }
 
 #endif //SRC_CONTROL_TEST_SELECTOR_TEACHER_H

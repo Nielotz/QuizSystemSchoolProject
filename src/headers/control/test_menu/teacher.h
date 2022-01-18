@@ -3,16 +3,13 @@
 
 #include "../test_menu/test_menu.h"
 
-namespace Control
+namespace control::test_menu
 {
-    namespace TestMenu
+    class Teacher : public TestMenu
     {
-        class Teacher : public TestMenu
-        {
-        public:
-            Control::TestMenu::OptionType control_test_menu_selection(TestData::TestData test_data);
-        };
-    }
+    public:
+        OptionType control_test_menu_selection(string username, test_data::TestData test_data) override;
+    };
 }
 
 #endif //SRC_CONTROL_TEST_MENU_TEACHER_H

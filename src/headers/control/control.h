@@ -7,12 +7,13 @@
 
 #include "memory"
 
-namespace Control
+namespace control
 {
     class Control
     {
     public:
-        shared_ptr<TestSelector::TestSelector> test_selector_;
+        shared_ptr<test_selector::TestSelector> test_selector_;
+        shared_ptr<test_menu::TestMenu> test_menu_;
         explicit Control(AccountType account_type);
     };
 }

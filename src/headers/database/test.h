@@ -12,17 +12,17 @@
 
 using namespace std;
 
-namespace Database
+namespace database
 {
-	class Test
+	class test
 	{
 	private:
-		static unordered_map<string, TestData::TestData> tests_;
+		static unordered_map<string, test_data::TestData> tests_;
 
 	public:
-		static TestData::TestData get_test_data(const string& name);
+		static test_data::TestData get_test_data(const string& name);
 		static vector<string> get_test_names();
-		static void set_test(TestData::TestData test);
+		static void set_test(test_data::TestData test);
 	};
 }
 

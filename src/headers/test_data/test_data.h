@@ -9,35 +9,32 @@
 
 using namespace std;
 
-namespace TestData
+namespace test_data
 {
     struct Answers
     {
-    public:
-        vector<string> answers_;
+        vector<string> answers;
 
         explicit Answers(vector<string> answers);
     };
 
     struct Question
     {
-    public:
-        string question_;
-        Answers answers_;
-        vector<string> correct_answers_;
+        string question;
+        Answers answers;
+        vector<string> correct_answers;
 
         Question(string question, Answers answers, vector<string> correct_answers);
     };
 
     struct TestData
     {
-    public:
-        std::string name;
+        string name;
         vector<Question> questions;
         vector<pair<string, Answers>> students_answers;
         vector<pair<string, string>> reported_issues;
 
-        TestData(std::string name, vector<Question> questions);
+        TestData(string name, vector<Question> questions);
     };
 }
 

@@ -1,5 +1,8 @@
 #include "headers/test.h"
 
+#include <utility>
+#include "headers/test_data/test_data.h"
+
 void Test::take()
 {
 
@@ -20,7 +23,7 @@ void Test::edit()
 
 }
 
-/*Control::TestMenu::OptionType open(TestData::TestData test_data, Control::TestMenu::OptionType open_type)
+Test::Test(test_data::TestData test_data, control::test_menu::OptionType open_type) : test_data_(std::move(test_data))
 {
 
-}*/
+}

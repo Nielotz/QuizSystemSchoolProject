@@ -3,16 +3,13 @@
 
 #include "../../test_data/test_data.h"
 
-namespace UI
+namespace ui::test_menu
 {
-    namespace TestMenu
+    class TestMenu
     {
-        class TestMenu
-        {
-        public:
-            void show(string username, TestData::TestData test_data);
-        };
-    }
+    public:
+        virtual void show(string username, test_data::TestData test_data, string selected_answer) = 0;
+    };
 }
 #endif //SRC_UI_TEST_MENU_H
 

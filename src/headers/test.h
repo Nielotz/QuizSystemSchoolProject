@@ -7,17 +7,14 @@
 class Test
 {
 private:
-	TestData::TestData test_data_;
+	test_data::TestData test_data_;
 	void take();
 	void review();
 	void delete_();
 	void edit();
 
 public:
-	void open(TestData::TestData test_data, Control::TestMenu::OptionType open_type)
-	{
-
-	}
+	Test(test_data::TestData test_data, control::test_menu::OptionType open_type);
 
 };
 

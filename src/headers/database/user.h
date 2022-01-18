@@ -11,7 +11,7 @@
 
 using namespace std;
 
-namespace Database
+namespace database
 {
     class User
     {

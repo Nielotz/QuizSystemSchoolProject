@@ -1,12 +1,6 @@
 #include "../../headers/ui/test_menu/teacher.h"
 
-namespace UI
+void ui::test_menu::Teacher::show(string username, test_data::TestData test_data, string selected_answer)
 {
-    namespace TestMenu
-    {
-        void TestMenu::show(string username, TestData::TestData test_data)
-        {
-
-        }
-    }
+    // TODO: Show teacher test menu.
 }
