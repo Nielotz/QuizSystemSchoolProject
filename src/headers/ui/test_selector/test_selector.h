@@ -13,7 +13,7 @@ namespace UI
         class TestSelector
         {
         public:
-            void ask_select_test(vector<string> tests);
+            void ask_select_test(vector<string> tests, string selected_answer);
         };
     }
 }

@@ -21,4 +21,4 @@ add_executable(src main.cpp
         headers/database/user.h database/user.cpp
         headers/database/test.h database/test.cpp
         headers/ui/ui.h ui/ui.cpp
-        )
+         "ui/test_selector/test_selector.cpp")
