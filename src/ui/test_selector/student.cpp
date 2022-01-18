@@ -1,5 +1,4 @@
 #include <iostream>
-#include <windows.h>
 
 #include "../../headers/ui/test_selector/student.h"
 #include "../../headers/ui/ui.h"

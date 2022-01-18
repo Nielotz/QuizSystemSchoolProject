@@ -1,5 +1,4 @@
 #include <iostream>
-#include <windows.h>
 
 #include "../../headers/ui/test_selector/teacher.h"
 #include "../../headers/ui/ui.h"
@@ -34,6 +33,8 @@ void ui::test_selector::Teacher::ask_select_test(vector<string> tests, string se
             cout << "    " << test << endl;
         }
     }
+
+    cout << endl;
     cout << "o - open, d - delete, n - new, q - quit";
 }
     
