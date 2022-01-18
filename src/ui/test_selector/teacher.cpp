@@ -1,4 +1,5 @@
 #include <iostream>
+#include <windows.h>
 
 #include "../../headers/ui/test_selector/teacher.h"
 #include "../../headers/ui/ui.h"
@@ -20,9 +21,19 @@ void ui::test_selector::Teacher::ask_select_test(vector<string> tests, string se
 
     for (auto& test : tests)
     {
-        cout << "    " << test << endl;
-    }
+        if (test == selected_answer)
+        {
+            cout << "    ";
+            ui::UI::text_background_color(0, 3);
+            cout << selected_answer << endl;
+            ui::UI::color_reset();
+        }
 
+        else
+        {
+            cout << "    " << test << endl;
+        }
+    }
     cout << "o - open, d - delete, n - new, q - quit";
 }
     
