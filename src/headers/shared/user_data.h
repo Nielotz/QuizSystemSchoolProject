@@ -17,6 +17,7 @@ struct UserData
 	string password;
 	AccountType account_type;
 	UserData(string username, string password, AccountType account_type);
+	UserData()=default;
 };
 
 #endif //SRC_USER_DATA_USER_DATA_H

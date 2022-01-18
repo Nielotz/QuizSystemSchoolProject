@@ -10,6 +10,7 @@
 #include <unordered_map>
 #include "../headers/database/user.h"
 
+
 using namespace std;
 
 namespace Database
@@ -17,22 +18,21 @@ namespace Database
 
     UserData User::get_user(const string& username, const string& password)
     {
-        return {"TestUsername", "TestPassword", AccountType::kStudent};
-
-        /*
-        string path = "database/database_user.txt";
+        const string path = "../../../database/database_user.txt";
         if (path.empty())
-            throw runtime_error("Path to the user database need to be set!");
-
-        //If file exist?
-        ifstream file_save(path.c_str());
-        if (file_save.good() == 0)
         {
-            cout << "AAAAA File doesn't exist!!! What I should to do?\n";
+            cout << "Path to the user database need to be set!";
+            return{};
         }
-        file_save.close();
 
         ifstream input(path, ios::out);
+        //If file exist?
+        if (input.good() == 0)
+        {
+            cout << "File at the specified location does not exist!";
+            return{};
+        }
+        
         string userdata_line;
 
         while (getline(input, userdata_line))
@@ -47,7 +47,14 @@ namespace Database
             getline(userdata_stream, r_password, '|');
             getline(userdata_stream, userdata_element, '|');
 
-            users_.emplace(r_username, UserData{r_username, r_password, AccountType(stoi(userdata_element))});
-        }*/
+            if (username == r_username && password == r_password)
+            {
+                input.close();
+                return{ r_username, r_password, AccountType(stoi(userdata_element)) };
+            }
+        }
+        input.close();
+        return{};
+
     }
 }

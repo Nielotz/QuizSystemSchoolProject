@@ -3,6 +3,7 @@
 
 int main()
 {
-    QuizSystem();
+    QuizSystem quiz;
+    
     return 0;
 }

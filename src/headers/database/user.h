@@ -16,11 +16,11 @@ namespace Database
     class User
     {
     private:
-        // static unordered_map<string, UserData> users_;
+        
         User() = default;
     public:
+        //static unordered_map<string, UserData> users_;
         static UserData get_user(const string &username, const string &password);
-
         User(User const &) = delete;
         void operator=(User const &) = delete;
     };
