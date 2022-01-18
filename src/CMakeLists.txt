@@ -36,5 +36,8 @@ add_executable(src main.cpp
 
         # ui.
         headers/ui/ui.h ui/ui.cpp
-        headers/ui/test_selector/test_selector.h ui/test_selector/test_selector.cpp)
+        headers/ui/test_selector/test_selector.h ui/test_selector/test_selector.cpp
+        headers/ui/test_selector/student.h ui/test_selector/student.cpp
+        headers/ui/test_selector/teacher.h ui/test_selector/teacher.cpp
+        )
 
