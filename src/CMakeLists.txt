@@ -36,14 +36,5 @@ add_executable(src main.cpp
 
         # ui.
         headers/ui/ui.h ui/ui.cpp
+        headers/ui/test_selector/test_selector.h ui/test_selector/test_selector.cpp)
 
-        headers/ui/auth.h ui/auth.cpp
-
-        headers/ui/test_menu/test_menu.h
-        headers/ui/test_menu/student.h ui/test_menu/student.cpp
-        headers/ui/test_menu/teacher.h ui/test_menu/teacher.cpp
-
-        headers/ui/test_selector/test_selector.h
-        headers/ui/test_selector/student.h ui/test_selector/student.cpp
-        headers/ui/test_selector/teacher.h ui/test_selector/teacher.cpp
-        )
