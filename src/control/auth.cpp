@@ -1,5 +1,5 @@
 #include "../headers/control/auth.h"
-#include "../ui/auth.cpp"  // When import ../headers/ui/auth.h C++ goes brrr .
+#include "../ui/auth.cpp"  // When import ../headers/ui/auth.h C++ goes brrr.
 
 namespace control
 {
