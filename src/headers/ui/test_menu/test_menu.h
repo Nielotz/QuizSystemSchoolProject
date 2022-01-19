@@ -8,7 +8,9 @@ namespace ui::test_menu
     class TestMenu
     {
     public:
-        virtual void show(string username, test_data::TestData test_data, string selected_answer) = 0;
+        virtual void
+        show(string test_name, string username, int amount_of_questions, unordered_map<string, int> users_points, string selected_answer) = 0;
+
     };
 }
 #endif //SRC_UI_TEST_MENU_H

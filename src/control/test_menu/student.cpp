@@ -12,7 +12,7 @@ namespace control::test_menu
             selected_username = username;
 
         // Show test menu - summary of a test.
-        ui::UI::get().test_menu_->show(username, test_data, selected_username);
+        ui::UI::get().test_menu_->show(std::string(), username, 0, unordered_map<string, int>(), selected_username, 0);
 
         // TODO: Handle user option.
 
