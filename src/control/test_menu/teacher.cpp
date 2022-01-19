@@ -3,9 +3,9 @@
 
 namespace control::test_menu
 {
-    control::test_menu::OptionType Teacher::control_test_menu_selection(string username, test_data::TestData test_data)
+    control::test_menu::OptionType Teacher::control_test_menu_selection(std::string username, test_data::TestData test_data)
     {
-        string selected_username;
+        std::string selected_username;
         // if (!test_data.users_points.empty())
         //     selected_username = test_data.users_points;
 

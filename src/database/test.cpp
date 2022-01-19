@@ -7,7 +7,7 @@ namespace database
         return;
     } */
 
-    vector<string> test::get_test_names()
+    std::vector<std::string> test::get_test_names()
     {
         // TODO: Return tests names from the database.
 
@@ -19,11 +19,11 @@ namespace database
 
     }
 
-    test_data::TestData test::get_test_data(const string &name)
+    test_data::TestData test::get_test_data(const std::string &name)
     {
         // TODO: Return test data from the database.
 
-        vector<test_data::Question> questions({{"TestQuestion",
+        std::vector<test_data::Question> questions({{"TestQuestion",
                                                 {"TestAnswer1", "TestAnswer2"},
                                                 {"TestAnswer1",}}});
 

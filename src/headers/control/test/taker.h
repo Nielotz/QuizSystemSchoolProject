@@ -6,15 +6,13 @@
 
 #include "../../test_data/test_data.h"
 
-using namespace std;
-
 namespace Control
 {
     namespace Test
     {
         class Taker
         {
-            pair<vector<string>, vector<string>> take(TestData::TestData test_data);
+            std::pair<std::vector<std::string>, std::vector<std::string>> take(test_data::TestData test_data);
 
             void handle_user_action();
         };

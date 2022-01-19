@@ -10,17 +10,15 @@
 #include <unordered_map>
 #include "../headers/database/user.h"
 
-using namespace std;
-
 namespace database
 {
 
-    optional<UserData> user::get_user(const string& username, const string& password)
+    std::optional<UserData> user::get_user(const std::string& username, const std::string& password)
     {
         return {{"TestUsername", "TestPassword", AccountType::kStudent}};
 
         /*
-        string path = "database/database_user.txt";
+        std::string path = "database/database_user.txt";
         if (path.empty())
             throw runtime_error("Path to the user database need to be set!");
 
