@@ -31,4 +31,9 @@ namespace database
             return {"TestTestStudent", questions};
         return {"TestTestTeacher", questions};
     }
+
+    void test::delete_test(const std::string& test_name)
+    {
+
+    }
 }

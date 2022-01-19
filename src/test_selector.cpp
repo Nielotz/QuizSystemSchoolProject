@@ -10,6 +10,9 @@ test_data::TestData test_selector::select_test(const control::Control &control)
 
     std::string selected_test_name = control.test_selector_->control_test_selection(tests_names);
 
+    if (selected_test_name == "[Create]")
+        ;
+
     test_data::TestData test_data = database::test::get_test_data(selected_test_name);
 
     return test_data;

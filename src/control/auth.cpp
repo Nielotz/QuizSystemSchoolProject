@@ -1,6 +1,6 @@
 #define _HAS_STD_BYTE 0
 
-#include <windows.h>
+#include <Windows.h>
 #include <cctype>
 
 #include "../headers/control/auth.h"
