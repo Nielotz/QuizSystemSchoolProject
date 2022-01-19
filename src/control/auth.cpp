@@ -26,7 +26,9 @@ namespace control
             if (events > 0)
             {
                 ReadConsoleInput(handle_stdin, &input_record_buffer, 1, &events);
-                WORD user_input = input_record_buffer.Event.KeyEvent.wVirtualKeyCode;
+                if (!input_record_buffer.Event.KeyEvent.bKeyDown)
+                    continue;
+                const WORD& user_input = input_record_buffer.Event.KeyEvent.wVirtualKeyCode;
 
                 switch (user_input)
                 {
@@ -38,6 +40,7 @@ namespace control
                             entered_username.pop_back();
                             ui::auth::ask_username(is_retry, entered_username);
                         }
+                        break;
                     default:
                         if (isprint(user_input) && user_input < 256)
                         {
@@ -66,7 +69,9 @@ namespace control
             if (events > 0)
             {
                 ReadConsoleInput(handle_stdin, &input_record_buffer, 1, &events);
-                WORD user_input = input_record_buffer.Event.KeyEvent.wVirtualKeyCode;
+                if (!input_record_buffer.Event.KeyEvent.bKeyDown)
+                    continue;
+                const WORD& user_input = input_record_buffer.Event.KeyEvent.wVirtualKeyCode;
 
                 switch (user_input)
                 {
@@ -83,7 +88,7 @@ namespace control
                         if (isprint(user_input) && user_input < 256)
                         {
                             entered_password.push_back(char(user_input));
-                            ui::auth::ask_username(is_retry, entered_password);
+                            ui::auth::ask_password(username, is_retry, entered_password.size());
                         }
                 }
             }
@@ -92,10 +97,7 @@ namespace control
 
     std::pair<std::string, std::string> auth::get_auth_data(bool is_retry)
     {
-        std::string username = auth::get_username(is_retry);
-
-        constexpr int amount_of_entered_chars = 0;
-        ui::auth::ask_password(username, is_retry, amount_of_entered_chars);
+        const std::string& username = auth::get_username(is_retry);
 
         return std::pair<std::string, std::string>{username, auth::get_password(username, is_retry)};
     }
