@@ -9,7 +9,7 @@ namespace ui::test_menu
     {
     public:
         virtual void
-        show(string test_name, string username, int amount_of_questions, unordered_map<string, int> users_points, string selected_answer) = 0;
+        show(string test_name, string username, size_t amount_of_questions, unordered_map<string, int> users_points, string selected_answer) = 0;
 
     };
 }
