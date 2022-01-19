@@ -2,6 +2,8 @@ Student opens the test - test menu:
 ----------------------------------
 Quiz system
 
+Test Menu
+
 <test name>:
 	Number of questions: <amount>  
 	Time: <amount> 
