@@ -10,29 +10,29 @@
 
 namespace ui::auth
 {
-   void ask_username(bool is_retry, const string& entered_username)
+   void ask_username(bool is_retry, const std::string& entered_username)
     {
        system("CLS");
 
        UI::UI::print_logo();
 
-       cout <<"  ==============" << endl;
-       cout <<"  + Logging in +" << endl;
-       cout <<"  ==============" << endl << endl;
+       std::cout <<"  ==============" << std::endl;
+       std::cout <<"  + Logging in +" << std::endl;
+       std::cout <<"  ==============" << std::endl << std::endl;
 
        if (is_retry)
        {
-           cout << "Invalid auth data. Try again." << endl;
+           std::cout << "Invalid auth data. Try again." << std::endl;
        }
 
-       cout << "    USERNAME: " << entered_username;
+       std::cout << "    USERNAME: " << entered_username;
     }
 
-    void ask_password(const string& username, bool is_retry, int amount_of_entered_chars)
+    void ask_password(const std::string& username, bool is_retry, size_t amount_of_entered_chars)
     {
         system("CLS");
         ask_username(is_retry, "");
-        cout << "   PASSWORD: " << std::setw(amount_of_entered_chars) << std::setfill('*') << "";
+        std::cout << "   PASSWORD: " << std::setw(amount_of_entered_chars) << std::setfill('*') << "";
     }
 }
 

@@ -3,9 +3,9 @@
 
 namespace control::test_selector
 {
-    string Teacher::control_test_selection(vector<string> tests_names)
+    std::string Teacher::control_test_selection(std::vector<std::string> tests_names)
     {
-        string selected_test;
+        std::string selected_test;
 
         if (!tests_names.empty())
             selected_test = tests_names[0];

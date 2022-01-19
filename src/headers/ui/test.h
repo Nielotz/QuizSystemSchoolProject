@@ -4,7 +4,4 @@
 #include <string>
 #include <vector>
 
-using namespace std;
-
-
 #endif //SRC_UI_TEST_TEST_H

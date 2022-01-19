@@ -3,16 +3,14 @@
 
 #include <string>
 
-using namespace std;
-
 namespace control
 {
     class auth
     {
-        static string get_username();
-        static string get_password();
+        static std::string get_username(bool is_retry);
+        static std::string get_password(const std::string& username, bool is_retry);
     public:
-        static pair<string, string> get_auth_data(bool is_retry);
+        static std::pair<std::string, std::string> get_auth_data(bool is_retry);
     };
 }
 

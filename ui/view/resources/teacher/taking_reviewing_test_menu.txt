@@ -10,7 +10,7 @@ Completed tests:
 	username2 <points> / <max_points>
 Reports: 
 	<username> <question>
-s - show, q - quit, e - edit, r - show students results, q - quit
+s - show, q - quit, e - edit, q - quit
 ----------------------------------
 
 Teacher entered student's test:

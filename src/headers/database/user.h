@@ -7,11 +7,9 @@
 
 #include "../shared/user_data.h"
 
-using namespace std;
-
 namespace database::user
 {
-    optional<UserData> get_user(const string &username, const string &password);
+    std::optional<UserData> get_user(const std::string &username, const std::string &password);
 };
 
 
