@@ -12,8 +12,8 @@ namespace control
     class Control
     {
     public:
-        shared_ptr<test_selector::TestSelector> test_selector_;
-        shared_ptr<test_menu::TestMenu> test_menu_;
+        std::shared_ptr<test_selector::TestSelector> test_selector_;
+        std::shared_ptr<test_menu::TestMenu> test_menu_;
         explicit Control(AccountType account_type);
     };
 }

@@ -10,13 +10,13 @@ namespace control
     {
         if (account_type == AccountType::kStudent)
         {
-            test_selector_ = make_shared<test_selector::Student>();
-            test_menu_ = make_shared<test_menu::Student>();
+            test_selector_ = std::make_shared<test_selector::Student>();
+            test_menu_ = std::make_shared<test_menu::Student>();
         }
         else
         {
-            test_selector_ = make_shared<test_selector::Teacher>();
-            test_menu_ = make_shared<test_menu::Teacher>();
+            test_selector_ = std::make_shared<test_selector::Teacher>();
+            test_menu_ = std::make_shared<test_menu::Teacher>();
         }
     }
 }

@@ -30,11 +30,11 @@ namespace ui
 
     namespace test
     {
-        void show_edit_question(string question, vector<string> answers, vector<string> correct_answers);
+        void show_edit_question(std::string question, std::vector<std::string> answers, std::vector<std::string> correct_answers);
 
-        void show_review_question(string question, vector<string> answers, vector<string> correct_answers, vector<string> marked_answers);
+        void show_review_question(std::string question, std::vector<std::string> answers, std::vector<std::string> correct_answers, std::vector<std::string> marked_answers);
 
-        void show_take_question(string question, vector<string> answers, vector<string> marked_answers);
+        void show_take_question(std::string question, std::vector<std::string> answers, std::vector<std::string> marked_answers);
     }
 }
 #endif //SRC_UI_UI_H

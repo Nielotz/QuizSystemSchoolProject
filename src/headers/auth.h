@@ -3,9 +3,6 @@
 
 #include "../headers/shared/user_data.h"
 
-
-using namespace std;
-
 namespace auth
 {
     UserData login();

@@ -3,13 +3,11 @@
 
 #include <string>
 
-using namespace std;
-
 namespace ui::auth
 {
-    static void ask_username(bool is_retry, const string &entered_username);
+    static void ask_username(bool is_retry, const std::string &entered_username);
 
-    static void ask_password(const string& username, bool is_retry, int amount_of_entered_chars);
+    static void ask_password(const std::string& username, bool is_retry, size_t amount_of_entered_chars);
 }
 #endif //SRC_AUTH_H
 

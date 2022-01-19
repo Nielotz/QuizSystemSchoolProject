@@ -8,28 +8,26 @@
 
 #include "../shared/user_data.h"
 
-using namespace std;
-
 namespace test_data
 {
     struct Question
     {
-        string question;
-        vector<string> answers;
-        vector<string> correct_answers;
+        std::string question;
+        std::vector<std::string> answers;
+        std::vector<std::string> correct_answers;
 
         // Map username to answers.
-        unordered_map<string, vector<string>> students_answers;
+        std::unordered_map<std::string, std::vector<std::string>> students_answers;
     };
 
     struct TestData
     {
-        string name;
-        vector<Question> questions;
+        std::string name;
+        std::vector<Question> questions;
         // Map username to points.
-        unordered_map<string, int> users_points;
+        std::unordered_map<std::string, int> users_points;
         // Vector of maps: username, report.
-        vector<pair<string, string>> reported_issues;
+        std::vector<std::pair<std::string, std::string>> reported_issues;
     };
 }
 

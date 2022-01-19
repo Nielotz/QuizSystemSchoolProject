@@ -30,41 +30,41 @@ namespace ui
     {
         if (UI::account_type_ == AccountType::kStudent)
         {
-            this->test_selector_ = make_shared<test_selector::Student>();
-            this->test_menu_ = make_shared<test_menu::Student>();
+            this->test_selector_ = std::make_shared<test_selector::Student>();
+            this->test_menu_ = std::make_shared<test_menu::Student>();
         }
         else
         {
-            this->test_selector_ = make_shared<test_selector::Teacher>();
-            this->test_menu_ = make_shared<test_menu::Teacher>();
+            this->test_selector_ = std::make_shared<test_selector::Teacher>();
+            this->test_menu_ = std::make_shared<test_menu::Teacher>();
         }
     }
 
     void UI::text_color(const int textcolor) {
-        static const HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+        static HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
         SetConsoleTextAttribute(handle, textcolor);
     }
 
     void UI::text_background_color(const int textcolor, const int backgroundcolor) {
-        static const HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+        static HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
         SetConsoleTextAttribute(handle, backgroundcolor << 4 | textcolor);
     }
 
     void UI::color_reset() {
-        static const HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+        static HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
         SetConsoleTextAttribute(handle, 7); // reset color
     }
 
     void UI::print_logo()
     {
         HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
-        cout << "       =========================================================================================================" << endl;
-        cout << "       =                                            ";
+        std::cout << "       =========================================================================================================" << std::endl;
+        std::cout << "       =                                            ";
         UI::text_color(3);
-        cout << "Quiz system                                            ";
+        std::cout << "Quiz system                                            ";
         UI::color_reset();
-        cout << "    =" << endl;
-        cout << "       =========================================================================================================" << endl;
+        std::cout << "    =" << std::endl;
+        std::cout << "       =========================================================================================================" << std::endl;
     }
 }
 

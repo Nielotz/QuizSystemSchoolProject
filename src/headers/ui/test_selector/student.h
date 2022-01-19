@@ -8,7 +8,7 @@ namespace ui::test_selector
     class Student : public TestSelector
     {
     public:
-        void ask_select_test(vector<string> tests, string selected_answer) override;
+        void ask_select_test(std::vector<std::string> tests, std::string selected_answer) override;
     };
 }
 #endif //SRC_UI_TEST_SELECTOR_STUDENT_H

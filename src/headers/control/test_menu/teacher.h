@@ -8,7 +8,7 @@ namespace control::test_menu
     class Teacher : public TestMenu
     {
     public:
-        OptionType control_test_menu_selection(string username, test_data::TestData test_data) override;
+        OptionType control_test_menu_selection(std::string username, test_data::TestData test_data) override;
     };
 }
 

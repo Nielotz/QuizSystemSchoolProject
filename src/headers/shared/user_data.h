@@ -9,12 +9,10 @@
 
 #include "../../headers/shared/account_type.h"
 
-using namespace std;
-
 struct UserData
 {
-	string username;
-	string password;
+	std::string username;
+	std::string password;
 	AccountType account_type;
 };
 
