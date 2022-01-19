@@ -17,6 +17,7 @@ namespace TestData
         vector<string> answers_;
 
         explicit Answers(vector<string> answers);
+        Answers() = default;
     };
 
     struct Question
@@ -38,6 +39,7 @@ namespace TestData
         vector<pair<string, string>> reported_issues;
 
         TestData(std::string name, vector<Question> questions);
+        TestData() = default;
     };
 }
 

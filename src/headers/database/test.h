@@ -18,7 +18,8 @@ namespace Database
 	{
 	private:
 		static unordered_map<string, TestData::TestData> tests_;
-
+		static const string path;
+		static void check_file();
 	public:
 		static TestData::TestData get_test_data(const string& name);
 		static vector<string> get_test_names();
