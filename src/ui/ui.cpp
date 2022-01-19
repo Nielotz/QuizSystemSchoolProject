@@ -40,14 +40,29 @@ namespace ui
         }
     }
 
+    void UI::text_color(const int textcolor) {
+        static const HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+        SetConsoleTextAttribute(handle, textcolor);
+    }
+
+    void UI::text_background_color(const int textcolor, const int backgroundcolor) {
+        static const HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+        SetConsoleTextAttribute(handle, backgroundcolor << 4 | textcolor);
+    }
+
+    void UI::color_reset() {
+        static const HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+        SetConsoleTextAttribute(handle, 7); // reset color
+    }
+
     void UI::print_logo()
     {
         HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
         cout << "       =========================================================================================================" << endl;
         cout << "       =                                            ";
-        SetConsoleTextAttribute(handle, 3);
+        UI::text_color(3);
         cout << "Quiz system                                            ";
-        SetConsoleTextAttribute(handle, 7);
+        UI::color_reset();
         cout << "    =" << endl;
         cout << "       =========================================================================================================" << endl;
     }
