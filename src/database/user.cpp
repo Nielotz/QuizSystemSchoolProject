@@ -15,9 +15,9 @@ using namespace std;
 namespace database
 {
 
-    UserData User::get_user(const string& username, const string& password)
+    optional<UserData> user::get_user(const string& username, const string& password)
     {
-        return {"TestUsername", "TestPassword", AccountType::kStudent};
+        return {{"TestUsername", "TestPassword", AccountType::kStudent}};
 
         /*
         string path = "database/database_user.txt";

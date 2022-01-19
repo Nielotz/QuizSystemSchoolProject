@@ -26,13 +26,3 @@ QuizSystem::QuizSystem()
     control::test_menu::OptionType &test_open_type = option;
     Test test(selected_test, test_open_type);
 }
-
-void QuizSystem::create_new_test()
-{
-
-}
-
-void QuizSystem::exit()
-{
-
-}

@@ -8,15 +8,8 @@ namespace control::test_menu
         string selected_username;
 
         // If user took the test, set selected_username to be username.
-        for (auto &user_answer: test_data.students_answers)
-        {
-            string &answer_user = user_answer.first;
-            if (answer_user == username)
-            {
-                selected_username = answer_user;
-                break;
-            }
-        }
+        if (test_data.users_points.contains(username))
+            selected_username = username;
 
         // Show test menu - summary of a test.
         ui::UI::get().test_menu_->show(username, test_data, selected_username);

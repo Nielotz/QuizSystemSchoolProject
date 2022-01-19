@@ -13,7 +13,7 @@ UserData auth::login()
         const string &username = received_user_credentials.first;
         const string &password = received_user_credentials.second;
 
-        optional<UserData> received_user_data = database::User::get_user(username, password);
+        optional<UserData> received_user_data = database::user::get_user(username, password);
         if (received_user_data.has_value())
             return *received_user_data;
 

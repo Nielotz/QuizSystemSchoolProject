@@ -22,13 +22,13 @@ Test: Test1
 
 Question [<question number> / <amount of questions>]: <question>
 Answers:
-correct    marked    answer
-[X]   	   [ ]  	 <answer1>
-[ ]   	   [X]  	 <answer1>
-[ ]   	   [ ]  	 <answer1>
-[X]   	   [X]  	 <answer1>
+	correct    marked    answer
+	[X]   	   [ ]  	 <answer1>
+	[ ]   	   [X]  	 <answer1>
+	[ ]   	   [ ]  	 <answer1>
+	[X]   	   [X]  	 <answer1>
 
-Points: <gained> / <total>
+	Points: <gained> / <total>
 
-x - select / deselect option, q - quit
-----------------------------------
+	x - select / deselect option, q - quit
+	----------------------------------

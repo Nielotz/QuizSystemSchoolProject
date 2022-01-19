@@ -5,14 +5,11 @@
 
 using namespace std;
 
-namespace ui
+namespace ui::auth
 {
-    class Auth
-    {
-    public:
-        static void ask_username(bool is_retry, const string& entered_username);
-        static void ask_password(const string& username, bool is_retry, int amount_of_entered_chars);
-    };
+    static void ask_username(bool is_retry, const string &entered_username);
+
+    static void ask_password(const string& username, bool is_retry, int amount_of_entered_chars);
 }
 #endif //SRC_AUTH_H
 

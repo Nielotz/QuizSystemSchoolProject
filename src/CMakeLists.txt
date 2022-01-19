@@ -12,10 +12,10 @@ add_executable(src main.cpp
         headers/quiz_system.h quiz_system.cpp
 
         # Shared.
-        headers/shared/user_data.h shared/user_data.cpp
+        headers/shared/user_data.h
 
         # test data.
-        headers/test_data/test_data.h test_data/test_data.cpp
+        headers/test_data/test_data.h
 
         # database.
         headers/database/user.h database/user.cpp

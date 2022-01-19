@@ -1,3 +1,5 @@
+#pragma once
+
 #include <iostream>
 #include <string>
 #include <cstdlib>  // For system().
@@ -6,9 +8,9 @@
 #include "../headers/ui/auth.h"
 #include "../headers/ui/ui.h"
 
-namespace ui
+namespace ui::auth
 {
-   void Auth::ask_username(bool is_retry, const string& entered_username)
+   void ask_username(bool is_retry, const string& entered_username)
     {
        system("CLS");
 
@@ -26,7 +28,7 @@ namespace ui
        cout << "    USERNAME: " << entered_username;
     }
 
-    void Auth::ask_password(const string& username, bool is_retry, int amount_of_entered_chars)
+    void ask_password(const string& username, bool is_retry, int amount_of_entered_chars)
     {
         system("CLS");
         ask_username(is_retry, "");

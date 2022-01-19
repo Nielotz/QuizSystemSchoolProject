@@ -1,7 +1,3 @@
-//
-// Created by Nielotz on 2021-12-17.
-//
-
 #include "../headers/database/test.h"
 
 namespace database
@@ -27,10 +23,8 @@ namespace database
     {
         // TODO: Return test data from the database.
 
-        test_data::Answers answers({"TestAnswer1", "TestAnswer2"});
-
         vector<test_data::Question> questions({{"TestQuestion",
-                                                answers,
+                                                {"TestAnswer1", "TestAnswer2"},
                                                 {"TestAnswer1",}}});
 
         if (name == "TestTestStudent")

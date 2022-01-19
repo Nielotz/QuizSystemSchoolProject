@@ -1,9 +1,7 @@
-//
-// Created by Nielotz on 2021-12-17.
-//
-
 #ifndef SRC_DATABASE_USER_H
 #define SRC_DATABASE_USER_H
+
+#include <optional>
 
 #include <unordered_map>
 
@@ -11,19 +9,10 @@
 
 using namespace std;
 
-namespace database
+namespace database::user
 {
-    class User
-    {
-    private:
-        // static unordered_map<string, UserData> users_;
-        User() = default;
-    public:
-        static UserData get_user(const string &username, const string &password);
+    optional<UserData> get_user(const string &username, const string &password);
+};
 
-        User(User const &) = delete;
-        void operator=(User const &) = delete;
-    };
-}
 
 #endif //SRC_DATABASE_USER_H

@@ -7,16 +7,16 @@ Test: <test name>
 Reported question:
 
 Question [<question number> / <amount of questions>]:
-<question>
+	<question>
 Answers:
-correct    marked    answer
-[X]   	   [ ]  	 <answer1>
-[ ]   	   [X]  	 <answer2>
-[ ]   	   [ ]  	 <answer3>
-[X]   	   [X]  	 <answer4>
+	correct    marked    answer
+	[X]   	   [ ]  	 <answer1>
+	[ ]   	   [X]  	 <answer2>
+	[ ]   	   [ ]  	 <answer3>
+	[X]   	   [X]  	 <answer4>
 
-Points: <gained> / <total>
+	Points: <gained> / <total>
 
-Reason: <reason>
-----------------------------------
+	Reason: <reason>
+	----------------------------------
 

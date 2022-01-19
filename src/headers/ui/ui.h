@@ -13,8 +13,8 @@ namespace ui
     class UI
     {
         explicit UI();
-    public:
         static AccountType account_type_;
+    public:
         static bool initialized;
         std::shared_ptr<test_selector::TestSelector> test_selector_;
         std::shared_ptr<test_menu::TestMenu> test_menu_;
