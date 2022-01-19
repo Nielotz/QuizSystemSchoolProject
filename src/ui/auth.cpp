@@ -33,7 +33,7 @@ namespace ui::auth
         system("CLS");
         ask_username(is_retry, username);
         std::cout << std::endl;
-        std::cout << "   PASSWORD: " << std::setw(amount_of_entered_chars) << std::setfill('*') << "";
+        std::cout << "    PASSWORD: " << std::setw(amount_of_entered_chars) << std::setfill('*') << "";
     }
 }
 
