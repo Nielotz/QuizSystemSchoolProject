@@ -66,6 +66,57 @@ namespace ui
         std::cout << "    =" << std::endl;
         std::cout << "       =========================================================================================================" << std::endl;
     }
+
+    static void confirmation(std::string selected_answer, std::string yes, std::string no)
+    {
+        std::cout << std::endl << std::endl << std::endl << std::endl << std::endl << std::endl << std::endl << std::endl << std::endl << std::endl;
+        std::cout << "                                ===================================================" << std::endl;
+        std::cout << "                                |";
+        UI::set_console_text_background_color(15, 1);
+        std::cout << "            DO YOU WANT TO CONTINUE ?            ";
+        UI::color_reset();
+        std::cout << "|" << std::endl;
+        std::cout << "                                |";
+        UI::set_console_text_background_color(15, 1);
+        std::cout << "                                                 ";
+        UI::color_reset();
+        std::cout << "|" << std::endl;
+        std::cout << "                                |";
+        UI::set_console_text_background_color(15, 1);
+        std::cout << "       ---------                --------         ";
+        UI::color_reset();
+        std::cout << "| " << std::endl;
+        std::cout << "                                |";
+        UI::set_console_text_background_color(15, 1);
+        std::cout << "      |";
+
+        if (selected_answer == yes)
+        {
+            UI::set_console_text_background_color(15, 0);
+            std::cout << "   YES   ";
+            UI::set_console_text_background_color(15, 1);
+            std::cout << "|              |   NO   |";
+        }
+
+        else
+        {
+            std::cout << "   YES   ";
+            std::cout << "|              |";
+            UI::set_console_text_background_color(15, 0);
+            std::cout << "   NO   ";
+            UI::set_console_text_background_color(15, 1);
+            std::cout << "|";
+        }
+        std::cout << "        ";
+        UI::color_reset();
+        std::cout << "| " << std::endl;
+        std::cout << "                                |";
+        UI::set_console_text_background_color(15, 1);
+        std::cout << "       ---------                --------         ";
+        UI::color_reset();
+        std::cout << "| " << std::endl;
+        std::cout << "                                ===================================================" << std::endl;
+    }
 }
 
 
