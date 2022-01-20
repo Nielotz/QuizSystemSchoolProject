@@ -6,7 +6,7 @@
 #include "../shared/account_type.h"
 #include "../ui/test_menu/test_menu.h"
 #include "../ui/test_selector/test_selector.h"
-#include "../../headers/ui/test.h"
+#include "test/test.h"
 
 namespace ui
 {

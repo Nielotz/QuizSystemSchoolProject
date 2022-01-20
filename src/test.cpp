@@ -1,29 +1,24 @@
 #include "headers/test.h"
 
-#include <utility>
-#include "headers/test_data/test_data.h"
+#include "headers/database/test.h"
 
-void Test::take()
+#include "headers/control/control.h"
+#include "headers/control/test/test.h"
+
+
+void test::handle(const test_data::TestData &test_data, control::test_menu::OptionType open_type)
 {
-
-}
-
-void Test::review()
-{
-
-}
-
-void Test::delete_()
-{
-
-}
-	
-void Test::edit()
-{
-
-}
-
-Test::Test(test_data::TestData test_data, control::test_menu::OptionType open_type) : test_data_(std::move(test_data))
-{
-
+    switch (open_type)
+    {
+        case control::test_menu::OptionType::kEdit:
+            database::test::set_test(control::test::edit(test_data));
+            break;
+        case control::test_menu::OptionType::kReview:
+            control::test::review(test_data);
+            break;
+        case control::test_menu::OptionType::kTake:
+            database::test::set_test(control::test::take(test_data));
+            break;
+        default:;
+    }
 }

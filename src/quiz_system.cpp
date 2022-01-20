@@ -21,10 +21,11 @@ QuizSystem::QuizSystem()
 
     auto test_menu_option = test_menu::handle(user_data.username, control, selected_test);
 
-    if (test_menu_option.first == control::test_menu::OptionType::kQuit)
+    control::test_menu::OptionType &action_type = test_menu_option.first;
+
+    if (action_type == control::test_menu::OptionType::kQuit)
         // TODO: "Are you sure?" dialogue.
         return;
 
-    control::test_menu::OptionType &test_open_type = test_menu_option.first;
-    Test test(selected_test, test_open_type);
+    test::handle(selected_test, action_type);
 }

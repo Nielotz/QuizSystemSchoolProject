@@ -34,6 +34,8 @@ add_executable(src main.cpp
         headers/control/test_menu/student.h control/test_menu/student.cpp
         headers/control/test_menu/teacher.h control/test_menu/teacher.cpp
 
+        headers/control/test/test.h control/test/test.cpp
+
         # ui.
         headers/ui/ui.h ui/ui.cpp
 
@@ -46,5 +48,6 @@ add_executable(src main.cpp
         headers/ui/test_selector/test_selector.h
         headers/ui/test_selector/student.h ui/test_selector/student.cpp
         headers/ui/test_selector/teacher.h ui/test_selector/teacher.cpp
+        headers/ui/test/test.h ui/test/test.cpp
         )
  
