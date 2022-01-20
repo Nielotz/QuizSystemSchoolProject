@@ -31,8 +31,9 @@ namespace ui::auth
     void ask_password(const std::string& username, bool is_retry, size_t amount_of_entered_chars)
     {
         system("CLS");
-        ask_username(is_retry, "");
-        std::cout << "   PASSWORD: " << std::setw(amount_of_entered_chars) << std::setfill('*') << "";
+        ask_username(is_retry, username);
+        std::cout << std::endl;
+        std::cout << "    PASSWORD: " << std::setw(amount_of_entered_chars) << std::setfill('*') << "";
     }
 }
 

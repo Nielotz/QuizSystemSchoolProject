@@ -3,9 +3,11 @@
 
 namespace control::test_menu
 {
-    control::test_menu::OptionType Teacher::control_test_menu_selection(std::string username, test_data::TestData test_data)
+    using std::string;
+
+    std::pair<control::test_menu::OptionType, string> Teacher::control_test_menu_selection(string username, test_data::TestData test_data)
     {
-        std::string selected_username;
+        string selected_username;
         // if (!test_data.users_points.empty())
         //     selected_username = test_data.users_points;
 
@@ -19,6 +21,6 @@ namespace control::test_menu
 
         // TODO: Handle user option.
 
-        return OptionType::kReview;
+        return {};
     };
 }

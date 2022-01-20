@@ -24,11 +24,18 @@ namespace database
         // TODO: Return test data from the database.
 
         std::vector<test_data::Question> questions({{"TestQuestion",
-                                                {"TestAnswer1", "TestAnswer2"},
-                                                {"TestAnswer1",}}});
+                                                     {"TestAnswer1", "TestAnswer2"},
+                                                     {"TestAnswer1",},
+                                                     {{"username", {}}, {"username2", {}}},
+                                                    }});
 
-        if (name == "TestTestStudent")
-            return {"TestTestStudent", questions};
-        return {"TestTestTeacher", questions};
+        if (name == "TESTTESTSTUDENT")
+            return {"TESTTESTSTUDENT", questions};
+        return {"TESTTESTTEACHER", questions};
+    }
+
+    void test::delete_test(const std::string &test_name)
+    {
+
     }
 }

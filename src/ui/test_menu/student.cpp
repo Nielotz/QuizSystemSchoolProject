@@ -7,24 +7,24 @@
 void ui::test_menu::Student::show(std::string test_name, std::string username, size_t amount_of_questions,
  std::unordered_map<std::string, int> users_points, std::vector<std::pair<std::string, std::string>> reported_issues, std::string selected_answer)
 {
-	system("CLS");
+    system("CLS");
 
-	ui::UI::print_logo();
+    ui::UI::print_logo();
 
-	std::cout << "  =============" << std::endl;
-	std::cout << "  + Test Menu +" << std::endl;
-	std::cout << "  =============" << std::endl << std::endl;
+    std::cout << "  =============" << std::endl;
+    std::cout << "  + Test Menu +" << std::endl;
+    std::cout << "  =============" << std::endl << std::endl;
 
-	std::cout << "  Test: <" << test_name << ">" << std::endl;
-	std::cout << "      Number of questions: " << amount_of_questions << std::endl << std::endl;
+    std::cout << "  Test: <" << test_name << ">" << std::endl;
+    std::cout << "      Number of questions: " << amount_of_questions << std::endl << std::endl;
 
-	std::cout << "  Completed test:" << std::endl;
-	for (auto& [username_, points] : users_points)
-	{
-		if(username_== username)
-		std::cout << "      " << username_ << " <" << points << "> / < " << amount_of_questions << std::endl;
-	}
+    std::cout << "  Completed test:" << std::endl;
+    for (auto&[username_, points]: users_points)
+    {
+        if (username_ == username)
+            std::cout << "      " << username_ << " <" << points << "> / < " << amount_of_questions << std::endl;
+    }
 
-	std::cout << std::endl;
-	std::cout << "s - show, q - quit";
+    std::cout << std::endl;
+    std::cout << "s - show, q - quit";
 }
