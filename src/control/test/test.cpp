@@ -24,7 +24,7 @@ namespace control::test
 
         const int &amount_of_questions = int(question.question.size());
 
-        ui::test::show_review_question(question.question, question.answers, question.correct_answers,
+        ui::test::show_review_question(test_data.name, question.question, question.answers, question.correct_answers,
                                        question.students_answers.at(username),
                                        current_question_idx + 1, amount_of_questions);
 
@@ -64,7 +64,7 @@ namespace control::test
                     break;
                 default:;
             }
-            ui::test::show_review_question(question.question, question.answers, question.correct_answers,
+            ui::test::show_review_question(test_data.name, question.question, question.answers, question.correct_answers,
                                            question.students_answers.at(username),
                                            current_question_idx + 1, amount_of_questions);
         }
@@ -89,8 +89,8 @@ namespace control::test
             selected_answer = question.answers[selected_answer_idx];
         }
 
-        ui::test::show_take_question(question.question, question.answers, question.students_answers.at(username),
-                                     selected_answer, current_question_idx + 1, amount_of_questions);
+        ui::test::show_take_question(test_data.name, question.question, question.answers, question.students_answers.at(username),
+            selected_answer, current_question_idx + 1, amount_of_questions);
 
         // Get the standard input handle.
         HANDLE handle_stdin = GetStdHandle(STD_INPUT_HANDLE);
@@ -107,47 +107,47 @@ namespace control::test
             if (!input_record_buffer.Event.KeyEvent.bKeyDown)
                 continue;
 
-            const WORD &user_input = input_record_buffer.Event.KeyEvent.wVirtualKeyCode;
+            const WORD& user_input = input_record_buffer.Event.KeyEvent.wVirtualKeyCode;
 
             switch (user_input)
             {
-                case 13:  // RETURN.
-                {
-                    bool found = false;
-                    const vector<string> &marked_ = current_test_data.questions[current_question_idx].students_answers.at(username);
-                    for (int i = 0; i < marked_.size(); i++)
-                        if (marked_[i] == selected_answer)
-                        {
-                            current_test_data.questions[current_question_idx].students_answers.at(username).erase(marked_.begin() + i);
-                            found = true;
-                            break;
-                        }
-                    if (!found)
-                        current_test_data.questions[current_question_idx].students_answers.at(username).emplace_back(selected_answer);
-                    break;
-                }
-                case 'q':
-                case 'Q':
-                    return current_test_data;
-                case 39:  // Left.
-                    if (current_question_idx > 0)
-                        --current_question_idx;
-                    break;
-                case 41:  // Right.
-                    if (current_question_idx < amount_of_questions - 1)
-                        ++current_question_idx;
-                    break;
-                case 38:  // Up.
-                    if (selected_answer_idx > 0)
-                        selected_answer = question.answers.at(--selected_answer_idx);
-                    break;
-                case 40:  // Down.
-                    if (selected_answer_idx < question.answers.size() - 1)
-                        selected_answer = question.answers.at(++selected_answer_idx);
-                    break;
-                default:;
+            case 13:  // RETURN.
+            {
+                bool found = false;
+                const vector<string>& marked_ = current_test_data.questions[current_question_idx].students_answers.at(username);
+                for (int i = 0; i < marked_.size(); i++)
+                    if (marked_[i] == selected_answer)
+                    {
+                        current_test_data.questions[current_question_idx].students_answers.at(username).erase(marked_.begin() + i);
+                        found = true;
+                        break;
+                    }
+                if (!found)
+                    current_test_data.questions[current_question_idx].students_answers.at(username).emplace_back(selected_answer);
+                break;
             }
-            ui::test::show_take_question(question.question, question.answers,
+            case 'q':
+            case 'Q':
+                return current_test_data;
+            case 39:  // Left.
+                if (current_question_idx > 0)
+                    --current_question_idx;
+                break;
+            case 41:  // Right.
+                if (current_question_idx < amount_of_questions - 1)
+                    ++current_question_idx;
+                break;
+            case 38:  // Up.
+                if (selected_answer_idx > 0)
+                    selected_answer = question.answers.at(--selected_answer_idx);
+                break;
+            case 40:  // Down.
+                if (selected_answer_idx < question.answers.size() - 1)
+                    selected_answer = question.answers.at(++selected_answer_idx);
+                break;
+            default:;
+            }
+            ui::test::show_take_question(test_data.name, question.question, question.answers,
                                          question.students_answers.at(username),
                                          selected_answer, current_question_idx + 1, amount_of_questions);
         }

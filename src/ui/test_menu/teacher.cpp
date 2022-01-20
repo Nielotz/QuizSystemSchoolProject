@@ -23,14 +23,14 @@ void ui::test_menu::Teacher::show(std::string test_name, std::string username,
 	{
 		if (selected_answer == username)
 		{
-			std::cout << "      ";
-            ui::UI::set_console_text_background_color(0, 3);
+			std::cout << "         ";
+			ui::UI::set_console_text_background_color(0, 3);
 			std::cout << username;
 			ui::UI::color_reset();
-			std::cout << "   <" << points << "> / < " << amount_of_questions << std::endl;
+			std::cout << " <" << points << "> / < " << amount_of_questions << ">" << std::endl;
 		}
 		else
-			std::cout << "      " << username << " <" << points << "> / < " << amount_of_questions << std::endl;
+			std::cout << "      " << username << " <" << points << "> / < " << amount_of_questions << ">" << std::endl;
 	}
 	
 	for (auto& [username_, content] : reported_issues)
