@@ -6,7 +6,7 @@
 
 void ui::test_menu::Teacher::show(std::string test_name, std::string username,
  size_t amount_of_questions,
-	std::unordered_map<std::string, int> users_points, std::vector<std::pair<std::string, std::string>> reported_issues, std::string selected_answer)
+	std::map<std::string, int> users_points, std::vector<std::pair<std::string, std::string>> reported_issues, std::string selected_answer)
 {
 	system("CLS");
 
@@ -30,7 +30,8 @@ void ui::test_menu::Teacher::show(std::string test_name, std::string username,
 			ui::UI::color_reset();
 			std::cout << "   <" << points << "> / < " << amount_of_questions << std::endl;
 		}
-		std::cout << "      " << username << " <" << points << "> / < " << amount_of_questions << std::endl;
+		else
+			std::cout << "      " << username << " <" << points << "> / < " << amount_of_questions << std::endl;
 	}
 	
 	for (auto& [username_, content] : reported_issues)
@@ -43,11 +44,10 @@ void ui::test_menu::Teacher::show(std::string test_name, std::string username,
 			std::cout << username_;
 			ui::UI::color_reset();
 		}
-
 		else
 			std::cout << username_;
 
-		std::cout << username_ << ": " << content << std::endl;
+		std::cout <<  ": " << content << std::endl;
 	}
 	std::cout << "enter - show, q - quit, e - edit, enter - show students result, q - quit";
 }

@@ -7,7 +7,6 @@
 #include <sstream>
 #include <string>
 #include <vector>
-#include <unordered_map>
 #include "../headers/database/user.h"
 
 namespace database
@@ -15,7 +14,7 @@ namespace database
 
     std::optional<UserData> user::get_user(const std::string& username, const std::string& password)
     {
-        return {{"TestUsername", "TestPassword", AccountType::kStudent}};
+        return {{"TestUsername", "TestPassword", AccountType::kTeacher}};
 
         /*
         std::string path = "database/database_user.txt";

@@ -9,7 +9,7 @@ namespace ui::test_menu
     {
     public:
         void show(std::string test_name, std::string username,size_t amount_of_questions,
-            std::unordered_map<std::string, int> users_points, std::vector<std::pair<std::string, std::string>> reported_issues, std::string selected_answer) override;
+            std::map<std::string, int> users_points, std::vector<std::pair<std::string, std::string>> reported_issues, std::string selected_answer) override;
     };
 }
 #endif //SRC_UI_TEST_MENU_STUDENT_H

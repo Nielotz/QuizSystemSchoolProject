@@ -26,12 +26,11 @@ namespace database
         std::vector<test_data::Question> questions({{"TestQuestion",
                                                      {"TestAnswer1", "TestAnswer2"},
                                                      {"TestAnswer1",},
-                                                     {{"username", {}}, {"username2", {}}},
                                                     }});
 
-        if (name == "TESTTESTSTUDENT")
-            return {"TESTTESTSTUDENT", questions};
-        return {"TESTTESTTEACHER", questions};
+        if (name == "TestTestStudent")
+            return {"TestTestStudent", questions, {{"username", 2}, {"username2", 5}} };
+        return {"TestTestTeacher", questions, {{"username", 2}, {"username2", 5}}};
     }
 
     void test::delete_test(const std::string &test_name)
