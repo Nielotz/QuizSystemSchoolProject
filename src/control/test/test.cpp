@@ -62,7 +62,8 @@ namespace control::test
                     if (current_question_idx < amount_of_questions - 1)
                         ++current_question_idx;
                     break;
-                default:;
+                default:
+                    ;
             }
             ui::test::show_review_question(question.question, question.answers, question.correct_answers,
                                            question.students_answers.at(username),

@@ -6,7 +6,7 @@
 
 namespace test
 {
-    void handle(const test_data::TestData &test_data, control::test_menu::OptionType open_type);
+    void handle(const test_data::TestData &test_data, control::test_menu::OptionType open_type, const std::string& username);
 };
 
 #endif //SRC_TEST_TEST_H
