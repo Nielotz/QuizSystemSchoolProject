@@ -67,7 +67,7 @@ namespace ui
         std::cout << "       =========================================================================================================" << std::endl;
     }
 
-    static void confirmation(std::string selected_answer, std::string yes, std::string no)
+    static void confirmation(bool is_no_selected)
     {
         std::cout << std::endl << std::endl << std::endl << std::endl << std::endl << std::endl << std::endl << std::endl << std::endl << std::endl;
         std::cout << "                                ===================================================" << std::endl;
@@ -90,7 +90,7 @@ namespace ui
         UI::set_console_text_background_color(15, 1);
         std::cout << "      |";
 
-        if (selected_answer == yes)
+        if (is_no_selected==0)
         {
             UI::set_console_text_background_color(15, 0);
             std::cout << "   YES   ";

@@ -6,7 +6,7 @@
 #include "../shared/account_type.h"
 #include "../ui/test_menu/test_menu.h"
 #include "../ui/test_selector/test_selector.h"
-#include "../../headers/ui/test.h"
+#include "../../headers/ui/test/test.h"
 
 namespace ui
 {
@@ -26,7 +26,7 @@ namespace ui
         static void set_console_text_color(const int text_color);
         static void set_console_text_background_color(const int text_color, const int background_color);
         static void color_reset();
-        static void confirmation(std::string selected_answer, std::string yes, std::string no);
+        static void confirmation(bool is_no_selected);
     };
 
     namespace test
