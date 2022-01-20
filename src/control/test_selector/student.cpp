@@ -36,7 +36,7 @@ namespace control::test_selector
             if (!input_record_buffer.Event.KeyEvent.bKeyDown)
                 continue;
 
-            const WORD &user_input = input_record_buffer.Event.KeyEvent.wVirtualKeyCode;
+            const WORD &user_input = input_record_buffer.Event.KeyEvent.uChar.AsciiChar;
 
             switch (user_input)
             {
@@ -46,13 +46,20 @@ namespace control::test_selector
                 case 'q':
                 case 'Q':
                     return "";
-                case 38:  // up
-                    if (selected_test_idx > 0)
-                        selected_test = tests_names[--selected_test_idx];
-                    break;
-                case 40:  // down
-                    if (selected_test_idx < tests_names.size() - 1)
-                        selected_test = tests_names[++selected_test_idx];
+                case '\0':
+                    switch (input_record_buffer.Event.KeyEvent.wVirtualKeyCode)
+                    {
+                        case 38:  // up
+                            if (selected_test_idx > 0)
+                                selected_test = tests_names[--selected_test_idx];
+                            break;
+                        case 40:  // down
+                            if (selected_test_idx < tests_names.size() - 1)
+                                selected_test = tests_names[++selected_test_idx];
+                            break;
+                        default:
+                            ;
+                    }
                     break;
                 default:
                     ;

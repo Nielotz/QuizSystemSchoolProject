@@ -1,34 +1,41 @@
+#include <Windows.h>
+#include <cctype>
+
 #include "../../headers/control/test_menu/student.h"
 #include "../../headers/ui/ui.h"
 
 namespace control::test_menu
 {
-    control::test_menu::OptionType Student::control_test_menu_selection(std::string username, test_data::TestData test_data)
+    using std::string;
+
+    std::pair<control::test_menu::OptionType, string> Student::control_test_menu_selection(string username, test_data::TestData test_data)
     {
-        std::string selected_username;
+        // Extract usernames from map.
+        std::vector<string> usernames;  // Declare vector of keys - usernames.
+        usernames.reserve(test_data.users_points.size());  // Reserve space, to avoid copying data.
+        for (auto &kv: test_data.users_points)
+            usernames.push_back(kv.first);
+
+        // Set current select.
+        string selected_username;
+        int selected_username_idx = -1;
 
         // If user took the test, set selected_username to be username.
         if (test_data.users_points.contains(username))
+        {
             selected_username = username;
+
+            // If user_points contains username, usernames contain too
+            while (usernames[selected_username_idx] != username)
+                selected_username_idx++;
+        }
 
         // Show test menu - summary of a test.
         ui::UI::get().test_menu_->show(test_data.name, username, test_data.questions.size(),
                                        test_data.users_points, selected_username);
 
-        // TODO: Handle user option.
-
-        return OptionType::kTake;
-
-        std::string selected_test;
-        int selected_test_idx = -1;
-
-        if (!tests_names.empty())
-        {
-            selected_test = tests_names[0];
-            selected_test_idx = 0;
-        }
-
-        ui::UI::get().test_selector_->ask_select_test(tests_names, selected_test);
+        // ui::UI::get().test_menu_->show(test_data.name, username, test_data.questions.size(),
+        //                                test_data.users_points, test_data.reported_issues, selected_username);
 
         // Get the standard input handle.
         HANDLE handle_stdin = GetStdHandle(STD_INPUT_HANDLE);
@@ -45,49 +52,42 @@ namespace control::test_menu
             if (!input_record_buffer.Event.KeyEvent.bKeyDown)
                 continue;
 
-            const WORD &user_input = input_record_buffer.Event.KeyEvent.wVirtualKeyCode;
+            const WORD &user_input = input_record_buffer.Event.KeyEvent.uChar.AsciiChar;
 
             switch (user_input)
             {
                 case 13:  // RETURN
-                    if (!selected_test.empty())
-                        return selected_test;
+                    if (!selected_username.empty())
+                        return {control::test_menu::OptionType::kReview, selected_username};
+                    return {control::test_menu::OptionType::kTake, username};
                 case 'q':
                 case 'Q':
-                    return "";
-                case 'n':
-                case 'N':
-                    return "[Create]";
-                case 'd':
-                case 'D':
-                    if (selected_test.empty())
-                        break;
-                    database::test::delete_test(selected_test);
-                    tests_names.erase(tests_names.begin() + selected_test_idx);
-                    selected_test_idx--;
-                    if (selected_test_idx > -1)
-                        selected_test = tests_names[selected_test_idx];
-                    else
+                    return {control::test_menu::OptionType::kQuit, ""};
+                case 'e':
+                case 'E':
+                    return {control::test_menu::OptionType::kEdit, ""};
+                case '\0':
+                    switch (input_record_buffer.Event.KeyEvent.wVirtualKeyCode)
                     {
-                        if (!tests_names.empty())
-                        {
-                            selected_test = tests_names[0];
-                            selected_test_idx = 0;
-                        }
-                        else
-                            selected_test = "";
+                        case 38:  // Up.
+                            if (selected_username_idx > 0)
+                                selected_username = usernames[--selected_username_idx];
+                            break;
+                        case 40:  // Down.
+                            if (selected_username_idx < usernames.size() - 1)
+                                selected_username = usernames[++selected_username_idx];
+                            break;
+                        default:;
                     }
-                case 38:
-                    if (selected_test_idx > 0)
-                        selected_test = tests_names[--selected_test_idx];
                     break;
-                case 40:
-                    if (selected_test_idx < tests_names.size() - 1)
-                        selected_test = tests_names[++selected_test_idx];
-                    break;
+
                 default:;
             }
-            ui::UI::get().test_selector_->ask_select_test(tests_names, selected_test);
+            // Update test menu UI.
+            ui::UI::get().test_menu_->show(test_data.name, username, test_data.questions.size(),
+                                           test_data.users_points, selected_username);
+            // ui::UI::get().test_menu_->show(test_data.name, username, test_data.questions.size(),
+            //                                test_data.users_points, test_data.reported_issues, selected_username);
         }
     }
 }
