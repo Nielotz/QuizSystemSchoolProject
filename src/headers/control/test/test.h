@@ -5,11 +5,11 @@
 
 namespace control::test
 {
-    test_data::TestData take(test_data::TestData test_data);
+    test_data::TestData take(test_data::TestData test_data, const std::string &username);
 
-    void review(const test_data::TestData& test_data);
+    void review(const test_data::TestData &test_data, const std::string &username);
 
-    test_data::TestData edit(test_data::TestData test_data);
+    test_data::TestData edit(test_data::TestData test_data, const std::string &username);
 
     enum class TakeActionType
     {
