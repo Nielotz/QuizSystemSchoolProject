@@ -33,6 +33,6 @@ void ui::test_selector::Teacher::ask_select_test(std::vector<std::string> tests,
     }
 
     std::cout << std::endl;
-    std::cout << "o - open, d - delete, n - new, q - quit";
+    std::cout << "enter - open, d - delete, n - new, q - quit";
 }
     
