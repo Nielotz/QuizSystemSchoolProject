@@ -39,6 +39,6 @@ namespace database
             }
         }
         input.close();
-        throw std::exception("<user database> Error reading file.");
+        return {};
     }
 }

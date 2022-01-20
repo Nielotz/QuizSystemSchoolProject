@@ -5,22 +5,21 @@
 #include <vector>
 
 #include "../headers/database/test.h"
-#include "../headers/test.h"
 
 
 namespace database
 {
-    void test::check_file(string path)
+    void test::check_file(const string& path)
     {
         if (path.empty())
-            throw exception("<test database>Path to the test database need to be set!");
+            throw exception("<test database> Path to the test database need to be set!");
 
         ifstream file(path, ios::out);;
 
         if (file.good() == 0)
         {
             file.close();
-            throw exception("<test database>Path to the test database need to be set!");
+            throw exception("<test database> Path to the test database need to be set!");
         }
         file.close();
     }
@@ -43,7 +42,7 @@ namespace database
         return test_names;
     }
 
-    void test::set_test(test_data::TestData test)
+    void test::set_test(const test_data::TestData& test)
     {
         test::check_file(test::test_path);
         test::check_file(test::answers_path);
@@ -51,12 +50,12 @@ namespace database
         stringstream test_line_stream;
 
         test_line_stream << test.name << "|";
-        for (int i = 0; i < test.questions.size(); i++)
+        for (auto & question : test.questions)
         {
-            test_line_stream << test.questions[i].question;
-            for(auto j: test.questions[i].answers)
+            test_line_stream << question.question;
+            for(const auto& j: question.answers)
                 test_line_stream << "/^" << j;
-            for (auto j : test.questions[i].correct_answers)
+            for (const auto& j : question.correct_answers)
                 test_line_stream << "/;" << j;
             test_line_stream << "|";
         }
@@ -85,12 +84,11 @@ namespace database
 
             // insert data to file
             ofstream output(test::test_path);
-            for (auto i : lines)
+            for (const auto& i : lines)
                 output << i;
             output.close();
         }
         else {
-
             // add new test
             ofstream output(test::test_path, ios_base::app);
             test_line += "\n";
@@ -100,26 +98,26 @@ namespace database
 
         // udate answer database
         vector<string> list_of_users;
-        unordered_map<string, stringstream> students_answers;
-        unordered_map<string, string> reports;
-        for (auto b : test.questions)
+        std::map<string, stringstream> students_answers;
+        std::map<string, string> reports;
+        for (const auto& b : test.questions)
         {
             cout << b.question << endl;
-            for (auto v : b.students_answers)
+            for (const auto& v : b.students_answers)
             {
                 students_answers[v.first] << b.question;
                 if (find(list_of_users.begin(), list_of_users.end(), v.first) == list_of_users.end())
                     list_of_users.push_back(v.first);
-                for (auto c : v.second)
+                for (const auto& c : v.second)
                     students_answers[v.first] << "/"<<c;
                 students_answers[v.first] << "|";
             }
         }
-        for (auto b : test.reported_issues)
+        for (const auto& b : test.reported_issues)
             reports[b.first] = b.second;
 
-        unordered_map<string, string> final_lines;
-        for (auto b : list_of_users)
+        std::map<string, string> final_lines;
+        for (const auto& b : list_of_users)
         {
             if (reports[b].empty())
                 reports[b] = "0";
@@ -154,13 +152,13 @@ namespace database
         }
 
         // adding new lines
-        for (auto i : final_lines)
+        for (const auto& i : final_lines)
             lines.push_back(i.second);
         input.close();
 
         // overwriting file
         ofstream output(test::answers_path);
-        for(auto i : lines)
+        for(const auto& i : lines)
             output << i;
         output.close();
     }
@@ -179,8 +177,6 @@ namespace database
             answers_file.push_back(ans_data_read_line);
         input_2.close();
 
-            
-
         // testname1|question 1/^My answer1/^My answer2/^My answ3/;correct_answer/;correct2|question 2/^My answer12/^My answer22/^My answ32/;my correct ans12/;correct22|        
         string test_data_read_line;
         while (getline(input, test_data_read_line))
@@ -193,8 +189,8 @@ namespace database
             if (read_test_name == name)
             {
                 vector<test_data::Question> questions;
-                unordered_map<string, int> student_points;
-                unordered_map<string, string> reported_issues;
+                std::map<string, int> student_points;
+                std::map<string, string> reported_issues;
 
                 // question 1/^My answer1/^My answer2/^My answ3/;correct_answer/;correct2
                 string test_data_read_question;
@@ -212,11 +208,11 @@ namespace database
                     string test_data_read_section;
                     while (getline(test_data_stream, test_data_read_section, '/'))
                     {
-                        istringstream test_data_stream(test_data_read_section);
+                        istringstream test_data_stream_2(test_data_read_section);
 
                         // ^answer OR ;correct_answer
                         string read_part;
-                        getline(test_data_stream, read_part, '/');
+                        getline(test_data_stream_2, read_part, '/');
                         if (!read_part.find('^'))
                         {
                             read_part = read_part.replace(0, 1, "");
@@ -234,29 +230,28 @@ namespace database
                     // get students answers
 
                     //cout<<"current question: " << read_test_name << ", " << read_question << endl<<endl;
-                    unordered_map<string, vector<string>> students_and_answers;
+                    std::map<string, vector<string>> students_and_answers;
                     vector<string> students_answers;
-                    for (int i = 0; i != answers_file.size(); i++)
+                    for (auto & i : answers_file)
                     {
-                        
                         // get student username
                         size_t prev_section_pos = 0;
-                        size_t section_pos = answers_file[i].find('|');
-                        string ans_cut = answers_file[i].substr(prev_section_pos, section_pos);
+                        size_t section_pos = i.find('|');
+                        string ans_cut = i.substr(prev_section_pos, section_pos);
                         string username = ans_cut;
 
                         // get testname
                         prev_section_pos = section_pos + 1;
-                        section_pos = answers_file[i].find('|', prev_section_pos);
-                        ans_cut = answers_file[i].substr(prev_section_pos, (section_pos - prev_section_pos));
+                        section_pos = i.find('|', prev_section_pos);
+                        ans_cut = i.substr(prev_section_pos, (section_pos - prev_section_pos));
 
                         if (ans_cut != read_test_name)
                             continue;
 
                         // get test report
                         prev_section_pos = section_pos + 1;
-                        section_pos = answers_file[i].find('|', prev_section_pos);
-                        ans_cut = answers_file[i].substr(prev_section_pos, (section_pos - prev_section_pos));
+                        section_pos = i.find('|', prev_section_pos);
+                        ans_cut = i.substr(prev_section_pos, (section_pos - prev_section_pos));
                         if(ans_cut!="0")
                             reported_issues[username] = ans_cut;
 
@@ -265,15 +260,15 @@ namespace database
                         do
                         {
                             // get line with question and answers
-                            question_end_pos = answers_file[i].find('|', prev_section_pos);
-                            ans_cut = answers_file[i].substr(prev_section_pos, (question_end_pos - prev_section_pos));
+                            question_end_pos = i.find('|', prev_section_pos);
+                            // ans_cut = i.substr(prev_section_pos, (question_end_pos - prev_section_pos));
                             
                             //get question
-                            section_pos = answers_file[i].find('/', prev_section_pos);
-                            ans_cut = answers_file[i].substr(prev_section_pos, (section_pos - prev_section_pos));
+                            section_pos = i.find('/', prev_section_pos);
+                            ans_cut = i.substr(prev_section_pos, (section_pos - prev_section_pos));
                             if (ans_cut != read_question)
                             {
-                                question_end_pos = answers_file[i].find('|', prev_section_pos);
+                                question_end_pos = i.find('|', prev_section_pos);
                                 prev_section_pos = question_end_pos + 1;
                                 continue;
                             }  
@@ -282,10 +277,10 @@ namespace database
                             {
                                 // student answers
                                 prev_section_pos = section_pos + 1;
-                                section_pos = answers_file[i].find('/', prev_section_pos);
+                                section_pos = i.find('/', prev_section_pos);
                                 if (section_pos > question_end_pos)
                                     section_pos = question_end_pos;
-                                ans_cut = answers_file[i].substr(prev_section_pos, (section_pos - prev_section_pos));
+                                ans_cut = i.substr(prev_section_pos, (section_pos - prev_section_pos));
                                 if (ans_cut.find('|') != string::npos)
                                     ans_cut = ans_cut.substr(0, ans_cut.length() - 2);
                                 //students_and_answers[username] = students_and_answers[username].push_back(ans_cut);
@@ -295,9 +290,9 @@ namespace database
                                 student_points[username]++;
                             }
 
-                            question_end_pos = answers_file[i].find('|', prev_section_pos);
+                            question_end_pos = i.find('|', prev_section_pos);
                             prev_section_pos = question_end_pos + 1;
-                        } while (question_end_pos < answers_file[i].length() - 1);
+                        } while (question_end_pos < i.length() - 1);
                         students_and_answers[username] = students_answers;
                         students_answers.clear();
                     }
@@ -315,7 +310,7 @@ namespace database
         throw exception("<test database>Test not found!");
     } 
 
-    void test::delete_test(string name)
+    void test::delete_test(const string& name)
     {
         ifstream input(test::test_path);
         vector<string> lines;
@@ -334,12 +329,12 @@ namespace database
         input.close();
 
         ofstream output(test::test_path);
-        for(auto i : lines)
+        for(const auto& i : lines)
             output << i;
         output.close();
     }
 
-    void test::delete_report(string testname, string username)
+    void test::delete_report(const string& test_name, const string& username)
     {
         ifstream input(test::answers_path);
         vector<string> lines;
@@ -352,14 +347,14 @@ namespace database
             getline(testdata_stream, read_username, '|');
             if (read_username == username)
             {
-                string read_testname;
-                getline(testdata_stream, read_testname, '|');
-                if (read_testname == testname)
+                string read_test_name;
+                getline(testdata_stream, read_test_name, '|');
+                if (read_test_name == test_name)
                 {
                     string read_report;
                     getline(testdata_stream, read_report, '|');
                     stringstream line_stream;
-                    line_stream << username << "|" << testname << "|0|" << test_data_read_line.substr(read_username.size() + read_username.size()+ read_report.size()+3, test_data_read_line.size());
+                    line_stream << username << "|" << test_name << "|0|" << test_data_read_line.substr(read_username.size() + read_username.size() + read_report.size() + 3, test_data_read_line.size());
                     test_data_read_line = line_stream.str();
                 }
             } 
@@ -369,7 +364,7 @@ namespace database
         input.close();
 
         ofstream output(test::answers_path);
-        for(auto i : lines)
+        for(const auto& i : lines)
             output << i;
         output.close();
     }
