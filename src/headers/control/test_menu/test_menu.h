@@ -2,7 +2,7 @@
 #define SRC_CONTROL_TEST_MENU_TEST_MENU_H
 
 #include "../../test_data/test_data.h"
-#include "../../headers/control/test_menu/option_type.h"
+#include "option_type.h"
 
 namespace control::test_menu
 {

@@ -3,8 +3,6 @@
 
 #include <optional>
 
-#include <unordered_map>
-
 #include "../shared/user_data.h"
 
 namespace database::user

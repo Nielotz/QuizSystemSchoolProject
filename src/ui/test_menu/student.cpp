@@ -2,10 +2,9 @@
 
 #include "../../headers/ui/test_menu/student.h"
 #include "../../headers/ui/ui.h"
-#include "../../headers/test_data/test_data.h"
 
 void ui::test_menu::Student::show(std::string test_name, std::string username, size_t amount_of_questions,
- std::unordered_map<std::string, int> users_points, std::vector<std::pair<std::string, std::string>> reported_issues, std::string selected_answer)
+ std::map<std::string, int> users_points, std::vector<std::pair<std::string, std::string>> reported_issues, std::string selected_answer)
 {
     system("CLS");
 
@@ -23,6 +22,12 @@ void ui::test_menu::Student::show(std::string test_name, std::string username, s
     {
         if (username_ == username)
             std::cout << "      " << username_ << " <" << points << "> / < " << amount_of_questions << std::endl;
+    }
+
+    for (auto& [username_, issue] : reported_issues)
+    {
+        if (username_ == username)
+            std::cout << "      " << username_ << issue << std::endl;
     }
 
     std::cout << std::endl;

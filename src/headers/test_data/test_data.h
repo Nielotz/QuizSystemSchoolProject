@@ -4,7 +4,7 @@
 #include <vector>
 #include <utility>
 #include <string>
-#include <unordered_map>
+#include <map>
 
 #include "../shared/user_data.h"
 
@@ -17,7 +17,7 @@ namespace test_data
         std::vector<std::string> correct_answers;
 
         // Map username to answers.
-        std::unordered_map<std::string, std::vector<std::string>> students_answers;
+        std::map<std::string, std::vector<std::string>> students_answers;
     };
 
     struct TestData
@@ -25,7 +25,7 @@ namespace test_data
         std::string name;
         std::vector<Question> questions;
         // Map username to points.
-        std::unordered_map<std::string, int> users_points;
+        std::map<std::string, int> users_points;
         // Vector of maps: username, report.
         std::vector<std::pair<std::string, std::string>> reported_issues;
     };

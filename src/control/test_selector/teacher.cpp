@@ -1,6 +1,4 @@
 #include <Windows.h>
-#include <cctype>
-#include <iostream>
 
 #include "../../headers/control/test_selector/teacher.h"
 #include "../../headers/ui/ui.h"
@@ -36,7 +34,7 @@ namespace control::test_selector
             if (!input_record_buffer.Event.KeyEvent.bKeyDown)
                 continue;
 
-            const WORD &user_input = input_record_buffer.Event.KeyEvent.uChar.AsciiChar;
+            const WORD &user_input = input_record_buffer.Event.KeyEvent.wVirtualKeyCode;
 
             switch (user_input)
             {

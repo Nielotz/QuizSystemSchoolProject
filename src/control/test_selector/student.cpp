@@ -1,10 +1,7 @@
 #include <Windows.h>
-#include <cctype>
-#include <iostream>
 
 #include "../../headers/control/test_selector/student.h"
 #include "../../headers/ui/ui.h"
-
 
 namespace control::test_selector
 {
@@ -36,7 +33,7 @@ namespace control::test_selector
             if (!input_record_buffer.Event.KeyEvent.bKeyDown)
                 continue;
 
-            const WORD &user_input = input_record_buffer.Event.KeyEvent.uChar.AsciiChar;
+            const WORD &user_input = input_record_buffer.Event.KeyEvent.wVirtualKeyCode;
 
             switch (user_input)
             {
@@ -46,23 +43,16 @@ namespace control::test_selector
                 case 'q':
                 case 'Q':
                     return "";
-                case '\0':
-                    switch (input_record_buffer.Event.KeyEvent.wVirtualKeyCode)
-                    {
-                        case 38:  // up
-                            if (selected_test_idx > 0)
-                                selected_test = tests_names[--selected_test_idx];
-                            break;
-                        case 40:  // down
-                            if (selected_test_idx < tests_names.size() - 1)
-                                selected_test = tests_names[++selected_test_idx];
-                            break;
-                        default:
-                            ;
-                    }
+                case 38:  // up
+                    if (selected_test_idx > 0)
+                        selected_test = tests_names[--selected_test_idx];
                     break;
-                default:
-                    ;
+                case 40:  // down
+                    if (selected_test_idx < tests_names.size() - 1)
+                        selected_test = tests_names[++selected_test_idx];
+                    break;
+                default:;
+
             }
             ui::UI::get().test_selector_->ask_select_test(tests_names, selected_test);
         }
