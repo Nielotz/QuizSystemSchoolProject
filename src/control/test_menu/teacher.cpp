@@ -16,7 +16,7 @@ namespace control::test_menu
         ui::UI::get().test_menu_->show(test_data.name,
                                        username,
                                        test_data.questions.size(),
-                                       test_data.users_points,
+                                       test_data.users_points, test_data.reported_issues,
                                        selected_username);
 
         // TODO: Handle user option.

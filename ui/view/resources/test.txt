@@ -1,0 +1,48 @@
+show_edit_question
+------------------------------------------------------------------------------
+Quiz system
+
+Test editing
+
+Test: <test name>:
+	
+Reported question:
+
+Question [<question number> / <amount of questions>]:
+	<question>
+
+Answers:
+	correct    answer
+	[X]   	   <answer1>
+	[ ]   	   <answer2>
+
+e - edit, enter, q - quit, a - add answer, d - delete answer
+----------------------------------------------------------------------------
+show_review_question
+----------------------------------------------------------------------------
+Quiz system
+
+Test revieving 
+
+Test: <test name>:
+	Question : [<question_number>/<question_amount>]
+	
+	Correct:	Marked:		Answer:
+	[ ]  		[X] 		<answer1>
+	[X]  		[ ] 		<answer2>
+
+r - report, → next, ← previous, q - quit
+-------------------------------------------------------------------------------
+show_take_question
+-------------------------------------------------------------------------------
+Quiz system
+
+Taking test 
+
+Test: <test name>:
+	Question : [<question_number>/<question_amount>]
+	Answers:
+	  [X] <answer1>
+	  [ ] <answer2>
+
+enter - mark/unmark answer, q - quit

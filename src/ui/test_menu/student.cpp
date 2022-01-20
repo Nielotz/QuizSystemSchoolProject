@@ -5,8 +5,7 @@
 #include "../../headers/test_data/test_data.h"
 
 void ui::test_menu::Student::show(std::string test_name, std::string username, size_t amount_of_questions,
-                                  std::unordered_map<std::string, int> users_points,
-                                  std::string selected_answer)
+ std::unordered_map<std::string, int> users_points, std::vector<std::pair<std::string, std::string>> reported_issues, std::string selected_answer)
 {
     system("CLS");
 

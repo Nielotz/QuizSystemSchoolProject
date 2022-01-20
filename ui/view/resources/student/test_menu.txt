@@ -2,14 +2,12 @@ Student opens the test - test menu:
 ----------------------------------
 Quiz system
 
-Test Menu
-
 <test name>:
 	Number of questions: <amount>  
 	Time: <amount> 
 
 
-t - take, q - quit
+enter - take, q - quit
 ----------------------------------
 
 
@@ -23,5 +21,5 @@ Quiz system
 	Result: <gained> / <total>
 
 
-r - show test, q - quit
+enter - show test, q - quit
 ----------------------------------

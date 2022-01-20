@@ -4,10 +4,14 @@ Quiz system
 
 Test Menu
 
-<test name>:
+Test: <test name>:
 	Number of questions: <amount> 
-	Time: <amount>
 
+Completed tests:
+	Username <points / amount_of_points>
 
-e - edit, r - show students results, q - quit
+<test reports>:
+	Username: <report content>
+
+e - edit, enter - show students results, q - quit
 ----------------------------------

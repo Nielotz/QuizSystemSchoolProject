@@ -32,10 +32,7 @@ namespace control::test_menu
 
         // Show test menu - summary of a test.
         ui::UI::get().test_menu_->show(test_data.name, username, test_data.questions.size(),
-                                       test_data.users_points, selected_username);
-
-        // ui::UI::get().test_menu_->show(test_data.name, username, test_data.questions.size(),
-        //                                test_data.users_points, test_data.reported_issues, selected_username);
+                                        test_data.users_points, test_data.reported_issues, selected_username);
 
         // Get the standard input handle.
         HANDLE handle_stdin = GetStdHandle(STD_INPUT_HANDLE);
@@ -85,9 +82,7 @@ namespace control::test_menu
             }
             // Update test menu UI.
             ui::UI::get().test_menu_->show(test_data.name, username, test_data.questions.size(),
-                                           test_data.users_points, selected_username);
-            // ui::UI::get().test_menu_->show(test_data.name, username, test_data.questions.size(),
-            //                                test_data.users_points, test_data.reported_issues, selected_username);
+                                            test_data.users_points, test_data.reported_issues, selected_username);
         }
     }
 }
