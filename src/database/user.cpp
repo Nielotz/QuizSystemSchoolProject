@@ -1,40 +1,30 @@
-//
-// Created by Nielotz on 2021-12-17.
-//
-
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <string>
 #include <vector>
+
 #include "../headers/database/user.h"
 
 namespace database
 {
-
-    std::optional<UserData> user::get_user(const std::string& username, const std::string& password)
+    std::optional<UserData> user::get_user(const string& username, const string& password)
     {
-        if (path.empty())
-        {
-            cout << "<user database>Path to the user database need to be set!";
-            return{};
-        }
+        if (database::user::path.empty())
+            throw std::exception("<user database> Path to the user database need to be set!");
 
-        ifstream input(path, ios::out);
-        //If file exist?
+        std::ifstream input(path, std::ios::out);
+
+        // If file exist?
         if (input.good() == 0)
-        {
-            cout << "<user database>File at the specified location does not exist!";
-            return{};
-        }
-        
+            throw std::exception("<user database> File at the specified location does not exist!");
+
         string userdata_line;
 
         while (getline(input, userdata_line))
         {
-            istringstream userdata_stream(userdata_line);
+            std::istringstream userdata_stream(userdata_line);
             string userdata_element;
-            //cout << "\nlinia: " << csvLine << endl;
 
             string r_username;
             string r_password;
@@ -45,16 +35,10 @@ namespace database
             if (username == r_username && password == r_password)
             {
                 input.close();
-                return{ r_username, r_password, AccountType(stoi(userdata_element)) };
+                return {{r_username, r_password, AccountType(stoi(userdata_element))}};
             }
         }
         input.close();
-        return{};
-
+        throw std::exception("<user database> Error reading file.");
     }
-
-    /*UserData User::insert_user(const string& username, const string& password, const AccountType type)
-    {
-
-    }*/
 }
