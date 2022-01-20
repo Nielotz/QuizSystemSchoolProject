@@ -13,7 +13,7 @@ namespace control::test
     {
         return test_data;
     }
-    
+
     void review(const test_data::TestData &test_data, const string &username)
     {
         const int &amount_of_questions = int(test_data.questions.size());
@@ -22,10 +22,10 @@ namespace control::test
             return;
 
         int current_question_idx = 0;
-
         const test_data::Question &first_question = test_data.questions[0];
-        ui::test::show_review_question(first_question.question, first_question.answers, first_question.correct_answers,
-                                       first_question.students_answers.at(username),
+
+        ui::test::show_review_question(first_question.question, first_question.answers,
+                                       first_question.correct_answers, first_question.students_answers.at(username),
                                        current_question_idx + 1, amount_of_questions);
 
         // Get the standard input handle.
@@ -52,7 +52,7 @@ namespace control::test
                     return;
                 case 'r':
                 case 'R':
-                    // Report
+                    // Report.
                     return;
                 case 39:  // Left.
                     if (current_question_idx > 0)
@@ -64,9 +64,9 @@ namespace control::test
                     break;
                 default:;
             }
-            const test_data::Question &question = test_data.questions[];
-            ui::test::show_review_question(question.question, question.answers, question.correct_answers,
-                                           question.students_answers.at(username),
+            const test_data::Question &question = test_data.questions[current_question_idx];
+            ui::test::show_review_question(question.question, question.answers,
+                                           question.correct_answers, question.students_answers.at(username),
                                            current_question_idx + 1, amount_of_questions);
         }
     }
