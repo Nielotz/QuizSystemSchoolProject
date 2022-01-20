@@ -94,6 +94,68 @@ namespace database
             output << test_line;
             output.close();
         }
+
+        // udate answer database
+        vector<string> list_of_users;
+        unordered_map<string, stringstream> students_answers;
+        unordered_map<string, string> reports;
+        for (auto b : test.questions)
+        {
+            cout << b.question << endl;
+            for (auto v : b.students_answers)
+            {
+                students_answers[v.first] << b.question;
+                if (find(list_of_users.begin(), list_of_users.end(), v.first) == list_of_users.end())
+                    list_of_users.push_back(v.first);
+                for (auto c : v.second)
+                    students_answers[v.first] << "/"<<c;
+                students_answers[v.first] << "|";
+            }
+        }
+        for (auto b : test.reported_issues)
+            reports[b.first] = b.second;
+
+        ifstream input(test::answers_path);
+        vector<string> lines;
+        unordered_map<string, string> final_lines;
+
+        for (auto b : list_of_users)
+        {
+            stringstream stream;
+            if (reports[b].empty())
+                reports[b] = "0";
+            stream << b << "|" << test.name << "|" << reports[b] <<"|" << students_answers[b].str();
+            final_lines[b] = stream.str();
+        }
+
+        string test_data_read_line;
+        while (getline(input, test_data_read_line))
+        {
+            istringstream testdata_stream(test_data_read_line);
+
+            string read_user_name;
+            getline(testdata_stream, read_user_name, '|');
+            if (find(list_of_users.begin(), list_of_users.end(), read_user_name) != list_of_users.end())
+            {
+                string read_test_name;
+                getline(testdata_stream, read_test_name, '|');
+                cout << read_test_name << endl;
+                if (read_test_name == test.name)
+                {
+                    test_data_read_line = final_lines[read_user_name];
+                    final_lines.erase(read_user_name);
+                }
+            }
+            test_data_read_line += "\n";
+            lines.push_back(test_data_read_line);
+        }
+        for (auto c : final_lines)
+            lines.push_back(c.second);
+        input.close();
+        ofstream output(test::answers_path);
+        for (int i = 0; i < lines.size(); i++)
+            output << lines[i];
+        output.close();
     }
 
     test_data::TestData test::get_test_data(const string &name)
@@ -219,7 +281,8 @@ namespace database
                                 ans_cut = answers_file[i].substr(prev_section_pos, (section_pos - prev_section_pos));
                                 if (ans_cut.find('|') != string::npos)
                                     ans_cut = ans_cut.substr(0, ans_cut.length() - 2);
-                                //answers.push_back(ans_cut);
+                                //students_and_answers[username] = students_and_answers[username].push_back(ans_cut);
+                                students_answers.push_back(ans_cut);
                                 // adding points to student
                                 if (find(correct_answers.begin(), correct_answers.end(), ans_cut) != correct_answers.end())
                                 student_points[username]++;
@@ -229,6 +292,7 @@ namespace database
                             prev_section_pos = question_end_pos + 1;
                         } while (question_end_pos < answers_file[i].length() - 1);
                         students_and_answers[username] = students_answers;
+                        students_answers.clear();
                     }
                     questions.push_back(test_data::Question{ read_question, answers, correct_answers,students_and_answers });
                 }
