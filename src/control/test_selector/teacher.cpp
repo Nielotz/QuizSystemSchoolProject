@@ -64,7 +64,10 @@ namespace control::test_selector
                             selected_test_idx = 0;
                         }
                         else
+                        {
                             selected_test = "";
+                            selected_test_idx = -1;
+                        }
                     }
                 case 38:
                     if (selected_test_idx > 0)
