@@ -18,6 +18,8 @@ namespace database
 		test_data::TestData get_test_data(const string& name);
 		vector<string> get_test_names();
 		void set_test(test_data::TestData test);
+		void delete_test(string name);
+		void delete_report(string testname, string username);
 	};
 }
 

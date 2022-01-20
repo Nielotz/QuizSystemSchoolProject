@@ -43,7 +43,57 @@ namespace database
 
     void test::set_test(test_data::TestData test)
     {
+        test::check_file(test::test_path);
+        vector<string> existing_test = test::get_test_names();
+        stringstream test_line_stream;
 
+        test_line_stream << test.name << "|";
+        for (int i = 0; i < test.questions.size(); i++)
+        {
+            test_line_stream << test.questions[i].question;
+            for (int j = 0; j < test.questions[i].answers.size(); j++)
+                test_line_stream << "/^" << test.questions[i].answers[j];
+            for (int j = 0; j < test.questions[i].correct_answers.size(); j++)
+                test_line_stream << "/;" << test.questions[i].correct_answers[j];
+            test_line_stream << "|";
+        }
+        string test_line = test_line_stream.str();
+
+        // check if test already exist
+        if (find(existing_test.begin(), existing_test.end(), test.name) != existing_test.end())
+        {
+            // overwrite existing test
+            ifstream input(test::test_path);
+            vector<string> lines;
+
+            string test_data_read_line;
+            while (getline(input, test_data_read_line))
+            {
+                istringstream testdata_stream(test_data_read_line);
+
+                string read_test_name;
+                getline(testdata_stream, read_test_name, '|');
+                if (read_test_name == test.name)
+                    test_data_read_line = test_line;
+                test_data_read_line += "\n";
+                lines.push_back(test_data_read_line);
+            }
+            input.close();
+
+            // insert data to file
+            ofstream output(test::test_path);
+            for (int i = 0; i < lines.size(); i++)
+                output << lines[i];
+            output.close();
+        }
+        else {
+            // add new test
+            ofstream output(test::test_path, ios_base::app);
+            
+            test_line += "\n";
+            output << test_line;
+            output.close();
+        }
     }
 
     test_data::TestData test::get_test_data(const string &name)
@@ -74,6 +124,8 @@ namespace database
             if (read_test_name == name)
             {
                 vector<test_data::Question> questions;
+                unordered_map<string, int> student_points;
+                unordered_map<string, string> reported_issues;
 
                 // question 1/^My answer1/^My answer2/^My answ3/;correct_answer/;correct2
                 string test_data_read_question;
@@ -115,7 +167,6 @@ namespace database
                     //cout<<"current question: " << read_test_name << ", " << read_question << endl<<endl;
                     unordered_map<string, vector<string>> students_and_answers;
                     vector<string> students_answers;
-                    int student_points = 0;
                     for (int i = 0; i != answers_file.size(); i++)
                     {
                         
@@ -132,6 +183,13 @@ namespace database
 
                         if (ans_cut != read_test_name)
                             continue;
+
+                        // get test report
+                        prev_section_pos = section_pos + 1;
+                        section_pos = answers_file[i].find('|', prev_section_pos);
+                        ans_cut = answers_file[i].substr(prev_section_pos, (section_pos - prev_section_pos));
+                        if(ans_cut!="0")
+                            reported_issues[username] = ans_cut;
 
                         size_t question_end_pos = 0;
                         prev_section_pos = section_pos + 1;
@@ -150,8 +208,8 @@ namespace database
                                 prev_section_pos = question_end_pos + 1;
                                 continue;
                             }  
-
-                            while (section_pos < question_end_pos && section_pos >-1)
+                            
+                            while (section_pos < question_end_pos)
                             {
                                 // student answers
                                 prev_section_pos = section_pos + 1;
@@ -161,7 +219,10 @@ namespace database
                                 ans_cut = answers_file[i].substr(prev_section_pos, (section_pos - prev_section_pos));
                                 if (ans_cut.find('|') != string::npos)
                                     ans_cut = ans_cut.substr(0, ans_cut.length() - 2);
-                                answers.push_back(ans_cut);
+                                //answers.push_back(ans_cut);
+                                // adding points to student
+                                if (find(correct_answers.begin(), correct_answers.end(), ans_cut) != correct_answers.end())
+                                student_points[username]++;
                             }
 
                             question_end_pos = answers_file[i].find('|', prev_section_pos);
@@ -171,11 +232,76 @@ namespace database
                     }
                     questions.push_back(test_data::Question{ read_question, answers, correct_answers,students_and_answers });
                 }
+                vector<pair<string, string>> reported_issues_v;
+                reported_issues_v.resize(reported_issues.size());
+                std::copy(reported_issues.begin(), reported_issues.end(), reported_issues_v.begin());
+
                 input.close();
-                return { read_test_name, questions };
+                return { read_test_name, questions, student_points, reported_issues_v };
             }
         }
         input.close();
         throw exception("<test database>Test not found!");
     } 
+
+    void test::delete_test(string name)
+    {
+        ifstream input(test::test_path);
+        vector<string> lines;
+        string test_data_read_line;
+        while (getline(input, test_data_read_line))
+        {
+            istringstream testdata_stream(test_data_read_line);
+
+            string read_test_name;
+            getline(testdata_stream, read_test_name, '|');
+            if (read_test_name == name)
+                continue;
+            test_data_read_line += "\n";
+            lines.push_back(test_data_read_line);
+        }
+        input.close();
+
+        ofstream output(test::test_path);
+        for (int i = 0; i < lines.size(); i++)
+        {
+            output << lines[i];
+        }
+        output.close();
+    }
+
+    void test::delete_report(string testname, string username)
+    {
+        ifstream input(test::answers_path);
+        vector<string> lines;
+        string test_data_read_line;
+        while (getline(input, test_data_read_line))
+        {
+            istringstream testdata_stream(test_data_read_line);
+
+            string read_username;
+            getline(testdata_stream, read_username, '|');
+            if (read_username == username)
+            {
+                string read_testname;
+                getline(testdata_stream, read_testname, '|');
+                if (read_testname == testname)
+                {
+                    string read_report;
+                    getline(testdata_stream, read_report, '|');
+                    stringstream line_stream;
+                    line_stream << username << "|" << testname << "|0|" << test_data_read_line.substr(read_username.size() + read_username.size()+ read_report.size()+3, test_data_read_line.size());
+                    test_data_read_line = line_stream.str();
+                }
+            } 
+            test_data_read_line += "\n";
+            lines.push_back(test_data_read_line);
+        }
+        input.close();
+
+        ofstream output(test::answers_path);
+        for (int i = 0; i < lines.size(); i++)
+            output << lines[i];
+        output.close();
+    }
 }
