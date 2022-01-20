@@ -14,22 +14,20 @@ namespace database
 
     std::optional<UserData> user::get_user(const std::string& username, const std::string& password)
     {
-        return {{"TestUsername", "TestPassword", AccountType::kTeacher}};
-
-        /*
-        std::string path = "database/database_user.txt";
         if (path.empty())
-            throw runtime_error("Path to the user database need to be set!");
-
-        //If file exist?
-        ifstream file_save(path.c_str());
-        if (file_save.good() == 0)
         {
-            cout << "AAAAA File doesn't exist!!! What I should to do?\n";
+            cout << "<user database>Path to the user database need to be set!";
+            return{};
         }
-        file_save.close();
 
         ifstream input(path, ios::out);
+        //If file exist?
+        if (input.good() == 0)
+        {
+            cout << "<user database>File at the specified location does not exist!";
+            return{};
+        }
+        
         string userdata_line;
 
         while (getline(input, userdata_line))
@@ -44,7 +42,19 @@ namespace database
             getline(userdata_stream, r_password, '|');
             getline(userdata_stream, userdata_element, '|');
 
-            users_.emplace(r_username, UserData{r_username, r_password, AccountType(stoi(userdata_element))});
-        }*/
+            if (username == r_username && password == r_password)
+            {
+                input.close();
+                return{ r_username, r_password, AccountType(stoi(userdata_element)) };
+            }
+        }
+        input.close();
+        return{};
+
     }
+
+    /*UserData User::insert_user(const string& username, const string& password, const AccountType type)
+    {
+
+    }*/
 }
