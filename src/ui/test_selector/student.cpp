@@ -33,5 +33,5 @@ void ui::test_selector::Student::ask_select_test(std::vector<std::string> tests,
     }
 
     std::cout << std::endl;
-    std::cout << "o-open, q-quit";
+    std::cout << "enter-open, q-quit";
 }
