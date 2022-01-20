@@ -27,7 +27,7 @@ QuizSystem::QuizSystem()
         // TODO: "Are you sure?" dialogue.
         return;
 
-    const std::string& choosed_username = test_menu_option.second;
+    const std::string& choose_username = test_menu_option.second;
 
-    test::handle(selected_test, action_type, choosed_username);
+    test::handle(selected_test, action_type, choose_username);
 }
