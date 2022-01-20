@@ -76,7 +76,7 @@ namespace ui::test
         std::cout << "r - report, → next, ← previous, q - quit";
     }
 
-    void show_take_question(const std::string& test_name, const std::string& question, const std::vector<std::string>& answers, const std::vector<std::string>& marked_answers, int question_number, int question_amount)
+    void show_take_question(const std::string& test_name, const std::string& question, const std::vector<std::string>& answers, const std::vector<std::string>& marked_answers, const std::vector<std::string>& selected_answer, int question_number, int question_amount)
     {
         system("CLS");
 
@@ -92,15 +92,11 @@ namespace ui::test
 
         for (auto answer_ : answers)
         {
-            for (auto marked_answer : marked_answers)
-            {
-                if (answer_ == marked_answer)
-                    std::cout << "    [X] <" << answer_ << ">" << std::endl;
-                
-                else
-                    std::cout << "    [ ] <" << answer_ << ">" << std::endl;
+            if (answer_ == selected_answer)
+                std::cout << "    [X] <" << answer_ << ">" << std::endl;
 
-            }
+            else
+                std::cout << "    [ ] <" << answer_ << ">" << std::endl;
         }
         std::cout << "enter - mark/unmark answer, q - quit";
     }
