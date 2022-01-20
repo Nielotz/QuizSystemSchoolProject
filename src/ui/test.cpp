@@ -98,3 +98,17 @@ void ui::test::show_take_question(std::string question, std::vector<std::string>
     }
     std::cout << "enter - mark/unmark answer, q - quit";
 }
+
+void add_test(std::string entered_name)
+{
+    system("CLS");
+
+    ui::UI::print_logo();
+
+    std::cout << "  =============" << std::endl;
+    std::cout << "  + Add test +" << std::endl;
+    std::cout << "  =============" << std::endl << std::endl;
+
+    cout << "     Name:" << entered_name;
+
+}
