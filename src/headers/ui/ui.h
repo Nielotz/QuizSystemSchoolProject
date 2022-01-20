@@ -26,7 +26,6 @@ namespace ui
         static void set_console_text_color(const int text_color);
         static void set_console_text_background_color(const int text_color, const int background_color);
         static void color_reset();
-        static void confirmation(bool is_no_selected);
     };
 
     namespace test
