@@ -16,16 +16,16 @@ namespace control::test
     
     void review(const test_data::TestData &test_data, const string &username)
     {
-        int current_question_idx = -1;
-        if (!test_data.questions.empty())
-            current_question_idx = 0;
+        const int &amount_of_questions = int(test_data.questions.size());
 
-        const test_data::Question &question = test_data.questions[current_question_idx];
+        if (amount_of_questions == 0)
+            return;
 
-        const int &amount_of_questions = int(question.question.size());
+        int current_question_idx = 0;
 
-        ui::test::show_review_question(question.question, question.answers, question.correct_answers,
-                                       question.students_answers.at(username),
+        const test_data::Question &first_question = test_data.questions[0];
+        ui::test::show_review_question(first_question.question, first_question.answers, first_question.correct_answers,
+                                       first_question.students_answers.at(username),
                                        current_question_idx + 1, amount_of_questions);
 
         // Get the standard input handle.
@@ -64,6 +64,7 @@ namespace control::test
                     break;
                 default:;
             }
+            const test_data::Question &question = test_data.questions[];
             ui::test::show_review_question(question.question, question.answers, question.correct_answers,
                                            question.students_answers.at(username),
                                            current_question_idx + 1, amount_of_questions);
@@ -72,24 +73,23 @@ namespace control::test
 
     test_data::TestData take(test_data::TestData test_data, const string &username)
     {
-        test_data::TestData current_test_data = test_data;
-        int current_question_idx = -1;
-        if (!current_test_data.questions.empty())
-            current_question_idx = 0;
+        const int &amount_of_questions = int(test_data.questions.size());
 
-        const test_data::Question &question = current_test_data.questions[current_question_idx];
+        if (amount_of_questions == 0)
+            return test_data;
 
-        const int &amount_of_questions = int(question.question.size());
+        int current_question_idx = 0;
+        const test_data::Question &first_question = test_data.questions[0];
 
         string selected_answer;
         int selected_answer_idx = -1;
-        if (!question.answers.empty())
+        if (!first_question.answers.empty())
         {
             selected_answer_idx = 0;
-            selected_answer = question.answers[selected_answer_idx];
+            selected_answer = first_question.answers[selected_answer_idx];
         }
 
-        ui::test::show_take_question(question.question, question.answers, question.students_answers.at(username),
+        ui::test::show_take_question(first_question.question, first_question.answers, first_question.students_answers.at(username),
                                      selected_answer, current_question_idx + 1, amount_of_questions);
 
         // Get the standard input handle.
@@ -114,21 +114,21 @@ namespace control::test
                 case 13:  // RETURN.
                 {
                     bool found = false;
-                    const vector<string> &marked_ = current_test_data.questions[current_question_idx].students_answers.at(username);
+                    const vector<string> &marked_ = test_data.questions[current_question_idx].students_answers.at(username);
                     for (int i = 0; i < marked_.size(); i++)
                         if (marked_[i] == selected_answer)
                         {
-                            current_test_data.questions[current_question_idx].students_answers.at(username).erase(marked_.begin() + i);
+                            test_data.questions[current_question_idx].students_answers.at(username).erase(marked_.begin() + i);
                             found = true;
                             break;
                         }
                     if (!found)
-                        current_test_data.questions[current_question_idx].students_answers.at(username).emplace_back(selected_answer);
+                        test_data.questions[current_question_idx].students_answers.at(username).emplace_back(selected_answer);
                     break;
                 }
                 case 'q':
                 case 'Q':
-                    return current_test_data;
+                    return test_data;
                 case 39:  // Left.
                     if (current_question_idx > 0)
                         --current_question_idx;
@@ -139,18 +139,18 @@ namespace control::test
                     break;
                 case 38:  // Up.
                     if (selected_answer_idx > 0)
-                        selected_answer = question.answers.at(--selected_answer_idx);
+                        selected_answer = test_data.questions[current_question_idx].answers.at(--selected_answer_idx);
                     break;
                 case 40:  // Down.
-                    if (selected_answer_idx < question.answers.size() - 1)
-                        selected_answer = question.answers.at(++selected_answer_idx);
+                    if (selected_answer_idx < test_data.questions[current_question_idx].answers.size() - 1)
+                        selected_answer = test_data.questions[current_question_idx].answers.at(++selected_answer_idx);
                     break;
                 default:;
             }
+            const test_data::Question &question = test_data.questions[current_question_idx];
             ui::test::show_take_question(question.question, question.answers,
                                          question.students_answers.at(username),
                                          selected_answer, current_question_idx + 1, amount_of_questions);
         }
-        return test_data;
     }
 }
