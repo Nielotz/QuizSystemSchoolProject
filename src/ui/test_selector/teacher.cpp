@@ -14,14 +14,14 @@ void ui::test_selector::Teacher::ask_select_test(std::vector<std::string> tests,
     std::cout << "  + Selection of test +" << std::endl;
     std::cout << "  =====================" << std::endl << std::endl;
 
-    std::cout << "  Avilable tests:" << std::endl;
+    std::cout << "  Available tests:" << std::endl;
 
     for (auto& test : tests)
     {
         if (test == selected_answer)
         {
             std::cout << "    ";
-            ui::UI::text_background_color(0, 3);
+            ui::UI::set_console_text_background_color(0, 3);
             std::cout << selected_answer << std::endl;
             ui::UI::color_reset();
         }

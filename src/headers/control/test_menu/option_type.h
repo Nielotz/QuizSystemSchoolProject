@@ -9,7 +9,6 @@ namespace control::test_menu
         kTake,
         kQuit,
         kReview,
-        kDelete,
     };
 }
 

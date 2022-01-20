@@ -2,7 +2,6 @@
 
 #include "../../headers/ui/test_menu/teacher.h"
 #include "../../headers/ui/ui.h"
-#include "../../headers/test_data/test_data.h"
 
 void ui::test_menu::Teacher::show(std::string test_name, std::string username,
  size_t amount_of_questions,
@@ -25,7 +24,7 @@ void ui::test_menu::Teacher::show(std::string test_name, std::string username,
 		if (selected_answer == username)
 		{
 			std::cout << "      ";
-			ui::UI::text_background_color(0, 3);
+            ui::UI::set_console_text_background_color(0, 3);
 			std::cout << username;
 			ui::UI::color_reset();
 			std::cout << "   <" << points << "> / < " << amount_of_questions << std::endl;
@@ -40,7 +39,7 @@ void ui::test_menu::Teacher::show(std::string test_name, std::string username,
 
 		if (username_ == selected_answer)
 		{
-			ui::UI::text_background_color(0, 3);
+            ui::UI::set_console_text_background_color(0, 3);
 			std::cout << username_;
 			ui::UI::color_reset();
 		}

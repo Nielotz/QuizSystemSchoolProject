@@ -6,6 +6,6 @@
 namespace auth
 {
     UserData login();
-};
+}
 
 #endif //SRC_AUTH_H

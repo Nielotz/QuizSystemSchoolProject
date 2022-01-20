@@ -1,6 +1,6 @@
 #include <iostream>
 #include <memory>
-#include <windows.h>
+#include <Windows.h>
 
 #include "../headers/ui/ui.h"
 #include "../headers/ui/test_selector/student.h"
@@ -40,14 +40,14 @@ namespace ui
         }
     }
 
-    void UI::text_color(const int textcolor) {
+    void UI::set_console_text_color(const int text_color) {
         static HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
-        SetConsoleTextAttribute(handle, textcolor);
+        SetConsoleTextAttribute(handle, text_color);
     }
 
-    void UI::text_background_color(const int textcolor, const int backgroundcolor) {
+    void UI::set_console_text_background_color(const int text_color, const int background_color) {
         static HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
-        SetConsoleTextAttribute(handle, backgroundcolor << 4 | textcolor);
+        SetConsoleTextAttribute(handle, background_color << 4 | text_color);
     }
 
     void UI::color_reset() {
@@ -60,7 +60,7 @@ namespace ui
         HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
         std::cout << "       =========================================================================================================" << std::endl;
         std::cout << "       =                                            ";
-        UI::text_color(3);
+        UI::set_console_text_color(3);
         std::cout << "Quiz system                                            ";
         UI::color_reset();
         std::cout << "    =" << std::endl;

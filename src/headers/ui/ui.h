@@ -23,8 +23,8 @@ namespace ui
         static ui::UI get();
 
         static void print_logo();
-        static void text_color(int textcolor);
-        static void text_background_color(int textcolor, int backgroundcolor);
+        static void set_console_text_color(const int text_color);
+        static void set_console_text_background_color(const int text_color, const int background_color);
         static void color_reset();
     };
 

@@ -1,5 +1,4 @@
 #include <Windows.h>
-#include <iostream>
 
 #include "../../headers/control/test_menu/teacher.h"
 #include "../../headers/ui/ui.h"

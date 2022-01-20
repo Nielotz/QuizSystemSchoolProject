@@ -1,7 +1,7 @@
 ﻿#include <iostream>
 
 #include "../headers/ui/test.h"
-#include "../../headers/ui/ui.h"
+#include "../headers/ui/ui.h"
 
 void ui::test::show_edit_question(std::string question, std::vector<std::string> answers, std::vector<std::string> correct_answers, std::string selected_answer, int question_number, int question_amount)
 {

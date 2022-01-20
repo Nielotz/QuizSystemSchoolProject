@@ -1,10 +1,7 @@
-#define _HAS_STD_BYTE 0
-
 #include <Windows.h>
 #include <cctype>
 
 #include "../headers/control/auth.h"
-#include "../headers/control/control.h"
 #include "../ui/auth.cpp"  // When import ../headers/ui/auth.h C++ goes brrr.
 
 namespace control

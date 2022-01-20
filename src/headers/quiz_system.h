@@ -8,7 +8,6 @@ class QuizSystem
 {
 public:
 	QuizSystem();
-	void exit();
 };
 
 
