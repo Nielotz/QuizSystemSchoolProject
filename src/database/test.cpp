@@ -44,6 +44,7 @@ namespace database
     void test::set_test(test_data::TestData test)
     {
         test::check_file(test::test_path);
+        test::check_file(test::answers_path);
         vector<string> existing_test = test::get_test_names();
         stringstream test_line_stream;
 
@@ -51,10 +52,10 @@ namespace database
         for (int i = 0; i < test.questions.size(); i++)
         {
             test_line_stream << test.questions[i].question;
-            for (int j = 0; j < test.questions[i].answers.size(); j++)
-                test_line_stream << "/^" << test.questions[i].answers[j];
-            for (int j = 0; j < test.questions[i].correct_answers.size(); j++)
-                test_line_stream << "/;" << test.questions[i].correct_answers[j];
+            for(auto j: test.questions[i].answers)
+                test_line_stream << "/^" << j;
+            for (auto j : test.questions[i].correct_answers)
+                test_line_stream << "/;" << j;
             test_line_stream << "|";
         }
         string test_line = test_line_stream.str();
@@ -82,14 +83,14 @@ namespace database
 
             // insert data to file
             ofstream output(test::test_path);
-            for (int i = 0; i < lines.size(); i++)
-                output << lines[i];
+            for (auto i : lines)
+                output << i;
             output.close();
         }
         else {
+
             // add new test
             ofstream output(test::test_path, ios_base::app);
-            
             test_line += "\n";
             output << test_line;
             output.close();
@@ -115,20 +116,20 @@ namespace database
         for (auto b : test.reported_issues)
             reports[b.first] = b.second;
 
-        ifstream input(test::answers_path);
-        vector<string> lines;
         unordered_map<string, string> final_lines;
-
         for (auto b : list_of_users)
         {
-            stringstream stream;
             if (reports[b].empty())
                 reports[b] = "0";
+            stringstream stream;
             stream << b << "|" << test.name << "|" << reports[b] <<"|" << students_answers[b].str();
             final_lines[b] = stream.str();
         }
 
+        // compraring existing data to new
+        ifstream input(test::answers_path);
         string test_data_read_line;
+        vector<string> lines;
         while (getline(input, test_data_read_line))
         {
             istringstream testdata_stream(test_data_read_line);
@@ -149,12 +150,16 @@ namespace database
             test_data_read_line += "\n";
             lines.push_back(test_data_read_line);
         }
-        for (auto c : final_lines)
-            lines.push_back(c.second);
+
+        // adding new lines
+        for (auto i : final_lines)
+            lines.push_back(i.second);
         input.close();
+
+        // overwriting file
         ofstream output(test::answers_path);
-        for (int i = 0; i < lines.size(); i++)
-            output << lines[i];
+        for(auto i : lines)
+            output << i;
         output.close();
     }
 
@@ -327,10 +332,8 @@ namespace database
         input.close();
 
         ofstream output(test::test_path);
-        for (int i = 0; i < lines.size(); i++)
-        {
-            output << lines[i];
-        }
+        for(auto i : lines)
+            output << i;
         output.close();
     }
 
@@ -364,8 +367,8 @@ namespace database
         input.close();
 
         ofstream output(test::answers_path);
-        for (int i = 0; i < lines.size(); i++)
-            output << lines[i];
+        for(auto i : lines)
+            output << i;
         output.close();
     }
 }
