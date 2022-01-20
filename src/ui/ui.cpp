@@ -66,6 +66,11 @@ namespace ui
         std::cout << "    =" << std::endl;
         std::cout << "       =========================================================================================================" << std::endl;
     }
+
+    std::string UI::ask_for(const std::string &what, const std::string &entered_string)
+    {
+        return std::string();
+    }
 }
 
 

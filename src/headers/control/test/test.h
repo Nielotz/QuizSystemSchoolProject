@@ -5,6 +5,10 @@
 
 namespace control::test
 {
+    std::string get_new_answer();
+
+    std::string get_new_question();
+
     test_data::TestData take(test_data::TestData test_data, const std::string &username);
 
     void review(const test_data::TestData &test_data, const std::string &username);
