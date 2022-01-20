@@ -36,7 +36,7 @@ namespace control::test_selector
             if (!input_record_buffer.Event.KeyEvent.bKeyDown)
                 continue;
 
-            const WORD &user_input = input_record_buffer.Event.KeyEvent.wVirtualKeyCode;
+            const WORD &user_input = input_record_buffer.Event.KeyEvent.uChar.AsciiChar;
 
             switch (user_input)
             {
