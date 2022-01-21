@@ -122,7 +122,7 @@ namespace ui
     std::string UI::ask_for(const std::string& what, const std::string &entered_string)
     {
         system("cls");
-        std::cout << "Please provide " << what << ": ";
+        std::cout << "Please provide " << what << ": " << entered_string;
         return what;
     }
 }
