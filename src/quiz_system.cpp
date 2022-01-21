@@ -24,7 +24,6 @@ QuizSystem::QuizSystem()
     if (test_menu_option_action_type == control::test_menu::OptionType::kQuit)
         exit(0);
 
-    const std::string& choose_username = test_menu_option.second;
-
-    test::handle(selected_test, test_menu_option_action_type, choose_username);
+    const std::string& selected_username = test_menu_option.second;
+    test::handle(selected_test, test_menu_option_action_type, selected_username);
 }
