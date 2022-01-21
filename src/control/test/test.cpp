@@ -82,11 +82,11 @@ namespace control::test
                 case 'N':
                     test_data.questions.emplace_back(test_data::Question{get_new_question()});
                     break;
-                case 39:  // Left.
+                case 37:  // Left.
                     if (current_question_idx > 0)
                         --current_question_idx;
                     break;
-                case 41:  // Right.
+                case 39:  // Right.
                     if (current_question_idx < amount_of_questions - 1)
                         ++current_question_idx;
                     break;
@@ -150,11 +150,11 @@ namespace control::test
                 case 'R':
                     test_data.reported_issues.emplace_back(std::pair<string, string>{username, get_new_report()});
                     break;
-                case 39:  // Left.
+                case 37:  // Left.
                     if (current_question_idx > 0)
                         --current_question_idx;
                     break;
-                case 41:  // Right.
+                case 39:  // Right.
                     if (current_question_idx < amount_of_questions - 1)
                         ++current_question_idx;
                     break;
@@ -226,11 +226,11 @@ namespace control::test
                 case 'q':
                 case 'Q':
                     return test_data;
-                case 39:  // Left.
+                case 37:  // Left.
                     if (current_question_idx > 0)
                         --current_question_idx;
                     break;
-                case 41:  // Right.
+                case 39:  // Right.
                     if (current_question_idx < amount_of_questions - 1)
                         ++current_question_idx;
                     break;
