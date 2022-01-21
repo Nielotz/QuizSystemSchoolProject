@@ -4,7 +4,8 @@
 #include "../../headers/ui/ui.h"
 
 void ui::test_menu::Student::show(std::string test_name, std::string username, size_t amount_of_questions,
- std::map<std::string, int> users_points, std::vector<std::pair<std::string, std::string>> reported_issues, std::string selected_answer)
+                                  std::map<std::string, int> users_points, std::vector<std::pair<std::string, std::string>> reported_issues,
+                                  std::string selected_answer)
 {
     system("CLS");
 
@@ -21,15 +22,21 @@ void ui::test_menu::Student::show(std::string test_name, std::string username, s
     for (auto&[username_, points]: users_points)
     {
         if (username_ == username)
-            std::cout << "      " << username_ << " <" << points << "> / < " << amount_of_questions << std::endl;
+        {
+            ui::UI::set_console_text_background_color(0, 3);
+            std::cout << "      " << username_ << " <" << points << ">/<" << amount_of_questions << ">" << std::endl;
+            ui::UI::color_reset();
+            break;
+        }
     }
 
-    for (auto& [username_, issue] : reported_issues)
+    std::cout << "  <test reports>:" << std::endl;
+    for (auto&[username_, issue]: reported_issues)
     {
         if (username_ == username)
             std::cout << "      " << username_ << issue << std::endl;
     }
 
     std::cout << std::endl;
-    std::cout << "enter - take, s - show, q - quit";
+    std::cout << "enter - take / review, q - quit";
 }

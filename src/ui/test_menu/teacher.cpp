@@ -20,24 +20,23 @@ void ui::test_menu::Teacher::show(std::string test_name, std::string username,
 	std::cout << "      Number of questions: " << amount_of_questions << std::endl << std::endl;
 
 	std::cout << "  Completed tests:" << std::endl;
-	for (auto& [username, points] : users_points)
+	for (auto& [username_, points] : users_points)
 	{
-		if (selected_answer == username)
+		if (selected_answer == username_)
 		{
 			std::cout << "         ";
 			ui::UI::set_console_text_background_color(0, 3);
-			std::cout << username;
+			std::cout << username_;
 			ui::UI::color_reset();
 			std::cout << " <" << points << "> / < " << amount_of_questions << ">" << std::endl;
 		}
 		else
-			std::cout << "      " << username << " <" << points << "> / <" << amount_of_questions << ">" << std::endl;
+			std::cout << "      " << username_ << " <" << points << "> / <" << amount_of_questions << ">" << std::endl;
 	}
 
+	std::cout << "  <test reports>:" << std::endl;
 	for (auto& [username_, content] : reported_issues)
 	{
-		std::cout << "  <test reports>:" << std::endl;
-
 		if (username_ == selected_answer)
 		{
 			ui::UI::set_console_text_background_color(0, 3);
@@ -49,5 +48,5 @@ void ui::test_menu::Teacher::show(std::string test_name, std::string username,
 
 		std::cout << ": " << content << std::endl;
 	}
-	std::cout << "enter - show, q - quit, e - edit, enter - show students result, q - quit";
+	std::cout << "q - quit, e - edit, enter - show student answers";
 }
