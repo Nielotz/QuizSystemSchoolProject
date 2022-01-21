@@ -4,6 +4,7 @@
 #include "headers/test_selector.h"
 #include "headers/test_menu.h"
 #include "headers/test.h"
+#include "headers/database/user.h"
 
 QuizSystem::QuizSystem()
 {
@@ -19,11 +20,11 @@ QuizSystem::QuizSystem()
 
     auto test_menu_option = test_menu::handle(user_data.username, control, selected_test);
 
-    control::test_menu::OptionType& test_menu_option_action_type = test_menu_option.first;
+    control::test_menu::OptionType &test_menu_option_action_type = test_menu_option.first;
 
     if (test_menu_option_action_type == control::test_menu::OptionType::kQuit)
         exit(0);
 
-    const std::string& selected_username = test_menu_option.second;
+    const std::string &selected_username = test_menu_option.second;
     test::handle(selected_test, test_menu_option_action_type, selected_username);
 }

@@ -1,2 +1,2 @@
-testname1|question 1/^My answer1/^My answer2/^My answ3/;my correct ans1/;correct2|question 2/^My answer12/^My answer22/^My answ32/;my correct ans12/;correct22|
+testname1|question 1/^My answer1/^My answer2/^My answ3/^my correct ans1/^correct2/;my correct ans1/;correct2|question 2/^My answer12/^My answer22/^My answ32/^my correct ans12/^correct22/;my correct ans12/;correct22|
 testname2|question 12/^My answer12/^My answer22/^My answ32/;my correct ans12/;correct22|question 23/^My answer13/^My answer23/^My answ33/;my correct ans13/;correct23|

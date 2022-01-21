@@ -3,6 +3,8 @@ project(src)
 
 set(CMAKE_CXX_STANDARD 23)
 
+enable_testing()
+
 add_executable(src main.cpp
         # General.
         headers/quiz_system.h quiz_system.cpp
@@ -50,5 +52,5 @@ add_executable(src main.cpp
         headers/ui/test_selector/teacher.h ui/test_selector/teacher.cpp
 
         headers/ui/test/test.h ui/test/test.cpp
-        )
+        tests/database.cpp)
  
