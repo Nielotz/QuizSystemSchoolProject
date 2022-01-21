@@ -54,7 +54,7 @@ namespace control
                         }
                         break;
                     default:
-                        if (isprint(user_input) && user_input < 256)
+                        if (isprint(user_input) && user_input < 256 && !std::string("|/^\\;").contains(char(user_input)))
                         {
                             entered_answer.push_back(char(user_input));
                             ui::UI::ask_for(string_description, entered_answer);
