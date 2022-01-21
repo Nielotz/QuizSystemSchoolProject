@@ -27,7 +27,8 @@ namespace control::test
             selected_answer = first_question.answers[selected_answer_idx];
         }
 
-        ui::test::show_take_question(first_question.question, first_question.answers, first_question.students_answers.at(username),
+        ui::test::show_take_question(test_data.name, first_question.question, first_question.answers,
+                                     first_question.students_answers.at(username),
                                      selected_answer, current_question_idx + 1, amount_of_questions);
 
         // Get the standard input handle.
@@ -100,23 +101,23 @@ namespace control::test
                 default:;
             }
             const test_data::Question &question = test_data.questions[current_question_idx];
-            ui::test::show_take_question(question.question, question.answers,
+            ui::test::show_take_question(test_data.name, question.question, question.answers,
                                          question.students_answers.at(username),
                                          selected_answer, current_question_idx + 1, amount_of_questions);
         }
     }
 
-    void review(const test_data::TestData &test_data, const string &username)
+    test_data::TestData review(test_data::TestData test_data, const string &username)
     {
         const int &amount_of_questions = int(test_data.questions.size());
 
         if (amount_of_questions == 0)
-            return;
+            return test_data;
 
         int current_question_idx = 0;
         const test_data::Question &first_question = test_data.questions[0];
 
-        ui::test::show_review_question(first_question.question, first_question.answers,
+        ui::test::show_review_question(test_data.name, first_question.question, first_question.answers,
                                        first_question.correct_answers, first_question.students_answers.at(username),
                                        current_question_idx + 1, amount_of_questions);
 
@@ -141,11 +142,11 @@ namespace control::test
             {
                 case 'q':
                 case 'Q':
-                    return;
+                    return test_data;
                 case 'r':
                 case 'R':
-                    // Report.
-                    return;
+                    test_data.reported_issues.emplace_back(std::pair<string, string>{username, get_new_report()});
+                    break;
                 case 39:  // Left.
                     if (current_question_idx > 0)
                         --current_question_idx;
@@ -157,7 +158,7 @@ namespace control::test
                 default:;
             }
             const test_data::Question &question = test_data.questions[current_question_idx];
-            ui::test::show_review_question(question.question, question.answers,
+            ui::test::show_review_question(test_data.name, question.question, question.answers,
                                            question.correct_answers, question.students_answers.at(username),
                                            current_question_idx + 1, amount_of_questions);
         }
@@ -181,7 +182,8 @@ namespace control::test
             selected_answer = first_question.answers[selected_answer_idx];
         }
 
-        ui::test::show_take_question(first_question.question, first_question.answers, first_question.students_answers.at(username),
+        ui::test::show_take_question(test_data.name, first_question.question, first_question.answers,
+                                     first_question.students_answers.at(username),
                                      selected_answer, current_question_idx + 1, amount_of_questions);
 
         // Get the standard input handle.
@@ -240,7 +242,7 @@ namespace control::test
                 default:;
             }
             const test_data::Question &question = test_data.questions[current_question_idx];
-            ui::test::show_take_question(question.question, question.answers,
+            ui::test::show_take_question(test_data.name, question.question, question.answers,
                                          question.students_answers.at(username),
                                          selected_answer, current_question_idx + 1, amount_of_questions);
         }
@@ -326,6 +328,49 @@ namespace control::test
                         {
                             entered_question.push_back(char(user_input));
                             ui::UI::ask_for("question", entered_question);
+                        }
+                }
+            }
+        }
+    }
+
+    std::string get_new_report()
+    {
+        // Get the standard input handle.
+        HANDLE handle_stdin = GetStdHandle(STD_INPUT_HANDLE);
+
+        std::string entered_report;
+        ui::UI::ask_for("report", entered_report);
+
+        while (true)
+        {
+            INPUT_RECORD input_record_buffer;
+            DWORD events;
+
+            PeekConsoleInput(handle_stdin, &input_record_buffer, 1, &events);
+            if (events > 0)
+            {
+                ReadConsoleInput(handle_stdin, &input_record_buffer, 1, &events);
+                if (!input_record_buffer.Event.KeyEvent.bKeyDown)
+                    continue;
+                const WORD &user_input = input_record_buffer.Event.KeyEvent.uChar.AsciiChar;
+
+                switch (user_input)
+                {
+                    case 13:  // RETURN
+                        return entered_report;
+                    case 8:  // BACKSPACE
+                        if (!entered_report.empty())
+                        {
+                            entered_report.pop_back();
+                            ui::UI::ask_for("report", entered_report);
+                        }
+                        break;
+                    default:
+                        if (isprint(user_input) && user_input < 256)
+                        {
+                            entered_report.push_back(char(user_input));
+                            ui::UI::ask_for("report", entered_report);
                         }
                 }
             }

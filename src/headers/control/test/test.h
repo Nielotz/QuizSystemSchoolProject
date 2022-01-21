@@ -9,9 +9,11 @@ namespace control::test
 
     std::string get_new_question();
 
+    std::string get_new_report();
+
     test_data::TestData take(test_data::TestData test_data, const std::string &username);
 
-    void review(const test_data::TestData &test_data, const std::string &username);
+    test_data::TestData review(test_data::TestData test_data, const std::string &username);
 
     test_data::TestData edit(test_data::TestData test_data, const std::string &username);
 

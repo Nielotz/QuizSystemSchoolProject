@@ -4,8 +4,9 @@
 #include <memory>
 
 #include "../shared/account_type.h"
-#include "../ui/test_menu/test_menu.h"
-#include "../ui/test_selector/test_selector.h"
+#include "test_menu/test_menu.h"
+#include "test_selector/test_selector.h"
+#include "ui.h"
 #include "test/test.h"
 
 namespace ui
@@ -26,17 +27,9 @@ namespace ui
         static void set_console_text_color(const int text_color);
         static void set_console_text_background_color(const int text_color, const int background_color);
         static void color_reset();
+        static void confirmation(bool is_no_selected);
         static std::string ask_for(const std::string& what, const std::string& entered_string);
     };
-
-    namespace test
-    {
-        void show_edit_question(std::string question, std::vector<std::string> answers, std::vector<std::string> correct_answers);
-
-        void show_review_question(std::string question, std::vector<std::string> answers, std::vector<std::string> correct_answers, std::vector<std::string> marked_answers);
-
-        void show_take_question(std::string question, std::vector<std::string> answers, std::vector<std::string> marked_answers);
-    }
 }
 #endif //SRC_UI_UI_H
 
