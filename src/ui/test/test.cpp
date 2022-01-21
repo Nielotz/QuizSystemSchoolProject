@@ -17,7 +17,7 @@ namespace ui::test
 
         ui::UI::print_logo();
 
-        std::cout << "  =================" << std::endl;
+        std::cout << "  =================" << std::endl;     //NOWA WERSJA
         std::cout << "  + Test editing  +" << std::endl;
         std::cout << "  =================" << std::endl << std::endl;
 
@@ -26,30 +26,37 @@ namespace ui::test
         std::cout << "  Question [<" << question_number << ">/<" << question_amount << ">]:" << std::endl;
         std::cout << "      <" << question << ">" << std::endl << std::endl;
         std::cout << "  Answers" << std::endl;
-        std::cout << "      correct     answer" << std::endl;
+        std::cout << "      correct    " << std::endl;
+        
+        bool is_marked = false;
+        
         for (const auto &answer_: answers)
         {
-            bool is_marked = false;
+            if (answer_ == selected_answer && is_marked == false)
+            {
+                std::cout << "  ";
+                ui::UI::set_console_text_background_color(3, 0);
+                std::cout << "-> ";
+                ui::UI::color_reset();
+            }
+
+            else
+                std::cout << "     ";
+
             for (auto &correct_answer: correct_answers)
             {
-                if (answer_ == correct_answer)
+                if (answer_ == correct_answer && is_marked==false)
                 {
-                    std::cout << "         [X] <";
+                    std::cout << " [X]  "<< answer_ << std::endl;
                     is_marked = true;
-                    break;
-                }
-            }
-            if (!is_marked)
-                std::cout << "         [ ] <";
 
-            if (answer_ == selected_answer)
-            {
-                ui::UI::set_console_text_background_color(0, 3);
-                std::cout << answer_;
-                ui::UI::color_reset();
-                std::cout << std::endl;
+                } 
             }
+
+            if (!is_marked)
+                std::cout << " [ ]  " << answer_ << std::endl;
         }
+        std::cout << std::endl << std::endl;
         std::cout << "e - edit, enter, q - quit, a - add answer, d - delete answer";
     }
 
