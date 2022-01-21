@@ -10,7 +10,7 @@ using std::endl;
 namespace ui::test
 {
     void show_edit_question(const std::string& test_name, const std::string& question,
-        const std::vector<std::string>& answers, const std::vector<std::string>& correct_answers,
+        const std::vector<std::string>& answers, const std::vector<std::string>& marked_answers, const std::vector<std::string>& correct_answers,
         const std::string& selected_answer, int question_number, int question_amount)
     {
         system("CLS");
@@ -29,12 +29,25 @@ namespace ui::test
         std::cout << "      correct     answer" << std::endl;
         for (auto answer_ : answers)
         {
+            for (auto& marked_answer : marked_answers)
+            {
+                if (answer_ == marked_answer)
+                    std::cout << "         [X] <";
 
-            if (answer_ == selected_answer)
-                std::cout << "      [X]    <" << answer_ << ">" << std::endl;
+                else
+                    std::cout << "         [ ] <";
+            }
 
-            else
-                std::cout << "      [ ]    <" << answer_ << ">" << std::endl;
+            for (auto& selected_answer_ : selected_answer)
+            {
+                if (answer_ == selected_answer)
+                {
+                    ui::UI::set_console_text_background_color(0, 3);
+                    std::cout << answer_;
+                    ui::UI::color_reset();
+                    std::cout << std::endl;
+                }
+            }
         }
         std::cout << "e - edit, enter, q - quit, a - add answer, d - delete answer";
     }
@@ -73,7 +86,7 @@ namespace ui::test
                     std::cout << "         [ ] <" << answer << ">" << std::endl;
             }
         }
-        std::cout << "r - report, → next, ← previous, q - quit";
+        std::cout << "r - report, -> next, <- previous, q - quit";
     }
 
     void show_take_question(const std::string& test_name, const std::string& question, const std::vector<std::string>& answers, const std::vector<std::string>& marked_answers, const std::vector<std::string>& selected_answer, int question_number, int question_amount)
@@ -92,11 +105,25 @@ namespace ui::test
 
         for (auto answer_ : answers)
         {
-            if (answer_ == selected_answer)
-                std::cout << "    [X] <" << answer_ << ">" << std::endl;
+            for (auto& marked_answer : marked_answers)
+            {
+                if (answer_ == marked_answer)
+                    std::cout << "         [X] <";
 
-            else
-                std::cout << "    [ ] <" << answer_ << ">" << std::endl;
+                else
+                    std::cout << "         [ ] <";
+            }
+
+            for (auto& selected_answer_ : selected_answer)
+            {
+                if (answer_ == selected_answer_)
+                {
+                    ui::UI::set_console_text_background_color(0, 3);
+                    std::cout << answer_;
+                    ui::UI::color_reset();
+                    std::cout << std::endl;
+                }
+            }
         }
         std::cout << "enter - mark/unmark answer, q - quit";
     }
