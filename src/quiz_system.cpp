@@ -19,13 +19,12 @@ QuizSystem::QuizSystem()
 
     auto test_menu_option = test_menu::handle(user_data.username, control, selected_test);
 
-    control::test_menu::OptionType& action_type = test_menu_option.first;
+    control::test_menu::OptionType& test_menu_option_action_type = test_menu_option.first;
 
-    if (action_type == control::test_menu::OptionType::kQuit)
-        // TODO: "Are you sure?" dialogue.
-        return;
+    if (test_menu_option_action_type == control::test_menu::OptionType::kQuit)
+        exit(0);
 
     const std::string& choose_username = test_menu_option.second;
 
-    test::handle(selected_test, action_type, choose_username);
+    test::handle(selected_test, test_menu_option_action_type, choose_username);
 }

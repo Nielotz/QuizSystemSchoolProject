@@ -23,7 +23,7 @@ namespace control::test_menu
         if (test_data.users_points.contains(username))
         {
             selected_username = username;
-
+            selected_username_idx = 0;
             // If user_points contains username, usernames contain too
             while (usernames[selected_username_idx] != username)
                 selected_username_idx++;
