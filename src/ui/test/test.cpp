@@ -104,6 +104,7 @@ namespace ui::test
             if (!is_marked)
                 std::cout << "         [ ] <" << answer << ">" << std::endl;
         }
+        std::cout << std::endl;
         std::cout << "r - report, -> next, <- previous, q - quit";
     }
 
@@ -146,6 +147,7 @@ namespace ui::test
                 std::cout << std::endl;
             }
         }
+        std::cout << std::endl;
         std::cout << "enter - mark/unmark answer, q - quit";
     }
 
