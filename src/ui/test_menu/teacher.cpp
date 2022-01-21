@@ -13,7 +13,7 @@ void ui::test_menu::Teacher::show(std::string test_name, std::string username,
 	ui::UI::print_logo();
 
 	std::cout << "  =============" << std::endl;
-	std::cout << "  + Test Menu +" << std::endl;
+	std::cout << "  + Test Menu +" << std::endl;    //NOWA WERSJA
 	std::cout << "  =============" << std::endl << std::endl;
 
 	std::cout << "  Test: <" << test_name << ">" << std::endl;
@@ -24,11 +24,11 @@ void ui::test_menu::Teacher::show(std::string test_name, std::string username,
 	{
 		if (selected_answer == username_)
 		{
-			std::cout << "         ";
+			std::cout << "       ";
 			ui::UI::set_console_text_background_color(0, 3);
 			std::cout << username_;
 			ui::UI::color_reset();
-			std::cout << " <" << points << "> / < " << amount_of_questions << ">" << std::endl;
+			std::cout << " <" << points << "> / <" << amount_of_questions << ">" << std::endl;
 		}
 		else
 			std::cout << "      " << username_ << " <" << points << "> / <" << amount_of_questions << ">" << std::endl;
