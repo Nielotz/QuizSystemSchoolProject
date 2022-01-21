@@ -1,3 +1,6 @@
+Student|Haslo|1
+Test user|Test user|1
+Prowadzacy|Haslo|0
 studen|Haslo|1
 Prow|Haslo|0
 TestUsername|TestPassword|1
