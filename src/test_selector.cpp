@@ -29,7 +29,7 @@ test_data::TestData test_selector::select_test(const control::Control &control)
             case control::test_selector::OptionType::kNew:
                 while (true)
                 {
-                    const string &new_test_name = control::get_safe_string_from_user("answer");
+                    const string &new_test_name = control::get_safe_string_from_user("test name");
                     bool already_exists = false;
                     for (const auto &test_name: database::test::get_test_names())
                         if (test_name == new_test_name)
