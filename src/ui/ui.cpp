@@ -68,6 +68,8 @@ namespace ui
 
     void UI::confirmation(const std::string& question, bool is_no_selected)
     {
+        system("cls");
+
         std::cout << std::endl << std::endl << std::endl << std::endl << std::endl << std::endl << std::endl << std::endl << std::endl << std::endl;
         std::cout << "                                ===================================================" << std::endl;
         std::cout << "                                |";
@@ -119,7 +121,8 @@ namespace ui
 
     std::string UI::ask_for(const std::string& what, const std::string &entered_string)
     {
-        std::cout << "Please provide: " << what;
+        system("cls");
+        std::cout << "Please provide " << what << ": ";
         return what;
     }
 }
