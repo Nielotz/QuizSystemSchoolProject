@@ -27,8 +27,7 @@ namespace control::test
             selected_answer = first_question.answers[selected_answer_idx];
         }
 
-        ui::test::show_take_question(test_data.name, first_question.question, first_question.answers,
-                                     first_question.students_answers.at(username),
+        ui::test::show_edit_question(test_data.name, first_question.question, first_question.answers, first_question.correct_answers,
                                      selected_answer, current_question_idx + 1, amount_of_questions);
 
         // Get the standard input handle.
@@ -101,8 +100,7 @@ namespace control::test
                 default:;
             }
             const test_data::Question &question = test_data.questions[current_question_idx];
-            ui::test::show_take_question(test_data.name, question.question, question.answers,
-                                         question.students_answers.at(username),
+            ui::test::show_edit_question(test_data.name, question.question, question.answers, question.correct_answers,
                                          selected_answer, current_question_idx + 1, amount_of_questions);
         }
     }
@@ -117,8 +115,10 @@ namespace control::test
         int current_question_idx = 0;
         const test_data::Question &first_question = test_data.questions[0];
 
+        std::vector<std::string> student_answers;
+
         ui::test::show_review_question(test_data.name, first_question.question, first_question.answers,
-                                       first_question.correct_answers, first_question.students_answers.at(username),
+                                       first_question.correct_answers, student_answers,
                                        current_question_idx + 1, amount_of_questions);
 
         // Get the standard input handle.
@@ -137,7 +137,9 @@ namespace control::test
                 continue;
 
             const WORD &user_input = input_record_buffer.Event.KeyEvent.wVirtualKeyCode;
-
+            
+            test_data.questions[current_question_idx].students_answers[username] = student_answers;
+            
             switch (user_input)
             {
                 case 'q':
@@ -159,7 +161,7 @@ namespace control::test
             }
             const test_data::Question &question = test_data.questions[current_question_idx];
             ui::test::show_review_question(test_data.name, question.question, question.answers,
-                                           question.correct_answers, question.students_answers.at(username),
+                                           question.correct_answers, student_answers,
                                            current_question_idx + 1, amount_of_questions);
         }
     }

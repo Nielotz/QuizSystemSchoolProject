@@ -10,8 +10,7 @@ using std::endl;
 namespace ui::test
 {
     void show_edit_question(const std::string &test_name, const std::string &question,
-                            const std::vector<std::string> &answers, const std::vector<std::string> &marked_answers,
-                            const std::vector<std::string> &correct_answers,
+                            const std::vector<std::string> &answers, const std::vector<std::string> &correct_answers,
                             const std::string &selected_answer, int question_number, int question_amount)
     {
         system("CLS");
@@ -31,9 +30,9 @@ namespace ui::test
         for (const auto &answer_: answers)
         {
             bool is_marked = false;
-            for (auto &marked_answer: marked_answers)
+            for (auto &correct_answer: correct_answers)
             {
-                if (answer_ == marked_answer)
+                if (answer_ == correct_answer)
                 {
                     std::cout << "         [X] <";
                     is_marked = true;
