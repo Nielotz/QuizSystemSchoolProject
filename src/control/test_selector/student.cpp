@@ -5,7 +5,7 @@
 
 namespace control::test_selector
 {
-    std::string Student::control_test_selection(std::vector<std::string> tests_names)
+    std::pair<control::test_selector::OptionType, std::string> Student::control_test_selection(std::vector<std::string> tests_names)
     {
         std::string selected_test;
         int selected_test_idx = -1;
@@ -39,20 +39,19 @@ namespace control::test_selector
             {
                 case 13:  // RETURN
                     if (!selected_test.empty())
-                        return selected_test;
+                        return {control::test_selector::OptionType::kOpen, selected_test};
                 case 'q':
                 case 'Q':
-                    return "";
-                case 38:  // up
+                    return {control::test_selector::OptionType::kQuit, ""};
+                case 38:
                     if (selected_test_idx > 0)
                         selected_test = tests_names[--selected_test_idx];
                     break;
-                case 40:  // down
+                case 40:
                     if (selected_test_idx < tests_names.size() - 1)
                         selected_test = tests_names[++selected_test_idx];
                     break;
                 default:;
-
             }
             ui::UI::get().test_selector_->ask_select_test(tests_names, selected_test);
         }

@@ -8,7 +8,7 @@ namespace control::test_selector
     class Student : public TestSelector
     {
     public:
-        std::string control_test_selection(std::vector<std::string> tests_names) override;
+        std::pair<control::test_selector::OptionType, std::string> control_test_selection(std::vector<std::string> tests_names) override;
     };
 }
 

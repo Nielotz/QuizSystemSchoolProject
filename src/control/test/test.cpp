@@ -4,6 +4,7 @@
 #include "../../headers/control/test/test.h"
 #include "../../headers/ui/test/test.h"
 #include "../../headers/ui/ui.h"
+#include "../../headers/control/control.h"
 
 namespace control::test
 {
@@ -252,130 +253,16 @@ namespace control::test
 
     std::string get_new_answer()
     {
-        // Get the standard input handle.
-        HANDLE handle_stdin = GetStdHandle(STD_INPUT_HANDLE);
-
-        std::string entered_answer;
-        ui::UI::ask_for("answer", entered_answer);
-
-        while (true)
-        {
-            INPUT_RECORD input_record_buffer;
-            DWORD events;
-
-            PeekConsoleInput(handle_stdin, &input_record_buffer, 1, &events);
-            if (events > 0)
-            {
-                ReadConsoleInput(handle_stdin, &input_record_buffer, 1, &events);
-                if (!input_record_buffer.Event.KeyEvent.bKeyDown)
-                    continue;
-                const WORD &user_input = input_record_buffer.Event.KeyEvent.uChar.AsciiChar;
-
-                switch (user_input)
-                {
-                    case 13:  // RETURN
-                        return entered_answer;
-                    case 8:  // BACKSPACE
-                        if (!entered_answer.empty())
-                        {
-                            entered_answer.pop_back();
-                            ui::UI::ask_for("answer", entered_answer);
-                        }
-                        break;
-                    default:
-                        if (isprint(user_input) && user_input < 256)
-                        {
-                            entered_answer.push_back(char(user_input));
-                            ui::UI::ask_for("answer", entered_answer);
-                        }
-                }
-            }
-        }
+        return get_safe_string_from_user("answer");
     }
 
     std::string get_new_question()
     {
-        // Get the standard input handle.
-        HANDLE handle_stdin = GetStdHandle(STD_INPUT_HANDLE);
-
-        std::string entered_question;
-        ui::UI::ask_for("question", entered_question);
-
-        while (true)
-        {
-            INPUT_RECORD input_record_buffer;
-            DWORD events;
-
-            PeekConsoleInput(handle_stdin, &input_record_buffer, 1, &events);
-            if (events > 0)
-            {
-                ReadConsoleInput(handle_stdin, &input_record_buffer, 1, &events);
-                if (!input_record_buffer.Event.KeyEvent.bKeyDown)
-                    continue;
-                const WORD &user_input = input_record_buffer.Event.KeyEvent.uChar.AsciiChar;
-
-                switch (user_input)
-                {
-                    case 13:  // RETURN
-                        return entered_question;
-                    case 8:  // BACKSPACE
-                        if (!entered_question.empty())
-                        {
-                            entered_question.pop_back();
-                            ui::UI::ask_for("question", entered_question);
-                        }
-                        break;
-                    default:
-                        if (isprint(user_input) && user_input < 256)
-                        {
-                            entered_question.push_back(char(user_input));
-                            ui::UI::ask_for("question", entered_question);
-                        }
-                }
-            }
-        }
+        return get_safe_string_from_user("question");
     }
 
     std::string get_new_report()
     {
-        // Get the standard input handle.
-        HANDLE handle_stdin = GetStdHandle(STD_INPUT_HANDLE);
-
-        std::string entered_report;
-        ui::UI::ask_for("report", entered_report);
-
-        while (true)
-        {
-            INPUT_RECORD input_record_buffer;
-            DWORD events;
-
-            PeekConsoleInput(handle_stdin, &input_record_buffer, 1, &events);
-            if (events > 0)
-            {
-                ReadConsoleInput(handle_stdin, &input_record_buffer, 1, &events);
-                if (!input_record_buffer.Event.KeyEvent.bKeyDown)
-                    continue;
-                const WORD &user_input = input_record_buffer.Event.KeyEvent.uChar.AsciiChar;
-
-                switch (user_input)
-                {
-                    case 13:  // RETURN
-                        return entered_report;
-                    case 8:  // BACKSPACE
-                        if (!entered_report.empty())
-                        {
-                            entered_report.pop_back();
-                            ui::UI::ask_for("report", entered_report);
-                        }
-                        break;
-                    default:
-                        if (isprint(user_input) && user_input < 256)
-                        {
-                            entered_report.push_back(char(user_input));
-                            ui::UI::ask_for("report", entered_report);
-                        }
-                }
-            }
-        }
+        return get_safe_string_from_user("report");
     }
 }

@@ -3,10 +3,11 @@
 #include "../../headers/control/test_selector/teacher.h"
 #include "../../headers/ui/ui.h"
 #include "../../headers/database/test.h"
+#include "../../headers/control/control.h"
 
 namespace control::test_selector
 {
-    std::string Teacher::control_test_selection(std::vector<std::string> tests_names)
+    std::pair<control::test_selector::OptionType, std::string> Teacher::control_test_selection(std::vector<std::string> tests_names)
     {
         std::string selected_test;
         int selected_test_idx = -1;
@@ -40,35 +41,17 @@ namespace control::test_selector
             {
                 case 13:  // RETURN
                     if (!selected_test.empty())
-                        return selected_test;
+                        return {control::test_selector::OptionType::kOpen, selected_test};
                 case 'q':
                 case 'Q':
-                    return "";
+                    return {control::test_selector::OptionType::kQuit, ""};
                 case 'n':
                 case 'N':
-                    return "[Create]";
+                    return {control::test_selector::OptionType::kNew, get_safe_string_from_user("test name")};
                 case 'd':
                 case 'D':
-                    if (selected_test.empty())
-                        break;
-                    database::test::delete_test(selected_test);
-                    tests_names.erase(tests_names.begin() + selected_test_idx);
-                    selected_test_idx--;
-                    if (selected_test_idx > -1)
-                        selected_test = tests_names[selected_test_idx];
-                    else
-                    {
-                        if (!tests_names.empty())
-                        {
-                            selected_test = tests_names[0];
-                            selected_test_idx = 0;
-                        }
-                        else
-                        {
-                            selected_test = "";
-                            selected_test_idx = -1;
-                        }
-                    }
+                    if (!selected_test.empty())
+                        return {control::test_selector::OptionType::kDelete, selected_test};
                 case 38:
                     if (selected_test_idx > 0)
                         selected_test = tests_names[--selected_test_idx];

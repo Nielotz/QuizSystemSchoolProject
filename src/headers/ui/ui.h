@@ -27,7 +27,7 @@ namespace ui
         static void set_console_text_color(const int text_color);
         static void set_console_text_background_color(const int text_color, const int background_color);
         static void color_reset();
-        static void confirmation(bool is_no_selected);
+        static void confirmation(const std::string& question, bool is_no_selected);
         static std::string ask_for(const std::string& what, const std::string& entered_string);
     };
 }

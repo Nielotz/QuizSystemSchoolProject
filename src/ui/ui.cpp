@@ -57,7 +57,6 @@ namespace ui
 
     void UI::print_logo()
     {
-        HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
         std::cout << "       =========================================================================================================" << std::endl;
         std::cout << "       =                                            ";
         UI::set_console_text_color(3);
@@ -67,13 +66,13 @@ namespace ui
         std::cout << "       =========================================================================================================" << std::endl;
     }
 
-    void UI::confirmation(bool is_no_selected)
+    void UI::confirmation(const std::string& question, bool is_no_selected)
     {
         std::cout << std::endl << std::endl << std::endl << std::endl << std::endl << std::endl << std::endl << std::endl << std::endl << std::endl;
         std::cout << "                                ===================================================" << std::endl;
         std::cout << "                                |";
         UI::set_console_text_background_color(15, 1);
-        std::cout << "            DO YOU WANT TO CONTINUE ?            ";
+        std::cout << question;
         UI::color_reset();
         std::cout << "|" << std::endl;
         std::cout << "                                |";

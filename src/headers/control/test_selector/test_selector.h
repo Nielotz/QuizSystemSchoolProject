@@ -4,12 +4,14 @@
 #include <string>
 #include <vector>
 
+#include "option_type.h"
+
 namespace control::test_selector
 {
     class TestSelector
     {
     public:
-        virtual std::string control_test_selection(std::vector<std::string> tests_names) = 0;
+        virtual std::pair<control::test_selector::OptionType, std::string> control_test_selection(std::vector<std::string> tests_names) = 0;
     };
 }
 
