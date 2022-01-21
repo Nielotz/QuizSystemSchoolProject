@@ -115,7 +115,7 @@ namespace control::test
         int current_question_idx = 0;
         const test_data::Question &first_question = test_data.questions[0];
 
-        std::vector<std::string> student_answers;
+        std::vector<std::string> student_answers = test_data.questions[0].students_answers[username];
 
         ui::test::show_review_question(test_data.name, first_question.question, first_question.answers,
                                        first_question.correct_answers, student_answers,

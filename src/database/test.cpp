@@ -222,6 +222,7 @@ namespace database
                         {
                             read_part = read_part.replace(0, 1, "");
                             correct_answers.push_back(read_part);
+                            answers.push_back(read_part);
                         }
                         else
                             throw exception("<test database>Bad mark in file!");
