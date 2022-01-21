@@ -5,11 +5,11 @@ set(CMAKE_CXX_STANDARD 23)
 
 add_executable(src main.cpp
         # General.
+        headers/quiz_system.h quiz_system.cpp
         headers/auth.h auth.cpp
         headers/test_menu.h test_menu.cpp
         headers/test_selector.h test_selector.cpp
         headers/test.h test.cpp
-        headers/quiz_system.h quiz_system.cpp
 
         # Shared.
         headers/shared/user_data.h
@@ -48,6 +48,7 @@ add_executable(src main.cpp
         headers/ui/test_selector/test_selector.h
         headers/ui/test_selector/student.h ui/test_selector/student.cpp
         headers/ui/test_selector/teacher.h ui/test_selector/teacher.cpp
+
         headers/ui/test/test.h ui/test/test.cpp
         )
  
