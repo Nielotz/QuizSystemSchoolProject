@@ -11,7 +11,7 @@ void test_test()
 {
     database::test::check_file(database::test::test_path);
 
-    test_data::TestData test_data = database::test::get_test_data("Test data"));
+    test_data::TestData test_data = database::test::get_test_data("Test data");
     assert(!test_data.name.empty());
 
     database::test::get_test_names();
