@@ -1,7 +1,7 @@
 #ifndef SRC_AUTH_H
 #define SRC_AUTH_H
 
-#include "../headers/shared/user_data.h"
+#include "../src/headers/shared/user_data.h"
 
 namespace auth
 {

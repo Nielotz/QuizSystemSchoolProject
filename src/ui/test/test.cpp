@@ -9,9 +9,9 @@ using std::endl;
 
 namespace ui::test
 {
-    void show_edit_question(const std::string& test_name, const std::string& question,
-        const std::vector<std::string>& answers, const std::vector<std::string>& correct_answers,
-        const std::string& selected_answer, int question_number, int question_amount)
+    void show_edit_question(const std::string &test_name, const std::string &question,
+                            const std::vector<std::string> &answers, const std::vector<std::string> &correct_answers,
+                            const std::string &selected_answer, int question_number, int question_amount)
     {
         system("CLS");
 
@@ -30,7 +30,7 @@ namespace ui::test
 
         bool is_marked = false;
 
-        for (const auto& answer_ : answers)
+        for (const auto &answer_: answers)
         {
             if (answer_ == selected_answer && is_marked == false)
             {
@@ -43,7 +43,7 @@ namespace ui::test
             else
                 std::cout << "     ";
 
-            for (auto& correct_answer : correct_answers)
+            for (auto &correct_answer: correct_answers)
             {
                 if (answer_ == correct_answer && is_marked == false)
                 {
@@ -60,9 +60,9 @@ namespace ui::test
         std::cout << "e - edit, enter, q - quit, a - add answer, d - delete answer";
     }
 
-    void show_review_question(const std::string& test_name, const std::string& question, const std::vector<std::string>& answers,
-        const std::vector<std::string>& correct_answers, const std::vector<std::string>& marked_answers,
-        int question_number, int question_amount)
+    void show_review_question(const std::string &test_name, const std::string &question, const std::vector<std::string> &answers,
+                              const std::vector<std::string> &correct_answers, const std::vector<std::string> &marked_answers,
+                              int question_number, int question_amount)
     {
         system("CLS");
 
@@ -76,10 +76,10 @@ namespace ui::test
         std::cout << "      Question: [<" << question_number << "> / <" << question_amount << ">]: " << question << std::endl;
         std::cout << "      Correct:    Marked:     Answers:" << std::endl;
 
-        for (const auto& answer : answers)
+        for (const auto &answer: answers)
         {
             bool is_marked = false;
-            for (const auto& correct_answer : correct_answers)
+            for (const auto &correct_answer: correct_answers)
             {
                 if (answer == correct_answer)
                 {
@@ -92,7 +92,7 @@ namespace ui::test
                 std::cout << "    [ ]";
 
             is_marked = false;
-            for (const auto& marked_answer : marked_answers)
+            for (const auto &marked_answer: marked_answers)
             {
                 if (answer == marked_answer)
                 {
@@ -108,9 +108,9 @@ namespace ui::test
         std::cout << "r - report, -> next, <- previous, q - quit";
     }
 
-    void show_take_question(const std::string& test_name, const std::string& question, const std::vector<std::string>& answers,
-        const std::vector<std::string>& marked_answers, const std::string& selected_answer,
-        int question_number, int question_amount)
+    void show_take_question(const std::string &test_name, const std::string &question, const std::vector<std::string> &answers,
+                            const std::vector<std::string> &marked_answers, const std::string &selected_answer,
+                            int question_number, int question_amount)
     {
         system("CLS");
 
@@ -124,38 +124,36 @@ namespace ui::test
         std::cout << "  Question: [<" << question_number << "> / <" << question_amount << ">]: " << question << std::endl;
         std::cout << "  Answers:" << std::endl;
 
-        bool is_marked = false;
-
-        for (const auto& answer_ : answers)
+        for (const auto &answer_: answers)
         {
-            if (answer_ == selected_answer && is_marked == false)
+            if (answer_ == selected_answer)
             {
-                std::cout << "  ";
                 ui::UI::set_console_text_background_color(3, 0);
-                std::cout << "-> ";
+                std::cout << "  -> ";
                 ui::UI::color_reset();
             }
-
             else
                 std::cout << "     ";
 
-            for (auto& marked_answer : marked_answers)
-            {
-                if (answer_ == marked_answer && is_marked == false)
+            bool is_marked = false;
+            for (auto &marked_answer: marked_answers)
+                if (answer_ == marked_answer)
                 {
-                    std::cout << "       [X]";
+                    std::cout << "   [X]";
                     is_marked = true;
                     break;
                 }
-            }
             if (!is_marked)
-                std::cout << "         [ ]";
+                std::cout << "   [ ]";
+
+            std::cout << "    " << answer_ << endl;
+
         }
         std::cout << std::endl;
         std::cout << "enter - mark/unmark answer, q - quit";
     }
 
-    void add_test(const std::string& entered_name)
+    void add_test(const std::string &entered_name)
     {
         system("CLS");
 
