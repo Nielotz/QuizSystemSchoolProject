@@ -58,6 +58,8 @@ namespace control::test
             {
                 case 13:  // RETURN.
                 {
+                    if (test_data.questions.empty())
+                        break;
                     bool found = false;
                     vector<string> &correct = test_data.questions[current_question_idx].correct_answers;
 
@@ -98,6 +100,7 @@ namespace control::test
                             selected_answer_idx = -1;
                         }
                     }
+                    break;
                 case 'r':
                 case 'R':
                     if (current_question_idx == -1)
@@ -130,7 +133,14 @@ namespace control::test
                         const auto &new_answer = get_new_answer();
 
                         if (std::find(answers.begin(), answers.end(), new_answer) == answers.end())
+                        {
                             question.answers.emplace_back(new_answer);
+                            if (selected_answer_idx == -1)
+                            {
+                                selected_answer_idx = 0;
+                                selected_answer = new_answer;
+                            }
+                        }
                     }
                     break;
                 case 'n':
