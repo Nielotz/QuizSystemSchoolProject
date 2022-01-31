@@ -1,5 +1,5 @@
-#include "headers/control/control.h"
 #include "headers/quiz_system.h"
+#include "headers/control/control.h"
 #include "headers/auth.h"
 #include "headers/test_selector.h"
 #include "headers/test_menu.h"

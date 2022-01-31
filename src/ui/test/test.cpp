@@ -105,7 +105,7 @@ namespace ui::test
                 std::cout << "         [ ] <" << answer << ">" << std::endl;
         }
         std::cout << std::endl;
-        std::cout << "r - report, -> next, <- previous, q - quit";
+        std::cout << "r - report, <- previous, -> next, q - quit";
     }
 
     void show_take_question(const std::string &test_name, const std::string &question, const std::vector<std::string> &answers,
@@ -136,21 +136,14 @@ namespace ui::test
                 std::cout << "     ";
 
             bool is_marked = false;
-            for (auto &marked_answer: marked_answers)
-                if (answer_ == marked_answer)
-                {
-                    std::cout << "   [X]";
-                    is_marked = true;
-                    break;
-                }
-            if (!is_marked)
-                std::cout << "   [ ]";
-
-            std::cout << "    " << answer_ << endl;
+            if (std::find(marked_answers.begin(), marked_answers.end(), answer_) == marked_answers.end())
+                std::cout << "   [ ]" << answer_ << endl;
+            else
+                std::cout << "   [X]" << answer_ << endl;
 
         }
-        std::cout << std::endl;
-        std::cout << "enter - mark/unmark answer, q - quit";
+        std::cout << std::endl << std::endl;
+        std::cout << "enter - mark/unmark answer, <- previous, -> next, q - quit";
     }
 
     void add_test(const std::string &entered_name)
