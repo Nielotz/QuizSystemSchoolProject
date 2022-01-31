@@ -13,7 +13,7 @@ void ui::test_menu::Teacher::show(std::string test_name, std::string username,
 	ui::UI::print_logo();
 
 	std::cout << "  =============" << std::endl;
-	std::cout << "  + Test Menu +" << std::endl;    //NOWA WERSJA
+	std::cout << "  + Test Menu +" << std::endl;
 	std::cout << "  =============" << std::endl << std::endl;
 
 	std::cout << "  Test: <" << test_name << ">" << std::endl;

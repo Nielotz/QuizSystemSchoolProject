@@ -78,7 +78,6 @@ namespace ui::test
 
         for (const auto &answer: answers)
         {
-
             if (std::find(correct_answers.begin(), correct_answers.end(), answer) == correct_answers.end())
                 std::cout << "  [ ]";
             else
