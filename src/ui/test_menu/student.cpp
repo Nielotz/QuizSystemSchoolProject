@@ -37,6 +37,6 @@ void ui::test_menu::Student::show(std::string test_name, std::string username, s
             std::cout << "      " << username_ << issue << std::endl;
     }
 
-    std::cout << std::endl;
+    std::cout << std::endl << std::endl;
     std::cout << "controls - ↓ ↑, enter - take / review, q - quit";
 }

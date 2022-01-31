@@ -67,7 +67,7 @@ namespace control::test_menu
                         selected_username = usernames[--selected_username_idx];
                     break;
                 case 40:  // Down.
-                    if (selected_username_idx < usernames.size() - 1)
+                    if (selected_username_idx + 1 < usernames.size())
                         selected_username = usernames[++selected_username_idx];
                     break;
                 default:;

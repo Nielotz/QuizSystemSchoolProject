@@ -47,7 +47,7 @@ namespace control::test_selector
                     return {control::test_selector::OptionType::kQuit, ""};
                 case 'n':
                 case 'N':
-                    return {control::test_selector::OptionType::kNew, get_safe_string_from_user("test name")};
+                    return {control::test_selector::OptionType::kNew, ""};
                 case 'd':
                 case 'D':
                     if (!selected_test.empty())
@@ -57,7 +57,7 @@ namespace control::test_selector
                         selected_test = tests_names[--selected_test_idx];
                     break;
                 case 40:
-                    if (selected_test_idx < tests_names.size() - 1)
+                    if (selected_test_idx + 1 < tests_names.size())
                         selected_test = tests_names[++selected_test_idx];
                     break;
                 default:;

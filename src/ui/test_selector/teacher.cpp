@@ -16,7 +16,7 @@ void ui::test_selector::Teacher::ask_select_test(std::vector<std::string> tests,
 
     std::cout << "  Available tests:" << std::endl;
 
-    for (auto& test : tests)
+    for (auto &test: tests)
     {
         if (test == selected_answer)
         {
@@ -32,7 +32,7 @@ void ui::test_selector::Teacher::ask_select_test(std::vector<std::string> tests,
         }
     }
 
-    std::cout << std::endl;
+    std::cout << std::endl << std::endl;
     std::cout << "controls - ↓ ↑, enter - open, d - delete, n - new, , q - quit";
 }
     

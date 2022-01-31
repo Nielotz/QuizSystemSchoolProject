@@ -46,9 +46,8 @@ namespace database
     {
         test::check_file(test::test_path);
         test::check_file(test::answers_path);
-        vector<string> existing_test = test::get_test_names();
-        stringstream test_line_stream;
 
+        stringstream test_line_stream;
         test_line_stream << test.name << "|";
         for (auto &question: test.questions)
         {
@@ -62,6 +61,7 @@ namespace database
         string test_line = test_line_stream.str();
 
         // check if test already exist
+        vector<string> existing_test = test::get_test_names();
         if (find(existing_test.begin(), existing_test.end(), test.name) != existing_test.end())
         {
             // overwrite existing test
@@ -101,17 +101,20 @@ namespace database
         vector<string> list_of_users;
         std::map<string, stringstream> students_answers;
         std::map<string, string> reports;
-        for (const auto &b: test.questions)
+
+        for (const auto &question: test.questions)
         {
-            cout << b.question << endl;
-            for (const auto &v: b.students_answers)
+            for (const auto &student_answer: question.students_answers)
             {
-                students_answers[v.first] << b.question;
-                if (find(list_of_users.begin(), list_of_users.end(), v.first) == list_of_users.end())
-                    list_of_users.push_back(v.first);
-                for (const auto &c: v.second)
-                    students_answers[v.first] << "/" << c;
-                students_answers[v.first] << "|";
+                const auto& username = student_answer.first;
+                auto& students_answers_stream = students_answers[username];
+
+                students_answers_stream << question.question;
+                if (find(list_of_users.begin(), list_of_users.end(), username) == list_of_users.end())
+                    list_of_users.push_back(username);
+                for (const auto &c: student_answer.second)
+                    students_answers_stream << "/" << c;
+                students_answers_stream << "|";
             }
         }
         for (const auto &b: test.reported_issues)
@@ -257,7 +260,7 @@ namespace database
                         if (ans_cut != "0")
                             reported_issues[username] = ans_cut;
 
-                        size_t question_end_pos = 0;
+                        size_t question_end_pos;
                         prev_section_pos = section_pos + 1;
                         do
                         {

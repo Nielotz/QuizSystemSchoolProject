@@ -48,7 +48,7 @@ namespace control::test_selector
                         selected_test = tests_names[--selected_test_idx];
                     break;
                 case 40:
-                    if (selected_test_idx < tests_names.size() - 1)
+                    if (selected_test_idx + 1 < tests_names.size())
                         selected_test = tests_names[++selected_test_idx];
                     break;
                 default:;

@@ -3,7 +3,6 @@
 #include "../../headers/test_data/test_data.h"
 #include "../../headers/control/test/test.h"
 #include "../../headers/ui/test/test.h"
-#include "../../headers/ui/ui.h"
 #include "../../headers/control/control.h"
 
 namespace control::test
@@ -14,22 +13,29 @@ namespace control::test
 
     test_data::TestData edit(test_data::TestData test_data, const string &username)
     {
-        const int &amount_of_questions = int(test_data.questions.size());
+        int amount_of_questions = int(test_data.questions.size());
 
-        int current_question_idx = 0;
-
-        const test_data::Question &first_question = test_data.questions[0];
+        int current_question_idx = -1;
+        int selected_answer_idx = -1;
 
         string selected_answer;
-        int selected_answer_idx = -1;
-        if (!first_question.answers.empty())
-        {
-            selected_answer_idx = 0;
-            selected_answer = first_question.answers[selected_answer_idx];
-        }
 
-        ui::test::show_edit_question(test_data.name, first_question.question, first_question.answers, first_question.correct_answers,
-                                     selected_answer, current_question_idx + 1, amount_of_questions);
+        if (amount_of_questions != 0)
+        {
+            current_question_idx = 0;
+            const test_data::Question &first_question = test_data.questions[0];
+            if (!first_question.answers.empty())
+            {
+                selected_answer_idx = 0;
+                selected_answer = first_question.answers[selected_answer_idx];
+            }
+            ui::test::show_edit_question(test_data.name, first_question.question, first_question.answers,
+                                         first_question.correct_answers, selected_answer,
+                                         current_question_idx + 1, amount_of_questions);
+        }
+        else
+            ui::test::show_edit_question(test_data.name, "", {}, {}, selected_answer,
+                                         current_question_idx + 1, amount_of_questions);
 
         // Get the standard input handle.
         HANDLE handle_stdin = GetStdHandle(STD_INPUT_HANDLE);
@@ -50,6 +56,23 @@ namespace control::test
 
             switch (user_input)
             {
+                case 13:  // RETURN.
+                {
+                    bool found = false;
+                    vector<string> &correct = test_data.questions[current_question_idx].correct_answers;
+
+                    for (int i = 0; i < correct.size(); i++)
+                        if (correct[i] == selected_answer)
+                        {
+                            correct.erase(correct.begin() + i);
+                            found = true;
+                            break;
+                        }
+                    if (!found)
+                        correct.emplace_back(selected_answer);
+                    break;
+                }
+
                 case 'q':
                 case 'Q':
                     return test_data;
@@ -75,12 +98,61 @@ namespace control::test
                             selected_answer_idx = -1;
                         }
                     }
+                case 'r':
+                case 'R':
+                    if (current_question_idx == -1)
+                        break;
+                    test_data.questions.erase(test_data.questions.begin() + current_question_idx);
+                    current_question_idx--;
+                    amount_of_questions--;
+                    if (current_question_idx == -1 && !test_data.questions.empty())
+                        current_question_idx = 0;
+
+                    if (current_question_idx != -1 && !test_data.questions[current_question_idx].answers.empty())
+                    {
+                        selected_answer_idx = 0;
+                        selected_answer = test_data.questions[current_question_idx].answers[0];
+                    }
+                    else
+                    {
+                        selected_answer = "";
+                        selected_answer_idx = -1;
+                    }
+
+                    break;
                 case 'a':
                 case 'A':
-                    test_data.questions[current_question_idx].answers.emplace_back(get_new_answer());
+                    if (current_question_idx >= 0)
+                    {
+                        test_data::Question &question = test_data.questions[current_question_idx];
+                        vector<string> &answers = question.answers;
+
+                        const auto &new_answer = get_new_answer();
+
+                        if (std::find(answers.begin(), answers.end(), new_answer) == answers.end())
+                            question.answers.emplace_back(new_answer);
+                    }
+                    break;
                 case 'n':
                 case 'N':
-                    test_data.questions.emplace_back(test_data::Question{get_new_question()});
+                {
+                    const string &new_question = get_new_question();
+
+                    bool exists = false;
+                    for (auto &question: test_data.questions)
+                        if (question.question == new_question)
+                        {
+                            exists = true;
+                            break;
+                        }
+                    if (!exists)
+                    {
+                        test_data.questions.emplace_back(test_data::Question{new_question});
+
+                        amount_of_questions++;
+                        current_question_idx = amount_of_questions - 1;
+                    }
+                }
                     break;
                 case 37:  // Left.
                     if (current_question_idx > 0)
@@ -91,18 +163,25 @@ namespace control::test
                         ++current_question_idx;
                     break;
                 case 38:  // Up.
-                    if (selected_answer_idx > 0)
+                    if (current_question_idx != -1 && selected_answer_idx > 0)
                         selected_answer = test_data.questions[current_question_idx].answers.at(--selected_answer_idx);
                     break;
                 case 40:  // Down.
-                    if (selected_answer_idx < test_data.questions[current_question_idx].answers.size() - 1)
+                    if (current_question_idx != -1 && selected_answer_idx + 1 < test_data.questions[current_question_idx].answers.size())
                         selected_answer = test_data.questions[current_question_idx].answers.at(++selected_answer_idx);
                     break;
                 default:;
             }
-            const test_data::Question &question = test_data.questions[current_question_idx];
-            ui::test::show_edit_question(test_data.name, question.question, question.answers, question.correct_answers,
-                                         selected_answer, current_question_idx + 1, amount_of_questions);
+            if (current_question_idx >= 0)
+            {
+                const test_data::Question &question = test_data.questions[current_question_idx];
+                ui::test::show_edit_question(test_data.name, question.question, question.answers,
+                                             question.correct_answers, selected_answer,
+                                             current_question_idx + 1, amount_of_questions);
+            }
+            else
+                ui::test::show_edit_question(test_data.name, "", {}, {}, selected_answer,
+                                             current_question_idx + 1, amount_of_questions);
         }
     }
 
@@ -138,9 +217,9 @@ namespace control::test
                 continue;
 
             const WORD &user_input = input_record_buffer.Event.KeyEvent.wVirtualKeyCode;
-            
+
             test_data.questions[current_question_idx].students_answers[username] = student_answers;
-            
+
             switch (user_input)
             {
                 case 'q':
@@ -185,7 +264,7 @@ namespace control::test
             selected_answer = first_question.answers[selected_answer_idx];
         }
 
-        for (auto &question : test_data.questions)
+        for (auto &question: test_data.questions)
             question.students_answers[username] = {};
 
         ui::test::show_take_question(test_data.name, first_question.question, first_question.answers,
@@ -242,7 +321,7 @@ namespace control::test
                         selected_answer = test_data.questions[current_question_idx].answers.at(--selected_answer_idx);
                     break;
                 case 40:  // Down.
-                    if (selected_answer_idx < test_data.questions[current_question_idx].answers.size() - 1)
+                    if (selected_answer_idx + 1 < test_data.questions[current_question_idx].answers.size())
                         selected_answer = test_data.questions[current_question_idx].answers.at(++selected_answer_idx);
                     break;
                 default:;
