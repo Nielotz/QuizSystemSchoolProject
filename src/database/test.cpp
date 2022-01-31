@@ -9,14 +9,14 @@
 
 namespace database
 {
-    void test::check_file(const string& path)
+    void test::check_file(const string &path)
     {
         if (path.empty())
             throw exception("<test database> Path to the test database need to be set!");
 
-        ifstream file(path, ios::out);;
+        ifstream file(path, ios::out);
 
-        if (file.good() == 0)
+        if (!file.good())
         {
             file.close();
             throw exception("<test database> Path to the test database need to be set!");
@@ -42,7 +42,7 @@ namespace database
         return test_names;
     }
 
-    void test::set_test(const test_data::TestData& test)
+    void test::set_test(const test_data::TestData &test)
     {
         test::check_file(test::test_path);
         test::check_file(test::answers_path);
@@ -50,12 +50,12 @@ namespace database
         stringstream test_line_stream;
 
         test_line_stream << test.name << "|";
-        for (auto & question : test.questions)
+        for (auto &question: test.questions)
         {
             test_line_stream << question.question;
-            for(const auto& j: question.answers)
+            for (const auto &j: question.answers)
                 test_line_stream << "/^" << j;
-            for (const auto& j : question.correct_answers)
+            for (const auto &j: question.correct_answers)
                 test_line_stream << "/;" << j;
             test_line_stream << "|";
         }
@@ -84,11 +84,12 @@ namespace database
 
             // insert data to file
             ofstream output(test::test_path);
-            for (const auto& i : lines)
+            for (const auto &i: lines)
                 output << i;
             output.close();
         }
-        else {
+        else
+        {
             // add new test
             ofstream output(test::test_path, ios_base::app);
             test_line += "\n";
@@ -100,29 +101,29 @@ namespace database
         vector<string> list_of_users;
         std::map<string, stringstream> students_answers;
         std::map<string, string> reports;
-        for (const auto& b : test.questions)
+        for (const auto &b: test.questions)
         {
             cout << b.question << endl;
-            for (const auto& v : b.students_answers)
+            for (const auto &v: b.students_answers)
             {
                 students_answers[v.first] << b.question;
                 if (find(list_of_users.begin(), list_of_users.end(), v.first) == list_of_users.end())
                     list_of_users.push_back(v.first);
-                for (const auto& c : v.second)
-                    students_answers[v.first] << "/"<<c;
+                for (const auto &c: v.second)
+                    students_answers[v.first] << "/" << c;
                 students_answers[v.first] << "|";
             }
         }
-        for (const auto& b : test.reported_issues)
+        for (const auto &b: test.reported_issues)
             reports[b.first] = b.second;
 
         std::map<string, string> final_lines;
-        for (const auto& b : list_of_users)
+        for (const auto &b: list_of_users)
         {
             if (reports[b].empty())
                 reports[b] = "0";
             stringstream stream;
-            stream << b << "|" << test.name << "|" << reports[b] <<"|" << students_answers[b].str();
+            stream << b << "|" << test.name << "|" << reports[b] << "|" << students_answers[b].str();
             final_lines[b] = stream.str();
         }
 
@@ -152,13 +153,13 @@ namespace database
         }
 
         // adding new lines
-        for (const auto& i : final_lines)
+        for (const auto &i: final_lines)
             lines.push_back(i.second);
         input.close();
 
         // overwriting file
         ofstream output(test::answers_path);
-        for(const auto& i : lines)
+        for (const auto &i: lines)
             output << i;
         output.close();
     }
@@ -233,7 +234,7 @@ namespace database
                     //cout<<"current question: " << read_test_name << ", " << read_question << endl<<endl;
                     std::map<string, vector<string>> students_and_answers;
                     vector<string> students_answers;
-                    for (auto & i : answers_file)
+                    for (auto &i: answers_file)
                     {
                         // get student username
                         size_t prev_section_pos = 0;
@@ -253,7 +254,7 @@ namespace database
                         prev_section_pos = section_pos + 1;
                         section_pos = i.find('|', prev_section_pos);
                         ans_cut = i.substr(prev_section_pos, (section_pos - prev_section_pos));
-                        if(ans_cut!="0")
+                        if (ans_cut != "0")
                             reported_issues[username] = ans_cut;
 
                         size_t question_end_pos = 0;
@@ -263,7 +264,7 @@ namespace database
                             // get line with question and answers
                             question_end_pos = i.find('|', prev_section_pos);
                             // ans_cut = i.substr(prev_section_pos, (question_end_pos - prev_section_pos));
-                            
+
                             //get question
                             section_pos = i.find('/', prev_section_pos);
                             ans_cut = i.substr(prev_section_pos, (section_pos - prev_section_pos));
@@ -272,8 +273,8 @@ namespace database
                                 question_end_pos = i.find('|', prev_section_pos);
                                 prev_section_pos = question_end_pos + 1;
                                 continue;
-                            }  
-                            
+                            }
+
                             while (section_pos < question_end_pos)
                             {
                                 // student answers
@@ -288,7 +289,7 @@ namespace database
                                 students_answers.push_back(ans_cut);
                                 // adding points to student
                                 if (find(correct_answers.begin(), correct_answers.end(), ans_cut) != correct_answers.end())
-                                student_points[username]++;
+                                    student_points[username]++;
                             }
 
                             question_end_pos = i.find('|', prev_section_pos);
@@ -297,21 +298,21 @@ namespace database
                         students_and_answers[username] = students_answers;
                         students_answers.clear();
                     }
-                    questions.push_back(test_data::Question{ read_question, answers, correct_answers,students_and_answers });
+                    questions.push_back(test_data::Question{read_question, answers, correct_answers, students_and_answers});
                 }
                 vector<pair<string, string>> reported_issues_v;
                 reported_issues_v.resize(reported_issues.size());
                 std::copy(reported_issues.begin(), reported_issues.end(), reported_issues_v.begin());
 
                 input.close();
-                return { read_test_name, questions, student_points, reported_issues_v };
+                return {read_test_name, questions, student_points, reported_issues_v};
             }
         }
         input.close();
         throw exception("<test database>Test not found!");
-    } 
+    }
 
-    void test::delete_test(const string& name)
+    void test::delete_test(const string &name)
     {
         ifstream input(test::test_path);
         vector<string> lines;
@@ -330,12 +331,12 @@ namespace database
         input.close();
 
         ofstream output(test::test_path);
-        for(const auto& i : lines)
+        for (const auto &i: lines)
             output << i;
         output.close();
     }
 
-    void test::delete_report(const string& test_name, const string& username)
+    void test::delete_report(const string &test_name, const string &username)
     {
         ifstream input(test::answers_path);
         vector<string> lines;
@@ -355,17 +356,19 @@ namespace database
                     string read_report;
                     getline(testdata_stream, read_report, '|');
                     stringstream line_stream;
-                    line_stream << username << "|" << test_name << "|0|" << test_data_read_line.substr(read_username.size() + read_username.size() + read_report.size() + 3, test_data_read_line.size());
+                    line_stream << username << "|" << test_name << "|0|"
+                                << test_data_read_line.substr(read_username.size() + read_username.size() + read_report.size() + 3,
+                                                              test_data_read_line.size());
                     test_data_read_line = line_stream.str();
                 }
-            } 
+            }
             test_data_read_line += "\n";
             lines.push_back(test_data_read_line);
         }
         input.close();
 
         ofstream output(test::answers_path);
-        for(const auto& i : lines)
+        for (const auto &i: lines)
             output << i;
         output.close();
     }

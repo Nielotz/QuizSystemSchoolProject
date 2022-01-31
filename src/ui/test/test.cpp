@@ -32,7 +32,7 @@ namespace ui::test
 
         for (const auto &answer_: answers)
         {
-            if (answer_ == selected_answer && is_marked == false)
+            if (answer_ == selected_answer && !is_marked)
             {
                 std::cout << "  ";
                 ui::UI::set_console_text_background_color(3, 0);
@@ -45,7 +45,7 @@ namespace ui::test
 
             for (auto &correct_answer: correct_answers)
             {
-                if (answer_ == correct_answer && is_marked == false)
+                if (answer_ == correct_answer && !is_marked)
                 {
                     std::cout << " [X]  " << answer_ << std::endl;
                     is_marked = true;
@@ -57,7 +57,7 @@ namespace ui::test
                 std::cout << " [ ]  " << answer_ << std::endl;
         }
         std::cout << std::endl << std::endl;
-        std::cout << "e - edit, enter, q - quit, a - add answer, d - delete answer";
+        std::cout << "controls - ↓ ↑ → ←, enter - open, q - quit";
     }
 
     void show_review_question(const std::string &test_name, const std::string &question, const std::vector<std::string> &answers,
@@ -91,7 +91,7 @@ namespace ui::test
             cout << "      " << answer << endl;
         }
         std::cout << std::endl;
-        std::cout << "r - report, <- previous, -> next, q - quit";
+        std::cout << "controls - ↓ ↑ → ←, r - report, q - quit";
     }
 
     void show_take_question(const std::string &test_name, const std::string &question, const std::vector<std::string> &answers,
@@ -129,7 +129,7 @@ namespace ui::test
 
         }
         std::cout << std::endl << std::endl;
-        std::cout << "enter - mark/unmark answer, <- previous, -> next, q - quit";
+        std::cout << "controls - ↓ ↑ → ←, enter - mark/unmark answer, q - quit";
     }
 
     void add_test(const std::string &entered_name)

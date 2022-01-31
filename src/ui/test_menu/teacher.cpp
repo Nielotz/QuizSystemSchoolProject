@@ -2,7 +2,6 @@
 
 #include "../../headers/ui/test_menu/teacher.h"
 #include "../../headers/ui/ui.h"
-#include "../../headers/test_data/test_data.h"
 
 void ui::test_menu::Teacher::show(std::string test_name, std::string username,
 	size_t amount_of_questions,
@@ -48,5 +47,5 @@ void ui::test_menu::Teacher::show(std::string test_name, std::string username,
 
 		std::cout << ": " << content << std::endl;
 	}
-	std::cout << "q - quit, e - edit, enter - show student answers";
+	std::cout << "controls - ↓ ↑, e - edit, enter - show student answers, q - quit";
 }
