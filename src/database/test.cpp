@@ -217,16 +217,18 @@ namespace database
                         // ^answer OR ;correct_answer
                         string read_part;
                         getline(test_data_stream_2, read_part, '/');
-                        if (!read_part.find('^'))
+
+                        if (read_part.starts_with('^'))
                         {
                             read_part = read_part.replace(0, 1, "");
                             answers.push_back(read_part);
                         }
-                        else if (!read_part.find(';'))
+                        else if (read_part.starts_with(';'))
                         {
                             read_part = read_part.replace(0, 1, "");
+                            // answers.push_back(read_part);
+
                             correct_answers.push_back(read_part);
-                            answers.push_back(read_part);
                         }
                         else
                             throw exception("<test database>Bad mark in file!");
