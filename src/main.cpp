@@ -2,6 +2,8 @@
 
 int main()
 {
-    QuizSystem quiz;
+    SetConsoleOutputCP(65001);
+
+    QuizSystem();
     return 0;
 }
