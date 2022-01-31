@@ -73,36 +73,23 @@ namespace ui::test
         std::cout << "  ==================" << std::endl << std::endl;
 
         std::cout << "  Test: < " << test_name << " >" << std::endl << std::endl;
-        std::cout << "      Question: [<" << question_number << "> / <" << question_amount << ">]: " << question << std::endl;
-        std::cout << "      Correct:    Marked:     Answers:" << std::endl;
+        std::cout << "  Question: [<" << question_number << "> / <" << question_amount << ">]: " << question << std::endl;
+        std::cout << "  Correct:   Marked:  Answers:" << std::endl;
 
         for (const auto &answer: answers)
         {
-            bool is_marked = false;
-            for (const auto &correct_answer: correct_answers)
-            {
-                if (answer == correct_answer)
-                {
-                    std::cout << "    [X]";
-                    is_marked = true;
-                    break;
-                }
-            }
-            if (!is_marked)
-                std::cout << "    [ ]";
 
-            is_marked = false;
-            for (const auto &marked_answer: marked_answers)
-            {
-                if (answer == marked_answer)
-                {
-                    std::cout << "         [X] <" << answer << ">" << std::endl;
-                    is_marked = true;
-                    break;
-                }
-            }
-            if (!is_marked)
-                std::cout << "         [ ] <" << answer << ">" << std::endl;
+            if (std::find(correct_answers.begin(), correct_answers.end(), answer) == correct_answers.end())
+                std::cout << "  [ ]";
+            else
+                std::cout << "  [X]";
+
+            if (std::find(marked_answers.begin(), marked_answers.end(), answer) == marked_answers.end())
+                std::cout << "        [ ]";
+            else
+                std::cout << "        [X]";
+
+            cout << "      " << answer << endl;
         }
         std::cout << std::endl;
         std::cout << "r - report, <- previous, -> next, q - quit";
