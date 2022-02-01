@@ -1,4 +1,4 @@
-#include "../src/database/user.cpp"
+#include "../src/headers/database/user.h"
 #include "cassert"
 
 int main()

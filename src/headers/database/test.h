@@ -18,7 +18,7 @@ namespace database
 		vector<string> get_test_names();
 		void set_test(const test_data::TestData& test);
 		void delete_test(const string& name);
-		void delete_report(const string& test_name, const string& username);
+		// void delete_report(const string& test_name, const string& username);
 	};
 }
 

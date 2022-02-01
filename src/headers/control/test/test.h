@@ -32,6 +32,7 @@ namespace control::test
         kNext,
         kQuit,
     };
+
     enum class EditActionType
     {
         kEdit,

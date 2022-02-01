@@ -118,6 +118,7 @@ namespace ui::test
         std::cout << "controls - ↓ ↑ → ←, enter - mark/unmark answer, q - quit";
     }
 
+    /*
     void add_test(const std::string &entered_name)
     {
         system("CLS");
@@ -130,4 +131,5 @@ namespace ui::test
 
         std::cout << "     Name:" << entered_name;
     }
+    */
 }

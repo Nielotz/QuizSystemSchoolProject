@@ -100,7 +100,7 @@ namespace database
             output.close();
         }
 
-        // udate answer database
+        // Update answer database
         vector<string> list_of_users;
         std::map<string, stringstream> students_answers;
         std::map<string, string> reports;
@@ -133,7 +133,7 @@ namespace database
             final_lines[b] = stream.str();
         }
 
-        // compraring existing data to new
+        // Compraring existing data to new
         ifstream input(test::answers_path);
         string test_data_read_line;
         vector<string> lines;
@@ -343,7 +343,7 @@ namespace database
             output << i;
         output.close();
     }
-
+/*
     void test::delete_report(const string &test_name, const string &username)
     {
         ifstream input(test::answers_path);
@@ -380,4 +380,6 @@ namespace database
             output << i;
         output.close();
     }
+
+ */
 }

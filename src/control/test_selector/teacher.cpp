@@ -3,7 +3,6 @@
 #include "../../headers/control/test_selector/teacher.h"
 #include "../../headers/ui/ui.h"
 #include "../../headers/database/test.h"
-#include "../../headers/control/control.h"
 
 namespace control::test_selector
 {
