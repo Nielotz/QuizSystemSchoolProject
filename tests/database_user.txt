@@ -1,0 +1,2 @@
+student|pass|1
+teacher|pass|0
