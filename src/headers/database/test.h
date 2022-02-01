@@ -11,8 +11,8 @@ namespace database
 {
 	namespace test
 	{
-		const string test_path = "../../../database/database_test.txt";
-		const string answers_path = "../../../database/database_student_answers.txt";
+		extern string test_path;
+		extern string answers_path;
 		void check_file(const string& path);
 		test_data::TestData get_test_data(const string& name);
 		vector<string> get_test_names();

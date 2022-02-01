@@ -6,9 +6,12 @@
 
 #include "../headers/database/user.h"
 
+std::string database::user::path = "../../../database/database_user.txt";
+
 namespace database
 {
-    std::optional<UserData> user::get_user(const string& username, const string& password)
+
+    std::optional<UserData> user::get_user(const string &username, const string &password)
     {
         if (database::user::path.empty())
             throw std::exception("<user database> Path to the user database need to be set!");

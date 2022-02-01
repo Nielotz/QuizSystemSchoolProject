@@ -7,6 +7,9 @@
 #include "../headers/database/test.h"
 
 
+string database::test::test_path = "../../../database/database_test.txt";
+string database::test::answers_path = "../../../database/database_student_answers.txt";
+
 namespace database
 {
     void test::check_file(const string &path)
@@ -106,8 +109,8 @@ namespace database
         {
             for (const auto &student_answer: question.students_answers)
             {
-                const auto& username = student_answer.first;
-                auto& students_answers_stream = students_answers[username];
+                const auto &username = student_answer.first;
+                auto &students_answers_stream = students_answers[username];
 
                 students_answers_stream << question.question;
                 if (find(list_of_users.begin(), list_of_users.end(), username) == list_of_users.end())
