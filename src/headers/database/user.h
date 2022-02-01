@@ -8,9 +8,9 @@
 namespace database::user
 {
     using std::string;
-    string path = "../../../database/database_user.txt";
+    const string path = "../../../database/database_user.txt";
     std::optional<UserData> get_user(const string &username, const string &password);
-};
+}
 
 
 #endif //SRC_DATABASE_USER_H
