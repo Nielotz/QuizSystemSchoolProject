@@ -1,7 +1,7 @@
 #include "../src/headers/database/user.h"
 #include "cassert"
 
-int main()
+void run_test_user_database()
 {
     database::user::path = "../database_user.txt";
 
@@ -30,6 +30,4 @@ int main()
         std::optional<UserData> received_user_data = database::user::get_user("not_existing", "pass");
         assert(!received_user_data.has_value());
     }
-
-    return 0;
 }
