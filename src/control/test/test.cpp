@@ -251,7 +251,7 @@ namespace control::test
             }
             const test_data::Question &question = test_data.questions[current_question_idx];
             ui::test::show_review_question(test_data.name, question.question, question.answers,
-                                           question.correct_answers, student_answers,
+                                           question.correct_answers, question.students_answers.at(username),
                                            current_question_idx + 1, amount_of_questions);
         }
     }
