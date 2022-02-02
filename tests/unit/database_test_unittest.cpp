@@ -1,5 +1,8 @@
-#include "../src/headers/database/test.h"
+#pragma once
+
 #include "cassert"
+
+#include "database_test_unittest.h"
 
 bool compare_question(const test_data::Question &question1, const test_data::Question &question2)
 {
@@ -41,8 +44,8 @@ bool compare_test_date(const test_data::TestData &test_data1, const test_data::T
 
 void run_test_test_database()
 {
-    database::test::test_path = "../database_test.txt";
-    database::test::answers_path = "../database_test.txt";
+    database::test::test_path = "../resources/database_test.txt";
+    database::test::answers_path = "../resources/database_test.txt";
 
     // Check db files.
     {
@@ -61,7 +64,7 @@ void run_test_test_database()
 
     // Test empty questions.
     {
-        test_data::TestData expected_test_data = {"EmptyQuestions"};
+        test_data::TestData expected_test_data = {"EmptyQuestions", {{"EmptyQuestion1"}, {"EmptyQuestion2"}}};
         const test_data::TestData received_test_data = database::test::get_test_data("EmptyQuestions");
 
         assert(compare_test_date(expected_test_data, received_test_data));
@@ -69,7 +72,15 @@ void run_test_test_database()
 
     // Test normal test.
     {
-        test_data::TestData expected_test_data = {"NormalTest"};
+        // NormalTest|Question1/^Answer1/^Answer2/^Answer3|Question2/^Answer1/^Answer2/^Answer3/;Answer1/;Answer2/;Answer3|
+
+        test_data::TestData expected_test_data = {"NormalTest",
+                                                  {
+                                                          {"Question1", {"Answer1", "Answer2", "Answer3"}},
+                                                          {"Question2", {"Answer1", "Answer2", "Answer3"},
+                                                           {"Answer1", "Answer2", "Answer3"}}
+                                                  }
+        };
         const test_data::TestData received_test_data = database::test::get_test_data("NormalTest");
 
         assert(compare_test_date(expected_test_data, received_test_data));

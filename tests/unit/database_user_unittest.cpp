@@ -1,9 +1,12 @@
-#include "../src/headers/database/user.h"
+#pragma once
+
 #include "cassert"
+
+#include "database_user_unittest.h"
 
 void run_test_user_database()
 {
-    database::user::path = "../database_user.txt";
+    database::user::path = "../resources/database_user.txt";
 
     // Test student.
     {

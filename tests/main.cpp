@@ -1,5 +1,5 @@
-#include "database_test_unittest.cpp"
-#include "database_user_unittest.cpp"
+#include "unit/database_test_unittest.h"
+#include "unit/database_user_unittest.h"
 
 int main()
 {
