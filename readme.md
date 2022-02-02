@@ -14,7 +14,4 @@ Create a new project in src using existing source.
 ### Ensure target is set to "src.exe"
 ![](images/how_to_run/vs_3.gif)
 
-## Demo
-### 
-
 This project follows [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html).
