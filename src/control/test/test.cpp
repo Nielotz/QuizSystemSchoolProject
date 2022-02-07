@@ -1,5 +1,4 @@
 #include <Windows.h>
-#include <iostream>
 
 #include "../../headers/test_data/test_data.h"
 #include "../../headers/control/test/test.h"
@@ -30,13 +29,13 @@ namespace control::test
                 selected_answer_idx = 0;
                 selected_answer = first_question.answers[selected_answer_idx];
             }
-            std::cout << ui::test::EditTest(test_data.name, first_question.question, first_question.answers,
-                                            first_question.correct_answers, selected_answer,
-                                            current_question_idx + 1, amount_of_questions);
+            ui::test::show_edit_question(test_data.name, first_question.question, first_question.answers,
+                                         first_question.correct_answers, selected_answer,
+                                         current_question_idx + 1, amount_of_questions);
         }
         else
-            std::cout << ui::test::EditTest(test_data.name, "", {}, {}, selected_answer,
-                                            current_question_idx + 1, amount_of_questions);
+            ui::test::show_edit_question(test_data.name, "", {}, {}, selected_answer,
+                                         current_question_idx + 1, amount_of_questions);
 
         // Get the standard input handle.
         HANDLE handle_stdin = GetStdHandle(STD_INPUT_HANDLE);
@@ -186,13 +185,13 @@ namespace control::test
             if (current_question_idx >= 0)
             {
                 const test_data::Question &question = test_data.questions[current_question_idx];
-                std::cout << ui::test::EditTest(test_data.name, question.question, question.answers,
-                                                question.correct_answers, selected_answer,
-                                                current_question_idx + 1, amount_of_questions);
+                ui::test::show_edit_question(test_data.name, question.question, question.answers,
+                                             question.correct_answers, selected_answer,
+                                             current_question_idx + 1, amount_of_questions);
             }
             else
-                std::cout << ui::test::EditTest(test_data.name, "", {}, {}, selected_answer,
-                                                current_question_idx + 1, amount_of_questions);
+                ui::test::show_edit_question(test_data.name, "", {}, {}, selected_answer,
+                                             current_question_idx + 1, amount_of_questions);
         }
     }
 
@@ -208,9 +207,9 @@ namespace control::test
 
         std::vector<std::string> student_answers = test_data.questions[0].students_answers[username];
 
-        std::cout << ui::test::ReviewTest(test_data.name, first_question.question, first_question.answers,
-                                          first_question.correct_answers, student_answers,
-                                          current_question_idx + 1, amount_of_questions);
+        ui::test::show_review_question(test_data.name, first_question.question, first_question.answers,
+                                       first_question.correct_answers, student_answers,
+                                       current_question_idx + 1, amount_of_questions);
 
         // Get the standard input handle.
         HANDLE handle_stdin = GetStdHandle(STD_INPUT_HANDLE);
@@ -251,9 +250,9 @@ namespace control::test
                 default:;
             }
             const test_data::Question &question = test_data.questions[current_question_idx];
-            std::cout << ui::test::ReviewTest(test_data.name, question.question, question.answers,
-                                              question.correct_answers, question.students_answers.at(username),
-                                              current_question_idx + 1, amount_of_questions);
+            ui::test::show_review_question(test_data.name, question.question, question.answers,
+                                           question.correct_answers, question.students_answers.at(username),
+                                           current_question_idx + 1, amount_of_questions);
         }
     }
 
@@ -278,9 +277,9 @@ namespace control::test
         for (auto &question: test_data.questions)
             question.students_answers[username] = {};
 
-        std::cout << ui::test::TakeTest(test_data.name, first_question.question, first_question.answers,
-                                        first_question.students_answers.at(username),
-                                        selected_answer, current_question_idx + 1, amount_of_questions);
+        ui::test::show_take_question(test_data.name, first_question.question, first_question.answers,
+                                     first_question.students_answers.at(username),
+                                     selected_answer, current_question_idx + 1, amount_of_questions);
 
         // Get the standard input handle.
         HANDLE handle_stdin = GetStdHandle(STD_INPUT_HANDLE);
@@ -338,9 +337,9 @@ namespace control::test
                 default:;
             }
             const test_data::Question &question = test_data.questions[current_question_idx];
-            std::cout << ui::test::TakeTest(test_data.name, question.question, question.answers,
-                                            question.students_answers.at(username),
-                                            selected_answer, current_question_idx + 1, amount_of_questions);
+            ui::test::show_take_question(test_data.name, question.question, question.answers,
+                                         question.students_answers.at(username),
+                                         selected_answer, current_question_idx + 1, amount_of_questions);
         }
     }
 
